@@ -6,9 +6,10 @@ Single-page teaser/landing site for **MyBodyPrism**, a product of **Bolthouse La
 ## Tech Stack
 - **Pure static site**: Single `index.html` file. No frameworks, no build tools, no dependencies.
 - **Fonts**: Google Fonts — Playfair Display (display/headings), Outfit (body/UI)
-- **Hosting target**: Digital Ocean App Platform (static site), domain via GoDaddy CNAME
-- **SSL**: Automatic via Digital Ocean
-- **Email capture**: Will use Formspree (or similar). The `handleWaitlist()` function has a TODO placeholder for the form endpoint.
+- **Hosting**: GitHub Pages, deployed from `master` branch. Repo: `bolthouse1/Website_BolthouseLabs` (public).
+- **Domain**: `www.bolthouselabs.com` via GoDaddy DNS (CNAME → `bolthouse1.github.io`, A records → GitHub Pages IPs).
+- **SSL**: Automatic via GitHub Pages (HTTPS enforced).
+- **Email capture**: Formspree (form ID: `xykbbnql`). Free tier, 50 submissions/month.
 
 ## Brand Identity
 - **Company**: Bolthouse Labs, Inc.
@@ -86,15 +87,16 @@ All JS is in a single `<script>` block at the bottom:
 - Mobile-first responsive. Everything must work on phones.
 
 ## Deployment Notes
-- Push to GitHub repo
-- Connect to Digital Ocean App Platform as static site
-- Point GoDaddy domain via CNAME record to DO-provided URL
-- SSL is automatic
-- No server, no database, no backend (until Formspree is wired up for email capture)
+- Push to `master` branch → GitHub Pages auto-deploys (1-2 min)
+- GitHub repo: `https://github.com/bolthouse1/Website_BolthouseLabs`
+- Smoke test URL: `https://bolthouse1.github.io/Website_BolthouseLabs/`
+- Live URL: `https://www.bolthouselabs.com`
+- GoDaddy DNS: 4x A records (GitHub Pages IPs) + CNAME `www` → `bolthouse1.github.io`
+- SSL: Auto-provisioned by GitHub Pages
+- Email capture: Formspree endpoint live in `handleWaitlist()`
 
 ## Future Additions (Not Yet)
-- Real media assets replacing placeholders
-- Formspree integration for email capture
+- Real media assets replacing placeholders (renders, screenshots, video from MyBodyPrism)
 - Possible: WebGL 3D viewer embedded directly on the page
 - Possible: Second page for more detailed product info post-launch
 - Analytics (likely simple, privacy-respecting — Plausible or Fathom)
