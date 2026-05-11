@@ -7,8 +7,9 @@ Single-page teaser/landing site for **MyBodyPrism**, a product of **Bolthouse La
 - **Pure static site**: Single `index.html` file. No frameworks, no build tools, no dependencies.
 - **Fonts**: Google Fonts — Playfair Display (display/headings), Outfit (body/UI)
 - **Hosting**: GitHub Pages, deployed from `master` branch. Repo: `bolthouse1/Website_BolthouseLabs` (public).
-- **Domain**: `www.bolthouselabs.com` via GoDaddy DNS (CNAME → `bolthouse1.github.io`, A records → GitHub Pages IPs).
-- **SSL**: Automatic via GitHub Pages (HTTPS enforced).
+- **Canonical domain**: `https://mybodyprism.com` (apex). DNS on **Amazon Route 53** (account `mbp-dev`, hosted zone `Z0545962NVEE3GCX2GT4`). Apex A records → GitHub Pages IPs; `www` CNAME → `bolthouse1.github.io`. Route 53 also holds Amazon SES email records (SPF/DMARC/DKIM) for `@mybodyprism.com` — do not switch nameservers.
+- **Redirect**: `bolthouselabs.com` (registered at GoDaddy, default nameservers) 301-forwards to `https://mybodyprism.com` via GoDaddy domain forwarding with auto-SSL.
+- **SSL**: Auto-provisioned by GitHub Pages (mybodyprism.com) and by GoDaddy (bolthouselabs.com redirect).
 - **Email capture**: Formspree (form ID: `xykbbnql`). Free tier, 50 submissions/month.
 
 ## Brand Identity
@@ -16,7 +17,7 @@ Single-page teaser/landing site for **MyBodyPrism**, a product of **Bolthouse La
 - **Product**: MyBodyPrism — "See Yourself Like Never Before"
 - **Color palette**: Dark backgrounds (#050508, #08080d), cyan accent (#00d4ff), warm accent (#ff6b4a for highlights), muted text (#8a8790, #4a4850)
 - **Tone**: Premium, clinical, cinematic. Not playful, not corporate. Think medical technology meets movie trailer.
-- **Logo**: "BOLTHOUSE LABS" in top bar — "Bolthouse" in cyan, "Labs" in secondary gray. All caps, letter-spaced.
+- **Logo / wordmark**: "My**BodyPrism**" in top bar — "My" muted gray, "BodyPrism" cyan, all caps, letter-spaced. Bolthouse Labs name appears ONLY in the footer copyright line; nowhere else in the site copy or header.
 
 ## Product Model (Critical Context)
 MyBodyPrism is NOT a concierge/mail-in service. It is self-service:
@@ -27,56 +28,51 @@ MyBodyPrism is NOT a concierge/mail-in service. It is self-service:
 Do NOT mention which cloud provider (AWS/Azure). Do NOT mention that the user pays for streaming costs. The site is fully **HIPAA compliant** — this is called out in the product copy and in a trust badge strip.
 
 ## Page Structure (Narrative Arc)
-The page is a single vertical scroll with 7 sections + a trust strip:
+Single vertical scroll, 11 sections + footer. Each photo section currently uses one of the founder's actual scans rendered in MyBodyPrism (see Content Inventory below).
 
-1. **HERO** — Full viewport. Animated particle canvas background. Headline: "What if you could truly see inside your own body?" Subline: "MyBodyPrism · Coming Soon". Scroll cue at bottom.
+1. **HERO** — Full viewport. Particle canvas. "What if you could truly see inside your own body?" + "MyBodyPrism · Coming soon" + scroll cue.
+2. **THE DIAGNOSIS** — "In 2013, I was diagnosed with cardiac sarcoidosis." Picture1 (traditional DICOM 4-pane viewer with "No 3D" label).
+3. **EMOTIONAL PIVOT** — Italic quote: *"I couldn't understand my own disease."* Cyan accent line.
+4. **THE REVEAL** — "So I built something better." Picture4 (heart with PET + scar heatmap).
+5. **TWELVE YEARS, ONE VIEW** — Longitudinal section. Picture3 (2013/2018/2023/2025 PET-CT comparison).
+6. **EVERY DETAIL** — "Even the hardware inside me." Picture5 (CT bone-window revealing ICD, lead, sternal wires).
+7. **MARK WHAT MATTERS** — Annotation/markup capability. Picture6 (ICD lead traced).
+8. **INTRODUCING MYBODYPRISM** — Product intro. Desktop app + secure cloud streaming + VR streaming. Picture2 (multi-pane CT-PET view).
+9. **HOW IT WORKS** — Three numbered steps: Load scans → Transform → Explore. Card layout.
+10. **TRUST STRIP** — Three badges: HIPAA · End-to-End Encrypted · Your Data Stays Yours.
+11. **WAITLIST** — "Be the first to see yourself like never before." Email form (Formspree).
 
-2. **THE DIAGNOSIS** — Founder's story. "In 2013, I was diagnosed with cardiac sarcoidosis..." followed by a placeholder for a flat clinical CT-PET slice image (the "before" — should feel cold, clinical, hard to interpret). **16:9 or 4:3, PNG/JPG.**
+Footer: `© 2026 Bolthouse Labs, Inc.` (the only Bolthouse mention on the page).
 
-3. **EMOTIONAL PIVOT** — Single italic line: "I couldn't understand my own disease." Cyan accent line below.
+## Content Inventory
+All six placeholder slots are filled with real PNG assets at the repo root. Most are low native resolution (~258–600px wide); if any look soft on large screens, swap in higher-res exports of the same view from MyBodyPrism.
 
-4. **THE REVEAL** — "So I built something better." Hero placeholder for a showstopper 3D volumetric render video/image (slow rotation, cinematic lighting, dark background). **16:9, MP4 or PNG/WebP, autoplaying muted looping if video.** Optional second placeholder for a cardiac detail close-up.
+| File | Section | What it shows |
+|---|---|---|
+| `Picture1.png` | THE DIAGNOSIS | Traditional 4-pane DICOM viewer; one panel literally labeled "No 3D" |
+| `Picture2.png` | INTRODUCING MYBODYPRISM | Founder's CT-PET data across multiple synchronized views inside MyBodyPrism |
+| `Picture3.png` | TWELVE YEARS, ONE VIEW | Cardiac PET-CT comparison across 2013 / 2018 / 2023 / 2025 |
+| `Picture4.png` | THE REVEAL | Isolated 3D heart with PET volume overlay and scar-tissue heatmap |
+| `Picture5.png` | EVERY DETAIL | Volumetric CT tuned to bone/metal density — ICD pulse generator, lead, sternal wires |
+| `Picture6.png` | MARK WHAT MATTERS | Annotation/markup tool tracing ICD lead through three views |
 
-5. **PRODUCT TEASE** — "Introducing" badge. Headline + description of MyBodyPrism (desktop app, cloud streaming, VR streaming, HIPAA compliant). Placeholder for product UI screenshot/screen recording. **16:9, MP4/PNG/WebP.**
-
-6. **HOW IT WORKS** — Three steps: "Load your scans" → "We transform it" → "Explore your body in 3D". Each has an SVG icon, title, and short description.
-
-7. **TRUST STRIP** — Three badges: HIPAA Compliant, End-to-End Encrypted, Your Data Stays Yours. Subtle, between How It Works and Waitlist.
-
-8. **WAITLIST** — "Be the first to see yourself like never before." Email input + submit button. Success state swaps form for confirmation message.
-
-9. **FOOTER** — Bolthouse Labs, Inc. © 2026.
-
-## Placeholder Media Spec
-All placeholders are clearly labeled `<div class="placeholder-media">` blocks with grid backgrounds and descriptive labels. When replacing with real content:
-- Replace the entire `<div class="placeholder-inner">...</div>` with an `<img>` or `<video>` tag
-- The parent `.placeholder-media` container handles aspect ratio and border styling
-- For video: use `autoplay muted loop playsinline` attributes
-- Keep dark backgrounds on all media to match the site aesthetic
-
-### Content Hit List
-| # | Type | Description | Aspect Ratio |
-|---|------|-------------|-------------|
-| 1 | Image | Flat clinical CT-PET slice (the "before") | 16:9 or 4:3 |
-| 2 | Video or Image | Hero 3D volumetric render, slow rotation, cinematic | 16:9 |
-| 3 | Image (optional) | Close-up cardiac detail render | 16:9 |
-| 4 | Image or Video | BodyPrism viewer UI with loaded case | 16:9 |
-| 5 | SVG icons (×3) | Already have basic SVGs — can be upgraded | 80×80 |
+When replacing or swapping media, keep dark/black backgrounds to blend with the site, and use `<img>` (or `<video autoplay muted loop playsinline>` for motion).
 
 ## CSS Architecture
 - All styling is in a single `<style>` block in the HTML file
-- CSS custom properties (variables) defined in `:root` for all colors, fonts
+- CSS custom properties (variables) defined in `:root` for all colors
 - Scroll-reveal animations via `.reveal` class + IntersectionObserver
-- Staggered delays via `.reveal-delay-1` through `.reveal-delay-4`
+- Staggered delays via `.reveal-delay-1` through `.reveal-delay-3`
 - Responsive breakpoint at 768px (mobile)
 - Hero particle effect is a `<canvas>` element with vanilla JS animation
+- Respects `prefers-reduced-motion`
 
 ## JavaScript
-All JS is in a single `<script>` block at the bottom:
-- **Particle canvas**: Animated network/node particle effect on hero section
-- **Scroll reveal**: IntersectionObserver adds `.visible` class to `.reveal` elements
-- **Waitlist form**: `handleWaitlist()` — validates email, posts to form endpoint (TODO), shows success state
-- **Scroll cue fade**: Hides the "Scroll" indicator after user begins scrolling
+All JS is at the bottom of `index.html` as IIFEs (no globals):
+- **Particle canvas**: Animated network/node effect on hero (skipped when reduced-motion is set)
+- **Scroll reveal**: IntersectionObserver adds `.visible` to `.reveal` elements as they enter viewport
+- **Scroll cue fade**: Adds `.faded` to the scroll indicator after the user scrolls past ~80px
+- **Waitlist form**: Posts to Formspree via `fetch`, swaps form for success message on 200
 
 ## Design Rules
 - NO navigation menu, hamburger, or header links. Single page, scroll only.
@@ -87,16 +83,17 @@ All JS is in a single `<script>` block at the bottom:
 - Mobile-first responsive. Everything must work on phones.
 
 ## Deployment Notes
-- Push to `master` branch → GitHub Pages auto-deploys (1-2 min)
+- Push to `master` → GitHub Pages auto-deploys (1-2 min). The `CNAME` file at repo root pins the custom domain to `mybodyprism.com`.
 - GitHub repo: `https://github.com/bolthouse1/Website_BolthouseLabs`
 - Smoke test URL: `https://bolthouse1.github.io/Website_BolthouseLabs/`
-- Live URL: `https://www.bolthouselabs.com`
-- GoDaddy DNS: 4x A records (GitHub Pages IPs) + CNAME `www` → `bolthouse1.github.io`
-- SSL: Auto-provisioned by GitHub Pages
-- Email capture: Formspree endpoint live in `handleWaitlist()`
+- **Live URL**: `https://mybodyprism.com`
+- DNS for mybodyprism.com (Route 53, hosted zone `Z0545962NVEE3GCX2GT4`): apex `A` records → 185.199.108.153, .109.153, .110.153, .111.153; `www` `CNAME` → `bolthouse1.github.io`. Plus SES email records (SPF, DMARC, 3× DKIM CNAMEs) — leave intact.
+- bolthouselabs.com (GoDaddy, default nameservers): domain forwarding 301 → `https://mybodyprism.com`, auto-SSL.
+- Email capture: Formspree form ID `xykbbnql` (50 submissions/month free tier).
 
 ## Future Additions (Not Yet)
-- Real media assets replacing placeholders (renders, screenshots, video from MyBodyPrism)
-- Possible: WebGL 3D viewer embedded directly on the page
-- Possible: Second page for more detailed product info post-launch
-- Analytics (likely simple, privacy-respecting — Plausible or Fathom)
+- Higher-resolution exports of the six photos (current ones are small native res; some softening when scaled up on large screens)
+- Possible motion: replace a still with a slow-rotation video on THE REVEAL or EVERY DETAIL section
+- Possible WebGL 3D viewer embedded directly on the page
+- Possible second page for more detailed product info post-launch
+- Analytics (privacy-respecting — Plausible, Fathom, or Cloudflare Web Analytics)
