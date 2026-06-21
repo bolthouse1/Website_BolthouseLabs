@@ -1,2 +1,5 @@
 # Brainstorm session files
 .superpowers/
+
+# Claude Code local config
+.claude/

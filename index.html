@@ -6,6 +6,10 @@
   <title>MyBodyPrism — See yourself like never before</title>
   <meta name="description" content="MyBodyPrism turns your medical scans into immersive 3D you can explore. Coming soon." />
   <meta name="theme-color" content="#050508" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MyBodyPrism — See yourself like never before" />
+  <meta property="og:description" content="Turn your medical scans into immersive, explorable 3D. Coming soon." />
+  <meta property="og:image" content="https://www.mybodyprism.com/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
@@ -14,6 +18,7 @@
       --bg: #050508;
       --bg-2: #08080d;
       --bg-3: #0c0c14;
+      --panel: #0b0b12;
       --text: #e8e6ea;
       --muted: #8a8790;
       --dim: #4a4850;
@@ -21,6 +26,7 @@
       --warm: #ff6b4a;
       --border: rgba(255, 255, 255, 0.08);
       --border-2: rgba(255, 255, 255, 0.04);
+      --border-strong: rgba(255, 255, 255, 0.12);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -36,25 +42,6 @@
     }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; }
-
-    /* ---------- Top brand ---------- */
-    .topbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: center;
-      pointer-events: none;
-    }
-    .brand {
-      font-size: 0.7rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-    }
-    .brand .accent { color: var(--accent); }
 
     /* ---------- Section base ---------- */
     section {
@@ -105,6 +92,9 @@
       min-height: 100vh;
       padding: 6rem 2rem 4rem;
       overflow: hidden;
+      background:
+        radial-gradient(720px 520px at 50% 38%, rgba(0, 212, 255, 0.10), transparent 70%),
+        var(--bg);
     }
     #particles {
       position: absolute;
@@ -119,11 +109,17 @@
       text-align: center;
       max-width: 900px;
     }
+    .hero-logo {
+      width: min(300px, 60vw);
+      height: auto;
+      margin: 0 auto 2rem;
+      filter: drop-shadow(0 0 48px rgba(0, 212, 255, 0.18));
+    }
     .hero h1 { margin-bottom: 1.5rem; }
     .hero-tagline {
       color: var(--muted);
-      font-size: 0.95rem;
-      letter-spacing: 0.2em;
+      font-size: 0.9rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       margin-top: 2rem;
     }
@@ -150,7 +146,7 @@
     }
     .scroll-cue.faded { opacity: 0; }
 
-    /* ---------- Figures ---------- */
+    /* ---------- Figures (framed images) ---------- */
     figure {
       margin: 1.75rem auto 0;
       max-width: 880px;
@@ -176,6 +172,35 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    /* ---------- App window (product framing) ---------- */
+    .app-window {
+      margin: 1.75rem auto 0;
+      max-width: 900px;
+      background: var(--panel);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55), 0 0 90px rgba(0, 212, 255, 0.10);
+    }
+    .app-window.wide { max-width: 980px; }
+    .win-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 0.95rem;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .win-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .win-bar .label {
+      margin-left: 0.55rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .app-window img { width: 100%; border-radius: 0; box-shadow: none; }
 
     /* ---------- Pivot quote ---------- */
     .section-pivot { padding: 3.5rem 2rem; }
@@ -206,7 +231,7 @@
     }
 
     /* ---------- Trust strip ---------- */
-    .section-trust { padding: 3rem 2rem; }
+    .section-trust { padding: 3rem 2rem; background: var(--bg-2); }
     .trust-row {
       display: flex;
       justify-content: center;
@@ -214,11 +239,7 @@
       gap: 4rem;
       flex-wrap: wrap;
     }
-    .trust-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .trust-badge { display: flex; align-items: center; gap: 0.75rem; }
     .trust-badge::before {
       content: "";
       width: 6px;
@@ -238,7 +259,19 @@
     .section-waitlist {
       padding-top: 4rem;
       padding-bottom: 5.5rem;
+      overflow: hidden;
     }
+    .section-waitlist .glow {
+      position: absolute;
+      width: 560px; height: 360px;
+      left: 50%; top: 28%;
+      transform: translateX(-50%);
+      background: radial-gradient(closest-side, rgba(0, 212, 255, 0.13), transparent);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .section-waitlist .container { position: relative; z-index: 1; }
     .section-waitlist h2 { margin-bottom: 2.5rem; }
     form {
       display: flex;
@@ -251,17 +284,17 @@
     }
     input[type="email"] {
       flex: 1 1 240px;
-      background: transparent;
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 212, 255, 0.35);
       color: var(--text);
       padding: 0.95rem 1.1rem;
       font-family: inherit;
       font-size: 0.95rem;
-      border-radius: 2px;
+      border-radius: 3px;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    input[type="email"]:focus { border-color: var(--accent); }
+    input[type="email"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12); }
     input[type="email"]::placeholder { color: var(--dim); }
     button {
       background: var(--accent);
@@ -274,10 +307,11 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       cursor: pointer;
-      border-radius: 2px;
-      transition: opacity 0.2s, transform 0.2s;
+      border-radius: 3px;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
     }
-    button:hover { opacity: 0.9; transform: translateY(-1px); }
+    button:hover { opacity: 0.92; transform: translateY(-1px); }
     .success {
       color: var(--accent);
       font-size: 0.95rem;
@@ -321,24 +355,22 @@
     @media (max-width: 768px) {
       section { padding: 3.5rem 1.25rem; }
       .hero { padding: 5rem 1.25rem 3rem; }
-      figure { margin-top: 1.5rem; }
+      figure, .app-window { margin-top: 1.5rem; }
       .trust-row { gap: 1.75rem; flex-direction: column; }
       .scroll-cue { bottom: 1.5rem; }
-      .topbar { padding: 1rem; }
+      .hero-logo { margin-bottom: 1.75rem; }
     }
   </style>
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="brand">My<span class="accent">BodyPrism</span></div>
-  </header>
-
   <!-- 1. HERO -->
   <section class="hero">
     <canvas id="particles" aria-hidden="true"></canvas>
     <div class="hero-content">
+      <img class="hero-logo" src="logo-mark-t.png" alt="MyBodyPrism" />
       <h1>What if you could truly see inside your own body?</h1>
+      <p class="hero-tagline">MyBodyPrism <span class="dot">·</span> Coming soon</p>
     </div>
     <div class="scroll-cue" id="scroll-cue">Scroll</div>
   </section>
@@ -349,9 +381,15 @@
       <p class="eyebrow reveal">Introducing</p>
       <h2 class="product-name reveal reveal-delay-1">MyBodyPrism</h2>
       <p class="lead reveal reveal-delay-2">A desktop app and secure cloud streaming platform that turns your DICOM scans into immersive, explorable 3D — viewable on screen, in your browser, or streamed directly to a VR headset.</p>
-      <figure class="reveal reveal-delay-3">
+      <div class="app-window reveal reveal-delay-3">
+        <div class="win-bar">
+          <span class="win-dot" style="background:#ff5f56"></span>
+          <span class="win-dot" style="background:#ffbd2e"></span>
+          <span class="win-dot" style="background:#27c93f"></span>
+          <span class="label">MyBodyPrism — Multi-view</span>
+        </div>
         <img src="Picture2.png" alt="MyBodyPrism showing CT-PET data across multiple synchronized 2D and 3D views" />
-      </figure>
+      </div>
     </div>
   </section>
 
@@ -380,14 +418,20 @@
   <section>
     <div class="container">
       <h2 class="reveal">So I built something better.</h2>
-      <figure class="reveal reveal-delay-1 figure-hero">
+      <div class="app-window wide reveal reveal-delay-1">
+        <div class="win-bar">
+          <span class="win-dot" style="background:#ff5f56"></span>
+          <span class="win-dot" style="background:#ffbd2e"></span>
+          <span class="win-dot" style="background:#27c93f"></span>
+          <span class="label">MyBodyPrism — Volumetric heart</span>
+        </div>
         <img src="Picture4.png" alt="Volumetric 3D rendering of a human heart with PET signal and scar tissue visualized as a glowing heatmap" />
-        <figcaption>My heart. PET signal layered over volumetric anatomy. Scar tissue rendered as a heatmap.</figcaption>
-      </figure>
+      </div>
+      <figcaption class="reveal reveal-delay-2">My heart. PET signal layered over volumetric anatomy. Scar tissue rendered as a heatmap.</figcaption>
     </div>
   </section>
 
-  <!-- 5. TWELVE YEARS, ONE VIEW -->
+  <!-- 5. MULTI-YEAR -->
   <section>
     <div class="container">
       <p class="eyebrow reveal">2013 → 2025</p>
@@ -403,10 +447,16 @@
   <section>
     <div class="container">
       <h2 class="reveal">See Every Detail</h2>
-      <figure class="reveal reveal-delay-1 figure-large">
+      <div class="app-window reveal reveal-delay-1">
+        <div class="win-bar">
+          <span class="win-dot" style="background:#ff5f56"></span>
+          <span class="win-dot" style="background:#ffbd2e"></span>
+          <span class="win-dot" style="background:#27c93f"></span>
+          <span class="label">MyBodyPrism — CT bone / metal</span>
+        </div>
         <img src="Picture5.png" alt="Volumetric CT render tuned to bone and metal density, revealing an implanted ICD, lead, and sternal wires" />
-        <figcaption>CT tuned to show bone and metal, revealing my ICD, wires and leads.</figcaption>
-      </figure>
+      </div>
+      <figcaption class="reveal reveal-delay-2">CT tuned to show bone and metal, revealing my ICD, wires and leads.</figcaption>
     </div>
   </section>
 
@@ -434,6 +484,7 @@
 
   <!-- 11. WAITLIST -->
   <section class="section-waitlist">
+    <div class="glow" aria-hidden="true"></div>
     <div class="container container-narrow">
       <h2 class="reveal">Be the first to see yourself like never before.</h2>
       <form id="waitlist" class="reveal reveal-delay-1" action="https://formspree.io/f/xykbbnql" method="POST">
