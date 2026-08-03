@@ -18,7 +18,7 @@ Deploy the existing MyBodyPrism teaser site (`index.html`) to `www.bolthouselabs
 
 ### 1. Repository Setup
 
-- Initialize git in `C:\Website_BolthouseLabs`
+- Initialize git in `C:\Projects_MedViz\Website_BolthouseLabs`
 - Add `.gitignore` to exclude `.superpowers/` and any other non-deployable content
 - Create initial commit with `index.html`, `CLAUDE.md`, and this spec
 - Push to a GitHub repository (public repo for free GitHub Pages)
