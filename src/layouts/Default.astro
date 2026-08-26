@@ -214,6 +214,18 @@ const year = new Date().getFullYear();
         font-size: 0.86rem;
       }
       .disclaimer strong { color: var(--c-warm); }
+      /* Pre-launch notice. Used by any page that must read correctly in both
+         PUBLIC_DOWNLOADS_LIVE states; defined once here so the variants can't
+         drift apart. */
+      .notice {
+        background: rgba(0, 212, 255, 0.06);
+        border: 1px solid rgba(0, 212, 255, 0.28);
+        border-radius: 4px;
+        padding: 0.85rem 1rem;
+        font-size: 0.95rem;
+        color: var(--c-muted);
+      }
+      .notice strong { color: var(--c-brand); }
 
       /* Prose defaults for the Markdown-rendered legal pages, which drop
          their body straight into <main> with no page component. */

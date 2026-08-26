@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Default.astro";
+import { DOWNLOADS_LIVE } from "../site-config";
 ---
 
 <Layout
@@ -15,6 +16,22 @@ import Layout from "../layouts/Default.astro";
     </p>
 
     <h2>FAQ</h2>
+
+    {
+      /* One gated notice rather than conditional wording inside four separate
+         answers: the install, new-machine, SmartScreen and free-forever answers
+         all assume a downloadable viewer. One conditional here means one place
+         to drift, and it removes itself when the flag flips. */
+      !DOWNLOADS_LIVE && (
+        <p class="notice faq-notice">
+          <strong>MyBodyPrism isn't available to download yet.</strong> The
+          viewer is in final testing. The answers below describe how it works at
+          launch — join the waitlist on the{" "}
+          <a href="/pricing">download page</a> and we'll email you the moment
+          it's ready.
+        </p>
+      )
+    }
 
     <details>
       <summary>How do I install the Desktop Viewer?</summary>
@@ -114,6 +131,7 @@ import Layout from "../layouts/Default.astro";
       margin-bottom: 0.5rem;
       background: var(--c-panel);
     }
+    .faq-notice { margin: 0 0 1rem; }
     summary { cursor: pointer; font-weight: 600; }
     details[open] summary { color: var(--c-brand); }
   </style>
