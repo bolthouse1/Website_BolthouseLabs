@@ -1,4 +1,4 @@
-# STATUS — Website_BolthouseLabs
+# STATUS — mybodyprism-com
 
 > Machine-written 2026-07-18 by the portfolio review. Activity is derived from **last commit**,
 > not folder mtime — every directory shows a recent write from tooling passes.

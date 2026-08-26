@@ -13,7 +13,7 @@
 ### Task 1: Initialize Git Repository
 
 **Files:**
-- Create: `c:\Website_BolthouseLabs\.gitignore`
+- Create: `C:\Projects_MedViz\mybodyprism-com\.gitignore`
 
 - [ ] **Step 1: Create .gitignore**
 
@@ -25,7 +25,7 @@
 - [ ] **Step 2: Initialize git and create initial commit**
 
 ```bash
-cd c:/Website_BolthouseLabs
+cd C:/Projects_MedViz/mybodyprism-com
 git init
 git add .gitignore index.html CLAUDE.md docs/
 git commit -m "Initial commit: MyBodyPrism teaser site"
@@ -49,15 +49,15 @@ Expected: Clean working tree, one commit.
 - [ ] **Step 1: Create public GitHub repo**
 
 ```bash
-gh repo create Website_BolthouseLabs --public --source=. --push
+gh repo create mybodyprism-com --public --source=. --push
 ```
 
-Expected: Repo created at `https://github.com/bolthouse1/Website_BolthouseLabs` and code pushed to `main`.
+Expected: Repo created at `https://github.com/bolthouse1/mybodyprism-com` and code pushed to `main`.
 
 - [ ] **Step 2: Verify push**
 
 ```bash
-gh repo view bolthouse1/Website_BolthouseLabs --web
+gh repo view bolthouse1/mybodyprism-com --web
 ```
 
 Expected: Repo page opens in browser, `index.html` visible in file list.
@@ -69,7 +69,7 @@ Expected: Repo page opens in browser, `index.html` visible in file list.
 - [ ] **Step 1: Enable GitHub Pages via API**
 
 ```bash
-gh api repos/bolthouse1/Website_BolthouseLabs/pages \
+gh api repos/bolthouse1/mybodyprism-com/pages \
   --method POST \
   --field source='{"branch":"main","path":"/"}' \
   -H "Accept: application/vnd.github+json"
@@ -82,15 +82,15 @@ Expected: Pages enabled, returns JSON with `html_url`.
 GitHub Pages deployments take 1-3 minutes. Check status:
 
 ```bash
-gh api repos/bolthouse1/Website_BolthouseLabs/pages \
+gh api repos/bolthouse1/mybodyprism-com/pages \
   -H "Accept: application/vnd.github+json"
 ```
 
-Expected: `status: "built"`, `html_url: "https://bolthouse1.github.io/Website_BolthouseLabs/"`
+Expected: `status: "built"`, `html_url: "https://bolthouse1.github.io/mybodyprism-com/"`
 
 - [ ] **Step 3: Open smoke test URL in browser**
 
-Open `https://bolthouse1.github.io/Website_BolthouseLabs/` in your browser.
+Open `https://bolthouse1.github.io/mybodyprism-com/` in your browser.
 
 Verify:
 - Page loads with dark background
@@ -106,7 +106,7 @@ Verify:
 ### Task 4: Wire Up Formspree Waitlist Form
 
 **Files:**
-- Modify: `c:\Website_BolthouseLabs\index.html:993-1013` (handleWaitlist function)
+- Modify: `C:\Projects_MedViz\mybodyprism-com\index.html:993-1013` (handleWaitlist function)
 
 - [ ] **Step 1: Create Formspree form (USER ACTION)**
 
@@ -216,7 +216,7 @@ Log into GoDaddy DNS management for `bolthouselabs.com`. Delete any existing par
 - [ ] **Step 3: Set custom domain in GitHub Pages settings**
 
 ```bash
-gh api repos/bolthouse1/Website_BolthouseLabs/pages \
+gh api repos/bolthouse1/mybodyprism-com/pages \
   --method PUT \
   --field cname='www.bolthouselabs.com' \
   --field source='{"branch":"main","path":"/"}' \
@@ -238,7 +238,7 @@ Expected: Returns `bolthouse1.github.io` CNAME, resolving to GitHub Pages IPs.
 After DNS propagates and GitHub provisions the SSL certificate (automatic, up to 30 minutes):
 
 ```bash
-gh api repos/bolthouse1/Website_BolthouseLabs/pages \
+gh api repos/bolthouse1/mybodyprism-com/pages \
   --method PUT \
   --field https_enforced=true \
   --field cname='www.bolthouselabs.com' \

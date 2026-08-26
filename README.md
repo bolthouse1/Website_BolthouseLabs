@@ -1,4 +1,4 @@
-# Website_BolthouseLabs — MyBodyPrism teaser site
+# mybodyprism-com — MyBodyPrism teaser site
 
 Single-page, dependency-free marketing site for **MyBodyPrism**, a product of
 Bolthouse Labs, Inc. The whole site is one file — [`index.html`](index.html) —

@@ -363,6 +363,6 @@ for title, body in notes:
 # ============================================================
 # SAVE
 # ============================================================
-output_path = r'c:\Website_BolthouseLabs\docs\MyBodyPrism_Media_Asset_Guide.docx'
+output_path = r'C:\Projects_MedViz\mybodyprism-com\docs\MyBodyPrism_Media_Asset_Guide.docx'
 doc.save(output_path)
 print(f'Saved: {output_path}')

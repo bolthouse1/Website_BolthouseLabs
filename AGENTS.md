@@ -2,7 +2,7 @@
 
 ## Project identity
 
-`Website_BolthouseLabs` is the public marketing site for **MyBodyPrism**, a
+`mybodyprism-com` is the public marketing site for **MyBodyPrism**, a
 Bolthouse Labs, Inc. product. It is a single static page — [`index.html`](index.html) —
 published by GitHub Pages from `master` at the domain pinned in [`CNAME`](CNAME).
 The repository contains no application code, no server, no dependency manifest,
