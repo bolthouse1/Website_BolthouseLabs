@@ -1,53 +1,69 @@
 # Start here
 
-Cold-start reading order for a session with no memory of this repository. Total
-read time is a few minutes; the repository is small on purpose.
+Cold-start reading order for a session with no memory of this repository.
+
+> **This repo changed shape on 2026-08-26.** It was a single-file `index.html`
+> teaser for most of its life; it is now an Astro 6 multi-page site. Any document
+> here that describes "one page, no build tooling" predates that migration —
+> that includes most of [`docs/`](docs). See
+> [`PROJECT_STATE.md`](PROJECT_STATE.md) first.
 
 ## 1. Know what this is (1 minute)
 
-A one-file static teaser site for **MyBodyPrism** (Bolthouse Labs, Inc.), served
-by GitHub Pages at the domain in [`CNAME`](CNAME). Everything the browser runs
-lives in [`index.html`](index.html): markup, a single `<style>` block, and three
-vanilla-JS IIFEs. No framework, no build, no package manifest, no tests.
+The public website for **MyBodyPrism** (Bolthouse Labs, Inc.), served by GitHub
+Pages at the domain in [`public/CNAME`](public/CNAME). An Astro 6 static site:
+pages in [`src/pages/`](src/pages), one shared layout in
+[`src/layouts/Default.astro`](src/layouts/Default.astro), built with
+`npm ci && npm run build` into `dist/`. No client framework — interactivity is a
+few inline vanilla-JS IIFEs. No tests.
 
-## 2. Read the rules before touching copy (3 minutes)
+## 2. Learn the current state (2 minutes)
+
+- [`PROJECT_STATE.md`](PROJECT_STATE.md) — **read this before doing anything.**
+  The site is mid-cutover: the new site is committed on a branch, `master` still
+  serves the old teaser, and merging carelessly takes the domain down.
+- [`STATUS.md`](STATUS.md) — the portfolio review's machine-written card
+
+## 3. Read the rules before touching copy (3 minutes)
 
 [`CLAUDE.md`](CLAUDE.md) is owner-authored and governing. It fixes the brand
-palette, the tone, the product model that the copy is allowed to describe, and
-the things the copy must never say. Treat its Brand Identity, Product Model, and
-Design Rules sections as constraints.
+palette, the tone, the product model the copy may describe, and what the copy must
+never say. Treat Brand Identity, Product Model, and Design Rules as constraints.
 
-## 3. Learn the current state (2 minutes)
+Two things there that are easy to trip over:
 
-- [`PROJECT_STATE.md`](PROJECT_STATE.md) — status, recent movement, next action, open questions
-- [`STATUS.md`](STATUS.md) — the portfolio review's machine-written card for this repo
+- **Some copy is owner-directed and must not be reworded** — the `/pricing` lede,
+  the homepage "How it works" steps, the support "Is it really free?" answer. If
+  they read wrong in a given state, add alongside them rather than editing them.
+- **`src/pages/legal/*.md` are mirrors.** Canonical text lives in the desktop repo
+  at `SomaViz_Desktop_Volume_Viewer/legal/`. Fix upstream, then re-sync here.
 
 ## 4. Go deeper only if the task needs it
 
 | If your task is… | Read |
 |---|---|
-| Changing structure, CSS, or JS | [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md) |
-| Changing what the product claims | [`docs/product/PRD.md`](docs/product/PRD.md) |
-| Changing the visitor journey or form | [`docs/product/USER_WORKFLOWS.md`](docs/product/USER_WORKFLOWS.md) |
-| Planning the next chunk of work | [`docs/roadmap/BUILD_SEQUENCE.md`](docs/roadmap/BUILD_SEQUENCE.md) |
-| Asking "why is it built this way?" | [`docs/decisions/`](docs/decisions) |
-| Setting up, previewing, or deploying | [`docs/ENGINEERING_HANDBOOK.md`](docs/ENGINEERING_HANDBOOK.md) |
-| Checking whether a claim is grounded | [`docs/architecture/EVIDENCE.md`](docs/architecture/EVIDENCE.md) |
+| Understanding the launch switch or go-live | [`CLAUDE.md`](CLAUDE.md) → "The launch switch", "Deployment Notes" |
+| Changing what the product claims | [`docs/product/PRD.md`](docs/product/PRD.md) — pre-migration, verify against `src/` |
+| Asking "why is it built this way?" | [`docs/decisions/`](docs/decisions) — pre-migration; ADR 0001 (single-file site) is superseded |
 | Running as an autonomous agent | [`AGENTS.md`](AGENTS.md) |
 
 ## 5. Ground truth beats documentation
 
-`index.html` is the only executable artifact and it wins over any prose,
-including these documents. Before making a structural claim, open it and count
-the `<section>` elements yourself — the page has been restructured more than
-once and prose has lagged behind before.
+`src/` is the only executable artifact and wins over any prose, including these
+documents. Before making a structural claim, open the file and check — the page has
+been restructured more than once and prose has lagged behind every time.
 
-## The four facts most often needed
+## The five facts most often needed
 
-1. Deploy = push to `master`. GitHub Pages rebuilds in one to two minutes.
-2. The custom domain is pinned by the `CNAME` file at the repository root.
-   Deleting it unpins the domain.
-3. The waitlist posts to a Formspree endpoint hard-coded in the form's `action`
-   (`index.html:490`). There is no server of our own.
-4. Every image the page renders sits at the repository root and is referenced by
-   bare filename.
+1. **Deploy is a GitHub Actions run**, not a bare push — see
+   [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). The Pages source
+   must be set to "GitHub Actions" for it to publish.
+2. **The GitHub repo is `bolthouse1/Website_BolthouseLabs`**, not `mybodyprism-com`
+   (which 404s). Only the local folder was renamed. The `origin` remote is correct.
+3. **The custom domain is pinned by [`public/CNAME`](public/CNAME)** — it must land in
+   `dist/` or the domain unbinds and the site goes dark. The workflow fails the build
+   if it doesn't.
+4. **`PUBLIC_DOWNLOADS_LIVE` gates the download flow.** While false, `/pricing` takes
+   waitlist signups instead. Do not flip it before tracker step W4.1.
+5. **The palette is defined once** as `--c-*` tokens in the layout. Never hardcode a
+   colour in a page.
