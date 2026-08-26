@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Default.astro";
+---
+
+<Layout
+  title="System requirements — MyBodyPrism"
+  description="Hardware and operating-system requirements for the MyBodyPrism Desktop Viewer."
+>
+  <section class="container narrow">
+    <h1>System requirements</h1>
+
+    <h2>Desktop Viewer</h2>
+    <table>
+      <tbody>
+        <tr><th>Operating system</th><td>Windows 10 (64-bit) or Windows 11</td></tr>
+        <tr><th>GPU (minimum)</th><td>NVIDIA RTX 2060 or better, with current drivers</td></tr>
+        <tr><th>GPU (reference)</th><td>NVIDIA RTX 4080 (development reference platform)</td></tr>
+        <tr><th>RAM</th><td>16 GB or more</td></tr>
+        <tr><th>Disk</th><td>5 GB free for install plus headroom for your scans</td></tr>
+        <tr><th>Display</th><td>1920×1080 or higher; HiDPI supported</td></tr>
+        <tr><th>Network</th><td>Required for activation; offline use after activation works</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">
+      AMD GPUs may work but aren't tested. Integrated GPUs (Intel HD,
+      Iris) are not supported for volume rendering and will fall back to a
+      CPU pipeline that is too slow for typical scans. macOS and Linux are
+      not supported in V1.
+    </p>
+
+    <p>
+      Questions? <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
+    </p>
+  </section>
+
+  <style>
+    .narrow { max-width: 760px; padding: 2rem 1.25rem 4rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+    th, td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--c-border);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { width: 35%; background: var(--c-accent); }
+    .muted { color: var(--c-muted); font-size: 0.92rem; }
+  </style>
+</Layout>

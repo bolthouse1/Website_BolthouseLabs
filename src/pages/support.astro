@@ -1,0 +1,119 @@
+---
+import Layout from "../layouts/Default.astro";
+---
+
+<Layout
+  title="Support — MyBodyPrism"
+  description="Get help with MyBodyPrism. Contact us at support@mybodyprism.com."
+>
+  <section class="container narrow">
+    <h1>Support</h1>
+    <p>
+      Email <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
+      We answer within one business day. For urgent issues mention "urgent" in
+      the subject line.
+    </p>
+
+    <h2>FAQ</h2>
+
+    <details>
+      <summary>How do I install the Desktop Viewer?</summary>
+      <p>
+        Download the installer from the <a href="/pricing">download page</a>
+        (we email you the link). Run it; on first launch the viewer activates
+        a <strong>free license</strong> automatically — no code needed.
+      </p>
+    </details>
+
+    <details>
+      <summary>What are the system requirements?</summary>
+      <p>
+        See the <a href="/system-requirements">system requirements page</a>.
+        Short version: Windows 10/11, an NVIDIA RTX 2060 or better, 16 GB
+        RAM, 5 GB free disk.
+      </p>
+    </details>
+
+    <details>
+      <summary>Does it cost anything?</summary>
+      <p>
+        No — MyBodyPrism is <strong>free</strong> in this version. There's no
+        charge, so there's nothing to buy or refund. See the
+        <a href="/legal/tos">Terms of Service</a>.
+      </p>
+    </details>
+
+    <details>
+      <summary>Is it really free? Will it stay free?</summary>
+      <p>
+        Yes, it's free in this version, with no time limit. We can't promise
+        it will be free forever: we may introduce paid features in the future
+        and would give registered users notice first. Browser-based streaming,
+        when it arrives, will be a paid feature.
+      </p>
+    </details>
+
+    <details>
+      <summary>I moved to a new computer — how do I get my license there?</summary>
+      <p>
+        The free license is issued per machine. On a new machine, just
+        download and launch again to get a fresh free license. Reinstalling on
+        the same machine keeps your existing license. Any trouble — write to
+        support.
+      </p>
+    </details>
+
+    <details>
+      <summary>Does my imaging leave my machine?</summary>
+      <p>
+        No. MyBodyPrism is a desktop viewer that runs entirely on your
+        machine, with no upload and no AI processing — your DICOM files never
+        leave your computer. The only network calls it makes are to activate
+        and verify your license. See the
+        <a href="/legal/privacy">Privacy Notice</a>.
+      </p>
+    </details>
+
+    <details>
+      <summary>Why does Windows SmartScreen warn me about the installer?</summary>
+      <p>
+        New code-signing certificates can take a few weeks to build
+        reputation with Microsoft SmartScreen. If you see a warning, click
+        "More info" → "Run anyway". The installer is digitally signed by
+        MyBodyPrism; we'll have full SmartScreen reputation soon.
+      </p>
+    </details>
+
+    <details>
+      <summary>I forgot my account email or lost access to it.</summary>
+      <p>
+        Write to <a href="mailto:support@mybodyprism.com">support</a> from
+        whatever address you have, with as much purchase detail as you can
+        provide (approximate date, last four of the card you used). We'll
+        verify and migrate your account.
+      </p>
+    </details>
+
+    <details>
+      <summary>Is MyBodyPrism HIPAA-compliant?</summary>
+      <p>
+        In this version your DICOM data stays on your device, so there is no
+        PHI for us to hold and HIPAA does not apply to us in that relationship.
+        See our <a href="/legal/hipaa">HIPAA notice</a>.
+      </p>
+    </details>
+  </section>
+
+  <style>
+    .narrow { max-width: 760px; padding: 2rem 1.25rem 4rem; }
+    details {
+      border: 1px solid var(--c-border);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      background: var(--c-panel);
+    }
+    summary { cursor: pointer; font-weight: 600; }
+    details[open] summary { color: var(--c-brand); }
+  </style>
+</Layout>
