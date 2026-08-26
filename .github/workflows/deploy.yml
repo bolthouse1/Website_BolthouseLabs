@@ -45,6 +45,13 @@ jobs:
           # editing this file by setting a repository variable of the same
           # name (Settings -> Secrets and variables -> Actions -> Variables).
           PUBLIC_API_BASE: ${{ vars.PUBLIC_API_BASE || 'https://api.mybodyprism.com' }}
+          # Launch switch. Defaults to "false", which publishes the whole site
+          # but swaps the download flow for waitlist capture. Set a repository
+          # variable PUBLIC_DOWNLOADS_LIVE to "true" and re-run this workflow to
+          # go live -- no code change needed. Do not flip it until
+          # api.mybodyprism.com resolves AND release_pointers.latest points at a
+          # real signed installer, or the download button fails for everyone.
+          PUBLIC_DOWNLOADS_LIVE: ${{ vars.PUBLIC_DOWNLOADS_LIVE || 'false' }}
 
       # The custom domain is pinned by public/CNAME, which Astro copies into
       # dist/. If it ever stops landing in the build output, GitHub Pages

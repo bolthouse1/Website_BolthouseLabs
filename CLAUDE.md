@@ -80,6 +80,31 @@ footer, global palette). `astro.config.mjs` sets `build.format: "file"`, so rout
 told users to "check your email for your download link" when the free flow never sends one
 (the download is a direct presigned redirect; the lead notification is SNS, internal-only).
 
+### The launch switch: `PUBLIC_DOWNLOADS_LIVE`
+Defined once in `src/site-config.ts`. **Defaults to `false`.** While false, the whole site
+publishes but the download flow is replaced by waitlist capture:
+
+| | `false` (now) | `true` (at launch) |
+|---|---|---|
+| `/pricing` form | Waitlist → Formspree | Download → `POST {API_BASE}/downloads/trial-installer` |
+| Homepage CTAs | "Join the waitlist" | "Download free" |
+| Homepage "How it works" | Owner-directed copy **unchanged**, plus an additive "Not available to download yet" notice | Owner-directed copy, no notice |
+
+**To go live:** set repository variable `PUBLIC_DOWNLOADS_LIVE` to `true`
+(Settings → Secrets and variables → Actions → Variables) and re-run the deploy workflow.
+It is a *build-time* flag baked into the static output, so it needs the rebuild — no code
+change.
+
+**Do not flip it before tracker step W4.1 completes.** Two separate failures wait behind it:
+before W2.3 `api.mybodyprism.com` is NXDOMAIN, and between W2.3 and W4.1 the download
+endpoint returns `404 NO_RELEASE` *and silently drops the lead* — the `release_pointers`
+lookup runs before `_record_lead`, and prod's table starts empty. So an early flip loses
+signups with no trace. Pre-launch capture must stay client-side (Formspree) until W4.1.
+
+Interest capture deliberately uses Formspree rather than the team-controlled
+`trial_leads`/SNS path, because that path sits behind the same missing API host. Retire the
+Formspree endpoint once the flag is `true`; it should not outlive the launch.
+
 ### The `legal/*.md` pages are MIRRORS — not the source of truth
 Canonical legal text lives in the **desktop repo** at
 `C:\Projects_MedViz\SomaViz_Desktop_Volume_Viewer\legal\` (canonical since 2026-07-08):
@@ -178,8 +203,9 @@ No framework and no client bundle — plain `<script is:inline>` IIFEs (no globa
 
 ## Deployment Notes
 - **Build + deploy runs in GitHub Actions** (`.github/workflows/deploy.yml`): `npm ci`,
-  `npm run build` with `PUBLIC_API_BASE`, a `dist/CNAME` guard, then `actions/deploy-pages`.
-  Override the API host with a repo variable `PUBLIC_API_BASE` — no need to edit the workflow.
+  `npm run build` with `PUBLIC_API_BASE` and `PUBLIC_DOWNLOADS_LIVE`, a `dist/CNAME` guard,
+  then `actions/deploy-pages`. Both env values come from repo variables of the same name, so
+  neither the API host nor the launch switch needs a code change — see **The launch switch**.
 - **The Pages source must be set to "GitHub Actions"** (Settings → Pages → Build and
   deployment → Source) for that workflow to publish. Until it is, the repo still serves the
   old "deploy from `master` branch root" way. These two must change together: deleting the

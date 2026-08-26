@@ -1,26 +1,41 @@
 ---
 import Layout from "../layouts/Default.astro";
+import { DOWNLOADS_LIVE, API_BASE, WAITLIST_ENDPOINT } from "../site-config";
 
 // API base URL for the trial-download + (future) checkout calls. The Lambda
 // backend lives at api.mybodyprism.com (api-{env}.mybodyprism.com in non-prod);
 // the build pulls the correct host from PUBLIC_API_BASE at deploy time.
-const apiBase =
-  (import.meta.env.PUBLIC_API_BASE as string | undefined) ??
-  "https://api.mybodyprism.com";
+const apiBase = API_BASE;
 ---
 
 <Layout
-  title="Get MyBodyPrism — Free"
-  description="The MyBodyPrism Desktop Viewer is free in this version. Enter your email and download. In this version, your imaging stays on your device."
+  title={DOWNLOADS_LIVE ? "Get MyBodyPrism — Free" : "MyBodyPrism — Coming soon"}
+  description={
+    DOWNLOADS_LIVE
+      ? "The MyBodyPrism Desktop Viewer is free in this version. Enter your email and download. In this version, your imaging stays on your device."
+      : "The MyBodyPrism Desktop Viewer is coming soon, and it will be free. Join the waitlist to hear the moment it's ready to download."
+  }
 >
   <section class="container">
-    <h1>Get MyBodyPrism — free</h1>
-    <p class="lede">
-      The full MyBodyPrism viewer, as a <strong>free trial</strong> — no
-      payment details needed, no time limit. Enter your email and download. In
-      this version, your imaging stays on your device, and there's no AI
-      processing.
-    </p>
+    <h1>{DOWNLOADS_LIVE ? "Get MyBodyPrism — free" : "MyBodyPrism — coming soon"}</h1>
+
+    {
+      DOWNLOADS_LIVE ? (
+        <p class="lede">
+          The full MyBodyPrism viewer, as a <strong>free trial</strong> — no
+          payment details needed, no time limit. Enter your email and download. In
+          this version, your imaging stays on your device, and there's no AI
+          processing.
+        </p>
+      ) : (
+        <p class="lede">
+          The full MyBodyPrism viewer will be <strong>free</strong> — no payment
+          details needed, no time limit. It isn't available to download yet. Leave
+          your email and we'll tell you the moment it is. In this version, your
+          imaging stays on your device, and there's no AI processing.
+        </p>
+      )
+    }
 
     <div class="tier-grid single">
       <!-- Desktop — the v1.1 product, free -->
@@ -34,33 +49,65 @@ const apiBase =
           <li>One install per machine</li>
           <li>Free — no time limit in this version</li>
         </ul>
-        <form id="mbp-trial-form" novalidate>
-          <label class="visually-hidden" for="mbp-trial-email">Email address</label>
-          <input
-            id="mbp-trial-email"
-            type="email"
-            name="email"
-            placeholder="you@example.com"
-            autocomplete="email"
-            required
-          />
-          <button id="mbp-trial-btn" type="submit" class="btn btn-primary">
-            Download free
-          </button>
-          <p class="form-note">
-            We'll use your email to follow up about your experience and tell you
-            about updates — nothing else. See the
-            <a href="/legal/privacy">Privacy Policy</a>.
-          </p>
-          <p id="mbp-trial-error" class="form-error" hidden role="alert">
-            Couldn't start the download. Check your email address and retry, or
-            write to <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
-          </p>
-          <p id="mbp-trial-ok" class="form-ok" hidden role="status">
-            Your download is starting… (~2.5&nbsp;GB). The installer includes
-            sample imaging so you can explore right away.
-          </p>
-        </form>
+        {
+          DOWNLOADS_LIVE ? (
+            <form id="mbp-trial-form" novalidate>
+              <label class="visually-hidden" for="mbp-trial-email">Email address</label>
+              <input
+                id="mbp-trial-email"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+              <button id="mbp-trial-btn" type="submit" class="btn btn-primary">
+                Download free
+              </button>
+              <p class="form-note">
+                We'll use your email to follow up about your experience and tell you
+                about updates — nothing else. See the
+                <a href="/legal/privacy">Privacy Policy</a>.
+              </p>
+              <p id="mbp-trial-error" class="form-error" hidden role="alert">
+                Couldn't start the download. Check your email address and retry, or
+                write to <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
+              </p>
+              <p id="mbp-trial-ok" class="form-ok" hidden role="status">
+                Your download is starting… (~2.5&nbsp;GB). The installer includes
+                sample imaging so you can explore right away.
+              </p>
+            </form>
+          ) : (
+            <form id="mbp-waitlist-form" action={WAITLIST_ENDPOINT} method="POST" novalidate>
+              <label class="visually-hidden" for="mbp-waitlist-email">Email address</label>
+              <input
+                id="mbp-waitlist-email"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+              <button id="mbp-waitlist-btn" type="submit" class="btn btn-primary">
+                Join the waitlist
+              </button>
+              <p class="form-note">
+                We'll email you once when the viewer is ready to download, and
+                about updates after that — nothing else. See the
+                <a href="/legal/privacy">Privacy Policy</a>.
+              </p>
+              <p id="mbp-waitlist-error" class="form-error" hidden role="alert">
+                Couldn't add you to the waitlist. Check your email address and
+                retry, or write to
+                <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
+              </p>
+              <p id="mbp-waitlist-ok" class="form-ok" hidden role="status">
+                You're on the list — we'll be in touch the moment it's ready.
+              </p>
+            </form>
+          )
+        }
       </div>
     </div>
 
@@ -172,6 +219,44 @@ const apiBase =
             } else {
               throw new Error("no url");
             }
+          })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = original;
+            err.hidden = false;
+          });
+      });
+    })();
+    // -- Pre-launch waitlist (rendered only while DOWNLOADS_LIVE is false) --
+    (function () {
+      var form = document.getElementById("mbp-waitlist-form");
+      if (!form) return;
+      var input = document.getElementById("mbp-waitlist-email");
+      var btn = document.getElementById("mbp-waitlist-btn");
+      var err = document.getElementById("mbp-waitlist-error");
+      var ok = document.getElementById("mbp-waitlist-ok");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = (input.value || "").trim();
+        if (!email || email.indexOf("@") < 1) {
+          err.hidden = false;
+          return;
+        }
+        btn.disabled = true;
+        var original = btn.textContent;
+        btn.textContent = "Adding you…";
+        err.hidden = true;
+        ok.hidden = true;
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        })
+          .then(function (r) {
+            if (!r.ok) throw new Error("waitlist rejected");
+            form.querySelector("input").hidden = true;
+            btn.hidden = true;
+            ok.hidden = false;
           })
           .catch(function () {
             btn.disabled = false;

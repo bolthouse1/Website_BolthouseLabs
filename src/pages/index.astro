@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Default.astro";
+import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
 
 // Launch homepage. This is the teaser's scroll-driven narrative arc (hero ->
 // diagnosis -> pivot -> reveal -> progression -> detail -> markup -> trust)
@@ -31,7 +32,7 @@ import Layout from "../layouts/Default.astro";
         explorable 3D — running entirely on your machine.
       </p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="/pricing">Download free</a>
+        <a class="btn btn-primary" href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
         <a class="btn btn-secondary" href="/system-requirements">System requirements</a>
       </div>
     </div>
@@ -205,6 +206,19 @@ import Layout from "../layouts/Default.astro";
         <li><strong>Download free.</strong> Enter your email on the download page and get the viewer — free trial, no payment details needed, no time limit.</li>
         <li><strong>Open your scans.</strong> Drop a CD, USB stick, or zip from your hospital portal into the viewer. Render in 2D, MPR, MIP, and volume modes.</li>
       </ol>
+      {
+        /* Additive pre-launch note. The two steps above are owner-directed copy
+           and are left untouched in both states; this only says they describe
+           launch behaviour, so the page doesn't promise a download that the
+           gated /pricing page can't yet deliver. */
+        !DOWNLOADS_LIVE && (
+          <p class="notice reveal reveal-delay-2">
+            <strong>Not available to download yet.</strong> The viewer is in
+            final testing — the steps above are how it will work at launch. Join
+            the waitlist and we'll email you the moment it's ready.
+          </p>
+        )
+      }
       <p class="muted reveal reveal-delay-2">
         Free in this version. We may add paid features later (browser-based
         streaming will be paid); we'll give registered users notice first.
@@ -227,13 +241,18 @@ import Layout from "../layouts/Default.astro";
   <section class="section-cta">
     <div class="glow" aria-hidden="true"></div>
     <div class="container narrative container-narrow">
-      <h2 class="reveal">See yourself like never before.</h2>
+      <h2 class="reveal">
+        {DOWNLOADS_LIVE ? "See yourself like never before." : "Be the first to see yourself like never before."}
+      </h2>
       <p class="lead reveal reveal-delay-1">
-        The full MyBodyPrism viewer, free — no payment details needed, no time
-        limit. Windows 10/11.
+        {
+          DOWNLOADS_LIVE
+            ? "The full MyBodyPrism viewer, free — no payment details needed, no time limit. Windows 10/11."
+            : "The full MyBodyPrism viewer will be free — no payment details needed, no time limit. Leave your email and we'll tell you the moment it's ready. Windows 10/11."
+        }
       </p>
       <div class="cta-row centered reveal reveal-delay-2">
-        <a class="btn btn-primary" href="/pricing">Download free</a>
+        <a class="btn btn-primary" href={PRIMARY_CTA.href}>{PRIMARY_CTA.label}</a>
         <a class="btn btn-secondary" href="/support">Questions?</a>
       </div>
     </div>
@@ -412,6 +431,16 @@ import Layout from "../layouts/Default.astro";
     .section-how ol { padding-left: 1.2rem; margin: 0 0 1.25rem; }
     .section-how li { margin-bottom: 0.7rem; color: var(--c-muted); }
     .muted { color: var(--c-dim); font-size: 0.92rem; }
+    .notice {
+      background: rgba(0, 212, 255, 0.06);
+      border: 1px solid rgba(0, 212, 255, 0.28);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      margin: 0 0 1.1rem;
+      font-size: 0.95rem;
+      color: var(--c-muted);
+    }
+    .notice strong { color: var(--c-brand); }
 
     /* ---------- Trust strip ---------- */
     .section-trust { padding: 3rem 2rem; background: var(--c-bg); }
