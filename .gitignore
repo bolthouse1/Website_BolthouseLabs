@@ -3,3 +3,12 @@
 
 # Claude Code local config
 .claude/
+
+# Astro / node build artifacts
+node_modules/
+dist/
+.astro/
+.env
+.env.local
+*.log
+.DS_Store

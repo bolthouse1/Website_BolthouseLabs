@@ -1,0 +1,81 @@
+---
+// Vanilla-JS cookie consent banner. Stores choice in localStorage.
+// Defaults to declining non-essential cookies; analytics scripts must
+// check window.__mbpConsent === "accepted" before firing.
+---
+
+<div id="mbp-cookie-banner" hidden role="dialog" aria-label="Cookie consent">
+  <div class="cb-inner">
+    <p>
+      We use only essential cookies to keep the site working. We do not load
+      analytics or advertising cookies unless you explicitly accept. See our
+      <a href="/legal/privacy">privacy notice</a>.
+    </p>
+    <div class="cb-actions">
+      <button id="mbp-cookie-accept" type="button" class="btn btn-primary">Accept</button>
+      <button id="mbp-cookie-decline" type="button" class="btn btn-secondary">Decline</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #mbp-cookie-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--c-panel);
+    color: var(--c-fg);
+    border-top: 1px solid var(--c-brand);
+    z-index: 1000;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.2);
+  }
+  .cb-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .cb-inner p {
+    margin: 0;
+    font-size: 0.9rem;
+    flex: 1 1 320px;
+  }
+  .cb-inner a { color: var(--c-brand); }
+  .cb-actions { display: flex; gap: 0.5rem; }
+  .cb-actions .btn-secondary {
+    background: transparent;
+    color: var(--c-fg);
+    border-color: var(--c-border-strong);
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = "mbp.consent";
+    var banner = document.getElementById("mbp-cookie-banner");
+    var accept = document.getElementById("mbp-cookie-accept");
+    var decline = document.getElementById("mbp-cookie-decline");
+    if (!banner || !accept || !decline) return;
+    function set(state) {
+      try {
+        localStorage.setItem(KEY, state);
+      } catch (_) { /* private browsing */ }
+      window.__mbpConsent = state;
+      banner.hidden = true;
+    }
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (_) {}
+    if (stored === "accepted" || stored === "declined") {
+      window.__mbpConsent = stored;
+      return;
+    }
+    // Default-decline posture: if user dismisses without choosing, treat as decline.
+    window.__mbpConsent = "declined";
+    banner.hidden = false;
+    accept.addEventListener("click", function () { set("accepted"); });
+    decline.addEventListener("click", function () { set("declined"); });
+  })();
+</script>

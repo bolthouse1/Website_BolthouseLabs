@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Default.astro";
+
+// API base URL for portal -> license-API calls. Lambda backend lives at
+// api.mybodyprism.com (api-{env}.mybodyprism.com in non-prod). The build
+// pulls the correct host from MBP_ENV at deploy time.
+const apiBase =
+  (import.meta.env.PUBLIC_API_BASE as string | undefined) ??
+  "https://api.mybodyprism.com";
+const portalReturnURL = "https://mybodyprism.com/account";
+---
+
+<Layout
+  title="Account — MyBodyPrism"
+  description="Your MyBodyPrism account. MyBodyPrism is free in this version."
+>
+  <section class="container">
+    <h1>Your account</h1>
+
+    <div id="mbp-account-loading">
+      <p>Loading account…</p>
+    </div>
+
+    <div id="mbp-account-noauth" hidden>
+      <p>
+        We didn't find an active session. To manage your subscription, return
+        to <a href="/pricing">the pricing page</a> or open the link in your
+        purchase confirmation email.
+      </p>
+    </div>
+
+    <div id="mbp-account-main" hidden>
+      <div class="grid">
+        <div class="card">
+          <h2>Your license</h2>
+          <p id="mbp-tier-line">Desktop Viewer — free</p>
+          <p>
+            MyBodyPrism is free in this version — there's nothing to pay or
+            manage. Free access isn't guaranteed forever; if we add paid
+            features later, we'll email registered users first.
+          </p>
+          <a id="mbp-portal-link" class="btn btn-primary" href="/support" hidden>
+            Billing &amp; receipts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--c-panel);
+      border: 1px solid var(--c-border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+    }
+  </style>
+
+  <script is:inline define:vars={{ apiBase, portalReturnURL }}>
+    (function () {
+      function $(id) { return document.getElementById(id); }
+      const params = new URLSearchParams(location.search);
+
+      // Auth token is passed by Stripe Customer Portal redirect (or, for
+      // logged-in returning visitors, a cookie). In V1 we accept ?token=
+      // from the URL.
+      let token = params.get("token");
+      if (!token) {
+        try { token = localStorage.getItem("mbp.auth"); } catch (_) {}
+      } else {
+        try { localStorage.setItem("mbp.auth", token); } catch (_) {}
+      }
+
+      if (!token) {
+        $("mbp-account-loading").hidden = true;
+        $("mbp-account-noauth").hidden = false;
+        // Fall back to /pricing per spec.
+        setTimeout(function () { location.href = "/pricing"; }, 5000);
+        return;
+      }
+
+      // Desktop-only in v1.1: no usage/tier lookup needed. Show the
+      // subscription card and wire the Stripe Customer Portal link so the
+      // customer can update payment method or cancel.
+      $("mbp-account-loading").hidden = true;
+      $("mbp-account-main").hidden = false;
+      $("mbp-portal-link").href =
+        apiBase + "/portal/session?token=" + encodeURIComponent(token) +
+        "&return_url=" + encodeURIComponent(portalReturnURL);
+    })();
+  </script>
+</Layout>

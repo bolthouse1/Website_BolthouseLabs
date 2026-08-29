@@ -1,0 +1,23 @@
+{
+  "name": "mybodyprism-web",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MyBodyPrism marketing + portal site (RL-01).",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^6.1.10",
+    "@astrojs/sitemap": "^3.7.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.6.0"
+  }
+}

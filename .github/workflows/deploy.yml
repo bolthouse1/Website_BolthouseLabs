@@ -1,0 +1,86 @@
+# Before the first run of this workflow can succeed, the repository's Pages
+# source must be switched from "Deploy from a branch" to "GitHub Actions"
+# (Settings -> Pages -> Build and deployment -> Source). Until that switch is
+# made, the `deploy` job fails while the site keeps serving from the `master`
+# branch root.
+
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two Pages deploys at once, and never cancel one midway: a
+# half-finished deploy is what unbinds a custom domain.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          # Backend host for the download + account calls. Override without
+          # editing this file by setting a repository variable of the same
+          # name (Settings -> Secrets and variables -> Actions -> Variables).
+          PUBLIC_API_BASE: ${{ vars.PUBLIC_API_BASE || 'https://api.mybodyprism.com' }}
+          # Launch switch. Defaults to "false", which publishes the whole site
+          # but swaps the download flow for waitlist capture. Set a repository
+          # variable PUBLIC_DOWNLOADS_LIVE to "true" and re-run this workflow to
+          # go live -- no code change needed. Do not flip it until
+          # api.mybodyprism.com resolves AND release_pointers.latest points at a
+          # real signed installer, or the download button fails for everyone.
+          PUBLIC_DOWNLOADS_LIVE: ${{ vars.PUBLIC_DOWNLOADS_LIVE || 'false' }}
+
+      # The custom domain is pinned by public/CNAME, which Astro copies into
+      # dist/. If it ever stops landing in the build output, GitHub Pages
+      # unbinds mybodyprism.com on deploy and the site goes dark. Fail loudly
+      # here instead.
+      - name: Verify CNAME survived the build
+        run: |
+          if [ ! -f dist/CNAME ]; then
+            echo "::error::dist/CNAME is missing - deploying would unbind mybodyprism.com"
+            exit 1
+          fi
+          if ! grep -qx 'mybodyprism.com' dist/CNAME; then
+            echo "::error::dist/CNAME does not contain mybodyprism.com (got: $(cat dist/CNAME))"
+            exit 1
+          fi
+          echo "dist/CNAME OK: $(cat dist/CNAME)"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

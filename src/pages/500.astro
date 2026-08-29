@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Default.astro";
+---
+
+<Layout title="Something went wrong — MyBodyPrism" description="The site hit an unexpected error.">
+  <section class="container narrow">
+    <h1>Something went wrong</h1>
+    <p>
+      We hit an unexpected error rendering this page. The on-call has been
+      notified. In the meantime, try the <a href="/">home page</a> or
+      reach out at <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>
+      with what you were doing when this happened.
+    </p>
+  </section>
+  <style>
+    .narrow { max-width: 720px; padding: 4rem 1.25rem 6rem; }
+  </style>
+</Layout>

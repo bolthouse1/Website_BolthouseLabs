@@ -1,62 +1,74 @@
-# mybodyprism-com — MyBodyPrism teaser site
+# mybodyprism-com — MyBodyPrism website
 
-Single-page, dependency-free marketing site for **MyBodyPrism**, a product of
-Bolthouse Labs, Inc. The whole site is one file — [`index.html`](index.html) —
-served as a static page on GitHub Pages at the domain pinned by
-[`CNAME`](CNAME) (`mybodyprism.com`).
+The public website for **MyBodyPrism**, a product of Bolthouse Labs, Inc. An
+[Astro 6](https://astro.build) static site, served on GitHub Pages at the domain
+pinned by [`public/CNAME`](public/CNAME) (`mybodyprism.com`).
 
-There is no build step, no package manifest, no test suite, and no CI
-configuration in this repository. Editing `index.html` and pushing `master` is
-the entire delivery pipeline.
+> **Repo name:** the GitHub repository is `bolthouse1/Website_BolthouseLabs`.
+> Only the local working folder was renamed to `mybodyprism-com`.
 
-## What the page does
+## What the site does
 
-A dark, scroll-driven narrative that moves from the founder's 2013 cardiac
+A dark, scroll-driven homepage that moves from the founder's 2013 cardiac
 sarcoidosis diagnosis to what MyBodyPrism renders from the same scan data, and
-ends in an email waitlist capture. The page carries ten `<section>` blocks plus
-a footer (`index.html:368-500`), a hero particle canvas, IntersectionObserver
-scroll reveals, and a Formspree-backed waitlist form (`index.html:490`).
+ends in a call to action. Around it sit the download flow, support, system
+requirements, an account portal, and eight legal pages.
+
+The download flow is gated by a build-time flag, `PUBLIC_DOWNLOADS_LIVE`. While
+it is false — the current state — the site publishes in full but `/pricing` takes
+waitlist signups instead of offering a download.
 
 ## Repository layout
 
 | Path | Role |
 |---|---|
-| `index.html` | The entire site: markup, `<style>` block, and three vanilla-JS IIFEs |
-| `CNAME` | Custom-domain pin consumed by GitHub Pages |
-| `Picture1.png` … `Picture6.png` | The six narrative screenshots, referenced in section order |
-| `logo.png`, `logo-t.png`, `logo-mark-t.png` | Brand marks; `logo-mark-t.png` is the hero image (`index.html:371`) |
-| `Icon/Body Prism.png` | Source icon art, not referenced by the page |
+| `src/pages/` | One file per route (`index`, `pricing`, `support`, `system-requirements`, `account`, `404`, `500`, `legal/*.md`) |
+| `src/layouts/Default.astro` | Shared head, header, footer, and the `--c-*` colour tokens every page inherits |
+| `src/components/` | `CookieBanner.astro` |
+| `src/site-config.ts` | Build-time flags: `DOWNLOADS_LIVE`, `API_BASE`, waitlist endpoint |
+| `public/` | Copied verbatim into `dist/` — images, `robots.txt`, `favicon.svg`, and `CNAME` |
+| `.github/workflows/deploy.yml` | Build + publish to GitHub Pages, with a `dist/CNAME` guard |
 | [`CLAUDE.md`](CLAUDE.md) | Owner-authored brand, copy, and deployment rules — governing instructions |
-| [`STATUS.md`](STATUS.md) | Machine-written portfolio status card (tier, activity, caveats) |
-| [`docs/`](docs) | Durable project context plus the original 2026-04 deploy plan and media asset guide |
+| [`STATUS.md`](STATUS.md) | Machine-written portfolio status card |
+| [`docs/`](docs) | Durable project context, written before the 2026-08-26 migration |
 
 ## Working on it
 
-1. Read [`START_HERE.md`](START_HERE.md) first — it is the cold-start reading
-   order for a fresh session.
-2. Follow the copy, brand, and structural rules in [`CLAUDE.md`](CLAUDE.md).
-   They are constraints, not suggestions.
-3. Preview by opening `index.html` directly in a browser. Nothing needs to be
-   installed or compiled.
-4. Push to `master` to deploy. GitHub Pages rebuilds automatically.
+```bash
+npm ci
+npm run dev      # local dev server
+npm run build    # static output into dist/
+```
+
+1. Read [`START_HERE.md`](START_HERE.md) — the cold-start reading order.
+2. Check [`PROJECT_STATE.md`](PROJECT_STATE.md) — **the site is mid-cutover**, and
+   merging without switching the Pages source takes the live domain down.
+3. Follow the copy, brand, and structural rules in [`CLAUDE.md`](CLAUDE.md). They
+   are constraints, not suggestions.
+4. When touching anything gated, build in **both** flag states:
+   `npm run build` and `PUBLIC_DOWNLOADS_LIVE=true npm run build`.
+
+Deployment is a GitHub Actions run, not a bare push — the repository's Pages
+source must be set to "GitHub Actions". There is no staging environment and no
+test suite.
 
 ## Durable context
 
 - [`PROJECT_STATE.md`](PROJECT_STATE.md) — where the project stands and the next action
-- [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md) — current structure, flows, and boundaries
-- [`docs/architecture/TARGET_ARCHITECTURE.md`](docs/architecture/TARGET_ARCHITECTURE.md) — where it is headed
+- [`AGENTS.md`](AGENTS.md) — operating rules for autonomous agents
 - [`docs/product/PRD.md`](docs/product/PRD.md) — product statement and scope
-- [`docs/product/USER_WORKFLOWS.md`](docs/product/USER_WORKFLOWS.md) — visitor and maintainer journeys
-- [`docs/roadmap/BUILD_SEQUENCE.md`](docs/roadmap/BUILD_SEQUENCE.md) — ordered milestones
 - [`docs/decisions/`](docs/decisions) — architecture decision records
 - [`docs/ENGINEERING_HANDBOOK.md`](docs/ENGINEERING_HANDBOOK.md) — how to change this repository safely
-- [`docs/architecture/EVIDENCE.md`](docs/architecture/EVIDENCE.md) — the citations behind every claim above
 
-## External services this page depends on at runtime
+Everything under `docs/` predates the 2026-08-26 Astro migration and describes the
+earlier single-file site. Verify any claim there against `src/` before relying on it.
 
-- Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) for Playfair Display and Outfit (`index.html:13-15`)
-- Formspree for waitlist submissions (`index.html:490`)
-- GitHub Pages for hosting and TLS
+## External services the site depends on at runtime
 
-No analytics, no cookies, no tracking scripts, and no backend of our own are
-present in `index.html`.
+- **Google Fonts** (`fonts.googleapis.com`, `fonts.gstatic.com`) — Playfair Display and Outfit
+- **Formspree** — pre-launch waitlist submissions, while `PUBLIC_DOWNLOADS_LIVE` is false
+- **The MyBodyPrism licence API** (`PUBLIC_API_BASE`) — the download and account flows, once live
+- **GitHub Pages** — hosting and TLS
+
+No analytics and no tracking scripts. The cookie banner defaults to declining
+non-essential cookies; nothing may fire before `window.__mbpConsent === "accepted"`.
