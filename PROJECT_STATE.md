@@ -1,20 +1,26 @@
 # Project state
 
 Snapshot written 2026-08-30 at the close of a data-audit session. Branch
-`master`, tree clean, **2 commits committed but deliberately NOT pushed** —
+`master`, tree clean, **site changes committed but deliberately NOT pushed** —
 see *Resume here* below, which is the first thing to read.
 
 ## Resume here — one decision is waiting
 
-Two commits sit unpushed because they change how your own medical imaging looks
-and **nobody has visually reviewed them**. I re-encoded the homepage images to
-WebP q90 and verified they decode at correct dimensions, but this session had no
-way to display an image, so "it should be fine" is all that was established.
+`git log origin/master..master` will show several unpushed commits. **Exactly two
+change the site**, and they are the two at the bottom of that list:
 
 ```
+2046a84  perf: re-encode homepage imagery to WebP q90    <- needs your eye
 5fa00da  chore: move unreferenced brand art out of public/
-2046a84  perf: re-encode homepage imagery to WebP q90 - 7.62 MB -> 0.59 MB
 ```
+
+Anything stacked above them is documentation — this file recording the decision —
+and is safe to push either way.
+
+They sit unpushed because `2046a84` changes how your own medical imaging looks
+and **nobody has visually reviewed it**. I re-encoded the homepage images to
+WebP q90 and verified they decode at correct dimensions, but this session had no
+way to display an image, so "it should be fine" is all that was established.
 
 **To finish it:**
 
