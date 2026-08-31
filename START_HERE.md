@@ -20,8 +20,9 @@ few inline vanilla-JS IIFEs. No tests.
 ## 2. Learn the current state (2 minutes)
 
 - [`PROJECT_STATE.md`](PROJECT_STATE.md) — **read this before doing anything.**
-  The site is mid-cutover: the new site is committed on a branch, `master` still
-  serves the old teaser, and merging carelessly takes the domain down.
+  The site is live and healthy, but `master` carries unpushed commits that change
+  the homepage imagery and are waiting on a human to look at them. That file opens
+  with a *Resume here* section saying exactly what to do.
 - [`STATUS.md`](STATUS.md) — the portfolio review's machine-written card
 
 ## 3. Read the rules before touching copy (3 minutes)

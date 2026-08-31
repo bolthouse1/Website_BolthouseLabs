@@ -41,8 +41,9 @@ npm run build    # static output into dist/
 ```
 
 1. Read [`START_HERE.md`](START_HERE.md) — the cold-start reading order.
-2. Check [`PROJECT_STATE.md`](PROJECT_STATE.md) — **the site is mid-cutover**, and
-   merging without switching the Pages source takes the live domain down.
+2. Check [`PROJECT_STATE.md`](PROJECT_STATE.md) — the site is live, but `master`
+   holds unpushed commits awaiting a visual review. Its *Resume here* section
+   says what to do with them.
 3. Follow the copy, brand, and structural rules in [`CLAUDE.md`](CLAUDE.md). They
    are constraints, not suggestions.
 4. When touching anything gated, build in **both** flag states:

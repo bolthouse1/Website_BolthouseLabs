@@ -74,9 +74,11 @@ page renders blank with JS disabled.
 ## Current work
 
 Read [`PROJECT_STATE.md`](PROJECT_STATE.md) for the live snapshot and open
-questions. **The site is mid-cutover:** the migrated site is committed on
-`feature/launch-site`, `master` still serves the old teaser, and the named next
-action is the two-step go-live described there.
+questions. **The site is live** — the 2026-08-26 migration was merged and the
+Pages source switched on 2026-08-29 — but `master` carries **unpushed commits that
+change the homepage imagery**, held back for a human to review because no agent
+session here can display an image. Do not push them on your own judgement; that
+file's *Resume here* section is the authority.
 
 Deeper context: [`docs/`](docs) — but note the whole set predates the 2026-08-26
 migration, so verify any claim against `src/` before relying on it.
