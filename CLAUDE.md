@@ -144,9 +144,15 @@ does not destroy them.
 ## Content Inventory
 All six slots are filled with real PNG assets, which now live in **`public/`** (Astro copies
 `public/` verbatim into `dist/`, so they are referenced with a leading slash: `/Picture1.png`).
-Most are low native resolution (~258–600px wide) but large on disk — the homepage pulls ~7 MB
-of PNG. They are `loading="lazy"` below the fold, but re-exporting them smaller is the single
-biggest win available on page weight.
+The homepage pulls ~7 MB of PNG, and they are `loading="lazy"` below the fold.
+
+**The long-standing "low native resolution (~258–600px wide)" claim is false** — measured from
+the PNG headers on 2026-08-30: Picture1 4106×2149, Picture5 1604×978, Picture6 1006×555,
+Picture3 985×433, Picture2 949×539, Picture4 918×476. The problem is **compression, not
+resolution**: Picture5 is 2.4 MB for 1604×978, Picture1 1.9 MB. So the fix is to re-encode
+(WebP, or PNG quantisation) — re-exporting at *higher* resolution would make page weight worse.
+Do not re-open this as a "get better exports" task; it is an encoding task, and it needs no new
+source material.
 
 | File | Section | What it shows |
 |---|---|---|
@@ -222,7 +228,9 @@ No framework and no client bundle — plain `<script is:inline>` IIFEs (no globa
 - Rollback is `git revert` plus a push, then wait for the Actions run (~1-2 min).
 
 ## Future Additions (Not Yet)
-- Higher-resolution exports of the six photos (current ones are small native res; some softening when scaled up on large screens)
+- Re-encode the six photos to cut page weight (~7 MB of PNG). They are **not** low-resolution
+  — see Content Inventory — so this is WebP/quantisation work on the files already here, not a
+  request for new exports.
 - Possible motion: replace a still with a slow-rotation video on THE REVEAL or SEE EVERY DETAIL section
 - Possible WebGL 3D viewer embedded directly on the page
 - Possible second page for more detailed product info post-launch

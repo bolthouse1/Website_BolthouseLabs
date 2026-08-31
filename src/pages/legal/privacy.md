@@ -102,10 +102,26 @@ Application logs intentionally do not include patient names or
 identifiers; only basenames and module names. The crash archive is
 PHI-scrubbed before it is written.
 
-You can wipe all local Service state by deleting
-`%APPDATA%\MyBodyPrism\` and the registry key
-`HKCU\Software\MyBodyPrism\`. Your source imaging files in their
-case folders are not touched by this operation.
+You can wipe all local Service state by deleting the following. Your
+source imaging files in their case folders are not touched by any of
+this.
+
+| Location | What it holds |
+|---|---|
+| `%APPDATA%\MyBodyPrism\` | Application logs and PHI-scrubbed crash archives |
+| `%APPDATA%\SomaViz\` | Your licence file |
+| `HKCU\Software\MyBodyPrism\` (registry) | Your preferences, and the record that you accepted the End User Licence Agreement |
+
+The second folder is named `SomaViz` for historical reasons — it is
+part of this application.
+
+After erasing these, the next launch behaves like a first launch: the
+application will ask you to accept the End User Licence Agreement
+again, and will request a replacement licence for this computer.
+Because licences are issued per computer, the licence server returns
+the one already associated with your machine rather than refusing — so
+erasing your local data does not cost you access, provided the
+computer can reach the internet on that next launch.
 
 ### 2.4 Information you provide if you contact support
 
