@@ -43,9 +43,10 @@ revocable, royalty-free license to:
 - Use the Software solely for your **personal, non-commercial
   purpose** of viewing your own medical imaging data,
 - Use the Software while it is made available to you free of charge
-  (or, if we introduce a paid model under the
+  — currently as a **free beta** whose license ends on **July 1, 2027**
+  (see §3.1) — or, if we introduce a paid model under the
   [Terms of Service](/legal/tos) §4, during your paid
-  term).
+  term.
 
 This is a license, not a sale. We retain all right, title, and
 interest in and to the Software, including all intellectual
@@ -56,10 +57,11 @@ property rights.
 The Software is licensed per machine, not per user. To enforce this:
 
 - On first launch (and at activation), the Software computes a SHA-256
-  hash of a stable hardware identifier of your computer — the
-  motherboard serial number, or the system's SMBIOS UUID as a fallback —
-  and binds your activation to that machine-ID hash on our license
-  server.
+  hash of a stable identifier of your computer — the motherboard serial
+  number; or, where the manufacturer left that blank or set it to a
+  placeholder, the system's SMBIOS UUID; or, failing both, the Windows
+  installation identifier (`MachineGuid`) — and binds your activation to
+  that machine-ID hash on our license server.
 - The machine-ID hash is the **only** machine information that
   leaves your computer for license-binding purposes. We do not
   transmit your MAC address, hard drive serial number, IP address,
@@ -72,24 +74,38 @@ The Software is licensed per machine, not per user. To enforce this:
   permit up to **three (3) machine transfers per 12-month
   license period** at no additional charge.
 
-## 3. Free license and activation
+## 3. Free beta license and activation
 
-### 3.1 Free license
+### 3.1 Free beta license
 
-The Software is **provided free of charge** in this version. On
-first launch:
+This version of the Software is a **beta release, provided free of
+charge**. On first launch:
 
-- The Software obtains a **free license** bound to your machine
-  (see §2), limited to **one (1) free license per machine.** The
+- The Software obtains a **free beta license** bound to your machine
+  (see §2), limited to **one (1) free beta license per machine.** The
   Software records issuance on our license server (indexed by
   machine-ID hash) and locally (defensive backup).
-- The free license provides full Software functionality and **does
-  not expire on a fixed date in this version.**
-- Free access is not guaranteed to continue. If we move to a paid
-  model in the future (Terms of Service §4), continued use may
-  require payment after prior notice to registered users.
+- The free beta license provides full Software functionality and
+  **ends on July 1, 2027** (the "Beta Period"). After the Beta Period
+  the Software will stop running under this license, following a short
+  grace period, and continued use will require whatever the current
+  version of the Software and its terms provide at that time (which may
+  be a new free license, a paid license, or a new version — see Terms of
+  Service §4). We will describe what comes next at
+  [mybodyprism.com](https://mybodyprism.com) before the Beta Period ends.
+- Free access is not guaranteed to continue beyond the Beta Period and
+  may end earlier on notice to registered users (Terms of Service §4).
+- **Beta software.** A beta release may contain defects and may change
+  or be discontinued. The warranty disclaimers and limitations in §§12
+  and 13 apply with full force to the beta.
+- **Feedback.** We invite feedback on the beta (Help → Send Feedback…
+  in the Software, or [support@mybodyprism.com](mailto:support@mybodyprism.com)).
+  By sending feedback you grant Bolthouse Labs a perpetual, irrevocable,
+  royalty-free right to use it to improve the Software and our services,
+  without obligation or attribution to you. Please do not include
+  medical images or personal health information in feedback.
 
-Attempting to circumvent the one-free-license-per-machine limit
+Attempting to circumvent the one-free-beta-license-per-machine limit
 (e.g., by deleting local files, by virtual-machine fingerprint
 manipulation, or by other means) is a violation of this EULA.
 
@@ -202,11 +218,11 @@ not extend to the proprietary portions of the Software.
 This EULA takes effect when you first install or use the Software
 and continues until terminated as described below.
 
-The Software is **provided free of charge** in this version and your
-free license does not expire on a fixed date. Free access is not
-guaranteed to continue: we may change to a paid model in the future
-under the [Terms of Service](/legal/tos) §4, on prior
-notice to registered users.
+This version of the Software is a **free beta** and your free beta
+license **ends on July 1, 2027** (§3.1). Free access is not guaranteed
+to continue beyond that date and may end earlier on prior notice to
+registered users; we may change to a paid model under the
+[Terms of Service](/legal/tos) §4.
 
 ### 10.2 Termination by you
 
@@ -218,6 +234,9 @@ so no fees or refunds are involved.
 
 This EULA automatically terminates if:
 
+- The Beta Period ends (July 1, 2027, plus any grace period) and you
+  do not obtain whatever license the then-current version of the
+  Software provides (§3.1).
 - We discontinue free access or move to a paid model and you do not
   obtain a paid license after notice (Terms of Service §4).
 - You materially breach any provision of this EULA, the
@@ -399,7 +418,6 @@ By installing or using the Software, you acknowledge that:
   [Medical Disclaimer](/legal/disclaimer) and acknowledge that the
   Software is not a medical device and is not intended for
   clinical use.
-
 </div>
 
 <style>

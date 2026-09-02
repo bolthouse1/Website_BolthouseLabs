@@ -42,12 +42,12 @@ viewing your own medical imaging data. The Service is **not a
 medical device**. Read the
 [Medical Disclaimer](/legal/disclaimer) before using the Service.
 
-The Desktop Viewer is **provided free of charge** in this version.
-There is no purchase, license fee, or subscription required to
-download, install, or use it. On first launch the Software obtains a
-free license (one per machine — see the
-[End-User License Agreement](/legal/eula) §3). See §4 for how this may
-change in the future.
+The Desktop Viewer is **provided free of charge as a beta release** in
+this version. There is no purchase, license fee, or subscription
+required to download, install, or use it. On first launch the Software
+obtains a free beta license (one per machine — see the
+[End-User License Agreement](/legal/eula) §3) that **ends on July 1,
+2027**. See §4 for how this may change in the future.
 
 ## 3. Account creation and security
 
@@ -70,16 +70,24 @@ suspect any unauthorized use.
 
 ## 4. Free access and future changes
 
-### 4.1 Free during this version
+### 4.1 Free beta during this version
 
-The MyBodyPrism Desktop Viewer is provided to you **free of charge**
-in this version. We do not require a purchase, license fee,
-subscription, or payment method to download, install, or use it.
+The MyBodyPrism Desktop Viewer is provided to you **free of charge, as
+a beta release,** in this version. We do not require a purchase,
+license fee, subscription, or payment method to download, install, or
+use it. The free beta license issued to your machine **ends on July 1,
+2027** (the "Beta Period" — [End-User License Agreement](/legal/eula)
+§3.1). Before the Beta Period ends we will describe at
+[mybodyprism.com](https://mybodyprism.com) what the Software and its
+terms provide after that date, which may be a new free license, a paid
+license, or a new version. A beta release may contain defects and may
+change or be discontinued.
 
 ### 4.2 Free access is not guaranteed to continue
 
-Free access is provided at our discretion and **is not guaranteed to
-remain free.** We reserve the right, at any time and in our sole
+Free access is provided at our discretion, **ends with the Beta
+Period unless we say otherwise, and is not guaranteed to remain
+free.** We reserve the right, at any time and in our sole
 discretion, to: (a) introduce fees, paid tiers, or paid features;
 (b) modify, limit, or discontinue any part of the Service; and
 (c) **require payment to continue using the Service or any feature,
@@ -387,14 +395,14 @@ Sacramento, CA 95834, or by telephone at (800) 952-5210.
 
 - There is no subscription, no automatic renewal, and no charge of
   any kind to download, install, or use the Desktop Viewer.
-- Free access is not guaranteed to continue. We may introduce fees
-  or paid features in the future, and may require payment to
-  continue using the Service, on prior notice to registered users
-  (see §4).
+- This version is a free **beta**; its license ends on **July 1,
+  2027** (§4.1). Free access is not guaranteed to continue beyond that
+  date. We may introduce fees or paid features in the future, and may
+  require payment to continue using the Service, on prior notice to
+  registered users (see §4).
 - If we introduce paid features, we will present their terms —
   including any price, renewal, and cancellation terms — and provide
   the disclosures required by applicable law, before you purchase.
-
 </div>
 
 <style>
