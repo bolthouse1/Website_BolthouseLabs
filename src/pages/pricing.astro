@@ -9,30 +9,31 @@ const apiBase = API_BASE;
 ---
 
 <Layout
-  title={DOWNLOADS_LIVE ? "Get MyBodyPrism — Free" : "MyBodyPrism — Coming soon"}
+  title={DOWNLOADS_LIVE ? "Get MyBodyPrism — free beta" : "MyBodyPrism — Coming soon"}
   description={
     DOWNLOADS_LIVE
-      ? "The MyBodyPrism Desktop Viewer is free in this version. Enter your email and download. In this version, your imaging stays on your device."
-      : "The MyBodyPrism Desktop Viewer is coming soon, and it will be free. Join the waitlist to hear the moment it's ready to download."
+      ? "The MyBodyPrism Desktop Viewer is a free beta, valid until July 1, 2027. Enter your email and download. In this version, your imaging stays on your device."
+      : "The MyBodyPrism Desktop Viewer is coming soon as a free beta. Join the waitlist to hear the moment it's ready to download."
   }
 >
   <section class="container">
-    <h1>{DOWNLOADS_LIVE ? "Get MyBodyPrism — free" : "MyBodyPrism — coming soon"}</h1>
+    <h1>{DOWNLOADS_LIVE ? "Get MyBodyPrism — free beta" : "MyBodyPrism — coming soon"}</h1>
 
     {
       DOWNLOADS_LIVE ? (
         <p class="lede">
-          The full MyBodyPrism viewer, as a <strong>free trial</strong> — no
-          payment details needed, no time limit. Enter your email and download. In
-          this version, your imaging stays on your device, and there's no AI
-          processing.
+          The full MyBodyPrism viewer, as a <strong>free beta</strong> — no
+          payment details needed, valid until July 1, 2027. Enter your email and
+          download. In this version, your imaging stays on your device, and
+          there's no AI processing.
         </p>
       ) : (
         <p class="lede">
-          The full MyBodyPrism viewer will be <strong>free</strong> — no payment
-          details needed, no time limit. It isn't available to download yet. Leave
-          your email and we'll tell you the moment it is. In this version, your
-          imaging stays on your device, and there's no AI processing.
+          The full MyBodyPrism viewer will be a <strong>free beta</strong> — no
+          payment details needed, valid until July 1, 2027. It isn't available to
+          download yet. Leave your email and we'll tell you the moment it is. In
+          this version, your imaging stays on your device, and there's no AI
+          processing.
         </p>
       )
     }
@@ -47,7 +48,7 @@ const apiBase = API_BASE;
           <li>2D / MPR / MIP / volume rendering</li>
           <li>In this version, your imaging stays on your device</li>
           <li>One install per machine</li>
-          <li>Free — no time limit in this version</li>
+          <li>Free beta — every licence runs until July 1, 2027</li>
         </ul>
         {
           DOWNLOADS_LIVE ? (
@@ -112,10 +113,10 @@ const apiBase = API_BASE;
     </div>
 
     <p class="muted">
-      MyBodyPrism is free in this version. Free access isn't guaranteed to last
-      forever — we may add paid features in the future (browser-based streaming,
-      when it arrives, will be paid), and we'll give registered users notice
-      before anything changes. See the <a href="/legal/eula">EULA</a> and
+      MyBodyPrism v1.1 is a free beta, and every beta licence ends on
+      July 1, 2027. We'll tell registered users what happens next before that
+      date. We may add paid features in the future (browser-based streaming,
+      when it arrives, will be paid). See the <a href="/legal/eula">EULA</a> and
       <a href="/legal/tos">Terms of Service</a> for the full terms.
     </p>
   </section>

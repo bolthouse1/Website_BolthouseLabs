@@ -15,6 +15,38 @@ import { DOWNLOADS_LIVE } from "../site-config";
       the subject line.
     </p>
 
+    <h2>This is a beta — tell us what you find</h2>
+    <p class="notice beta-notice">
+      <strong>MyBodyPrism v1.1 is a free beta, running until July 1, 2027.</strong>
+      That means it is genuinely early, and your report is how it gets better.
+      Two things we want to hear about:
+    </p>
+    <ul class="beta-asks">
+      <li>
+        <strong>Bugs.</strong> Anything that crashed, rendered wrong, or refused
+        to open a scan. Tell us what you were doing and what happened — and, if
+        you can, the make of the scanner or the kind of study.
+      </li>
+      <li>
+        <strong>What you wish it did.</strong> The view you went looking for and
+        couldn't find, the step that took too many clicks, the thing you expected
+        to be there. Feature requests from beta users shape what ships next.
+      </li>
+    </ul>
+    <p>
+      <a
+        class="btn btn-primary"
+        href="mailto:support@mybodyprism.com?subject=MyBodyPrism%20beta%20feedback"
+        >Send beta feedback</a
+      >
+    </p>
+    <p class="muted-note">
+      That opens an email to
+      <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a> — the
+      same address the viewer's own feedback option uses. Nothing is collected
+      automatically; we only see what you choose to write.
+    </p>
+
     <h2>FAQ</h2>
 
     {
@@ -62,12 +94,13 @@ import { DOWNLOADS_LIVE } from "../site-config";
     </details>
 
     <details>
-      <summary>Is it really free? Will it stay free?</summary>
+      <summary>Is it really free? How long does the beta last?</summary>
       <p>
-        Yes, it's free in this version, with no time limit. We can't promise
-        it will be free forever: we may introduce paid features in the future
-        and would give registered users notice first. Browser-based streaming,
-        when it arrives, will be a paid feature.
+        Yes — v1.1 is a free beta. No charge and no payment details. Every beta
+        licence carries the same end date, <strong>July 1, 2027</strong>, and we
+        can't promise the viewer will be free after that: we may introduce paid
+        features in the future and would give registered users notice first.
+        Browser-based streaming, when it arrives, will be a paid feature.
       </p>
     </details>
 
@@ -132,6 +165,10 @@ import { DOWNLOADS_LIVE } from "../site-config";
       background: var(--c-panel);
     }
     .faq-notice { margin: 0 0 1rem; }
+    .beta-notice { margin: 0 0 1rem; }
+    .beta-asks { padding-left: 1.15rem; margin: 0 0 1.25rem; }
+    .beta-asks li { margin-bottom: 0.6rem; color: var(--c-muted); }
+    .muted-note { color: var(--c-dim); font-size: 0.88rem; }
     summary { cursor: pointer; font-weight: 600; }
     details[open] summary { color: var(--c-brand); }
   </style>
