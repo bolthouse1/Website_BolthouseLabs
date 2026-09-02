@@ -33,10 +33,35 @@ viewer's own mechanism — deliberately not the Formspree waitlist, which is on 
 `eula.md` has no beta/expiry text yet (verified 2026-09-02). Re-sync all eight
 after it lands. Launch-Manager will signal.
 
-Three open questions were sent to Launch-Manager: the feedback mechanism choice,
-an offline claim they asked me to preserve that **does not exist on this site**,
-and whether `terms-of-service.md` also needs the beta terms upstream (only
-`eula.md` was named).
+**Launch-Manager approved the diff as drafted (2026-09-02)** and settled the three
+questions I raised: feedback stays `mailto` (don't pollute the waitlist count or
+burn the 50/month cap); the offline sentence is app copy and must **not** be added
+to the site; and `terms-of-service.md` is being added to the upstream legal pass so
+ToS and EULA agree on the beta terms.
+
+**To deploy it — ONE command, verified as a clean fast-forward:**
+
+```powershell
+git push origin beta-copy:master        # db819c3..e97c3eb
+```
+
+That ships the beta copy **alone** and leaves the image commits below untouched on
+local `master`. Do **not** `git reset --hard` master to do this: it would orphan all
+six commits, including the unreviewed imagery. `beta-copy` was branched off
+`origin/master` precisely so no reset or cherry-pick is needed.
+
+Afterwards, reconcile local `master` (it will be based on the old `origin/master`):
+
+```powershell
+git checkout master && git rebase origin/master
+```
+
+**Tested 2026-09-02 in a throwaway branch: that rebase is clean** — all six commits
+replay with zero conflicts, even though the copy commit and the image commit both
+touch `index.astro`. The image review then proceeds normally.
+
+The push itself is **held** pending the owner's own word — see the note in the
+Launch-Manager thread. Nothing is pushed.
 
 ### (b) The image review — unchanged from 2026-08-30
 
