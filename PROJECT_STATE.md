@@ -4,7 +4,41 @@ Snapshot written 2026-08-30 at the close of a data-audit session. Branch
 `master`, tree clean, **site changes committed but deliberately NOT pushed** —
 see *Resume here* below, which is the first thing to read.
 
-## Resume here — one decision is waiting
+## Resume here — TWO things are waiting
+
+**Read both.** They are independent, and neither is pushed.
+
+### (a) Beta copy — branch `beta-copy`, awaiting owner sign-off
+
+Owner decision 2026-09-02 (via Launch-Manager): **v1.1 ships as a free beta that
+expires 2027-07-01.** This supersedes the 2026-08-26 "no time limit" copy, which
+is now **false and still live on the site**.
+
+The rewrite is on branch **`beta-copy`** (`e97c3eb`), branched from
+`origin/master` — deliberately *not* from `master`, so it can ship without
+dragging the unreviewed image commits in (b) along as ancestors.
+
+```powershell
+git log --oneline origin/master..beta-copy     # one commit
+git diff origin/master..beta-copy -- src/      # the copy diff
+```
+
+Covers `index`, `pricing`, `support`, `account`: every "no time limit" /
+"free trial" / "free forever" claim replaced with the July 1, 2027 beta framing,
+plus a beta feedback ask (mailto to `support@mybodyprism.com`, matching the
+viewer's own mechanism — deliberately not the Formspree waitlist, which is on a
+50/month cap). Builds green in both flag states; zero false claims survive.
+
+**Legal mirrors deliberately untouched** — the desktop repo's canonical
+`eula.md` has no beta/expiry text yet (verified 2026-09-02). Re-sync all eight
+after it lands. Launch-Manager will signal.
+
+Three open questions were sent to Launch-Manager: the feedback mechanism choice,
+an offline claim they asked me to preserve that **does not exist on this site**,
+and whether `terms-of-service.md` also needs the beta terms upstream (only
+`eula.md` was named).
+
+### (b) The image review — unchanged from 2026-08-30
 
 `git log origin/master..master` will show several unpushed commits. **Exactly two
 change the site**, and they are the two at the bottom of that list:
