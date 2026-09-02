@@ -56,7 +56,13 @@ calls this "the teaser" predates that migration.
 ## Product Model (Critical Context — updated 2026-08-26, owner-directed)
 MyBodyPrism is NOT a concierge/mail-in service. It is self-service, and **v1.1
 (launching 2026-10-01) ships the desktop app ONLY**:
-1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. Free, non-expiring license, one per machine.
+1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. **Free BETA licence, one per machine, ending July 1, 2027** (owner decision 2026-09-02; canonical terms in the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1).
+
+   **The licence is free, but it is NOT non-expiring.** This section said "Free,
+   non-expiring license" until 2026-09-02, and the site said "no time limit" — both
+   were made false by the beta decision and both are now corrected. Do not describe
+   the licence as unlimited, perpetual, forever, or without a time limit. Say
+   *free beta*, and give the date.
 2. **Cloud streaming viewer + VR streaming** — ROADMAP (v1.2+, gated on AWS GPU quota + CloudFront verification), NOT shipped. The page copy must NOT claim streaming, browser viewing, VR, HIPAA-compliant cloud, or end-to-end encryption until those services actually exist. (Overselling copy corrected 2026-08-26 by the Launch-Manager session at the owner's direction.)
 
 If/when streaming copy returns: do NOT mention which cloud provider (AWS/Azure) and do NOT mention that the user pays for streaming costs. Until then the trust strip sells the local-first story: "Runs entirely on your computer · No uploads, no cloud · Your data stays yours."

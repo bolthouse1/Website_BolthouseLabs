@@ -1,123 +1,59 @@
 # Project state
 
-Snapshot written 2026-08-30 at the close of a data-audit session. Branch
-`master`, tree clean, **site changes committed but deliberately NOT pushed** —
-see *Resume here* below, which is the first thing to read.
+Snapshot written 2026-09-02. Branch `master`, tree clean, **2 commits unpushed** —
+the WebP image review, which is the only thing still open.
 
-## Resume here — TWO things are waiting
+## Resume here — one decision is waiting
 
-**Read both.** They are independent, and neither is pushed.
-
-### (a) Beta copy — branch `beta-copy`, awaiting owner sign-off
-
-Owner decision 2026-09-02 (via Launch-Manager): **v1.1 ships as a free beta that
-expires 2027-07-01.** This supersedes the 2026-08-26 "no time limit" copy, which
-is now **false and still live on the site**.
-
-The rewrite is on branch **`beta-copy`** (`e97c3eb`), branched from
-`origin/master` — deliberately *not* from `master`, so it can ship without
-dragging the unreviewed image commits in (b) along as ancestors.
-
-```powershell
-git log --oneline origin/master..beta-copy     # one commit
-git diff origin/master..beta-copy -- src/      # the copy diff
-```
-
-Covers `index`, `pricing`, `support`, `account`: every "no time limit" /
-"free trial" / "free forever" claim replaced with the July 1, 2027 beta framing,
-plus a beta feedback ask (mailto to `support@mybodyprism.com`, matching the
-viewer's own mechanism — deliberately not the Formspree waitlist, which is on a
-50/month cap). Builds green in both flag states; zero false claims survive.
-
-**Legal mirrors deliberately untouched** — the desktop repo's canonical
-`eula.md` has no beta/expiry text yet (verified 2026-09-02). Re-sync all eight
-after it lands. Launch-Manager will signal.
-
-**Launch-Manager approved the diff as drafted (2026-09-02)** and settled the three
-questions I raised: feedback stays `mailto` (don't pollute the waitlist count or
-burn the 50/month cap); the offline sentence is app copy and must **not** be added
-to the site; and `terms-of-service.md` is being added to the upstream legal pass so
-ToS and EULA agree on the beta terms.
-
-**To deploy it — ONE command, verified as a clean fast-forward:**
-
-```powershell
-git push origin beta-copy:master        # db819c3..e97c3eb
-```
-
-That ships the beta copy **alone** and leaves the image commits below untouched on
-local `master`. Do **not** `git reset --hard` master to do this: it would orphan all
-six commits, including the unreviewed imagery. `beta-copy` was branched off
-`origin/master` precisely so no reset or cherry-pick is needed.
-
-Afterwards, reconcile local `master` (it will be based on the old `origin/master`):
-
-```powershell
-git checkout master && git rebase origin/master
-```
-
-**Tested 2026-09-02 in a throwaway branch: that rebase is clean** — all six commits
-replay with zero conflicts, even though the copy commit and the image commit both
-touch `index.astro`. The image review then proceeds normally.
-
-The push itself is **held** pending the owner's own word — see the note in the
-Launch-Manager thread. Nothing is pushed.
-
-### (b) The image review — unchanged from 2026-08-30
-
-`git log origin/master..master` will show several unpushed commits. **Exactly two
-change the site**, and they are the two at the bottom of that list:
+The beta copy and the legal mirrors **shipped 2026-09-02 and are live**. What
+remains on `master` is the image re-encode, held since 2026-08-30 because no
+session here can display an image and it is the owner's own medical imaging.
 
 ```
-2046a84  perf: re-encode homepage imagery to WebP q90    <- needs your eye
-5fa00da  chore: move unreferenced brand art out of public/
+bd82b64  perf: re-encode homepage imagery to WebP q90 (7.62 MB -> 0.59 MB)  <- needs your eye
+d17c597  chore: move unreferenced brand art out of public/
 ```
 
-Anything stacked above them is documentation — this file recording the decision —
-and is safe to push either way.
-
-They sit unpushed because `2046a84` changes how your own medical imaging looks
-and **nobody has visually reviewed it**. I re-encoded the homepage images to
-WebP q90 and verified they decode at correct dimensions, but this session had no
-way to display an image, so "it should be fine" is all that was established.
+Anything stacked above them is documentation and is safe to push either way.
 
 **To finish it:**
 
 ```powershell
-cd C:\Projects_MedViz\mybodyprism-com
-npm ci
-npm run build
-npm run preview          # open the homepage, scroll it
+npm ci && npm run build && npm run preview   # scroll the homepage
 ```
 
-Look hardest at **THE REVEAL** (`Picture4`, the heart with the PET scar heatmap,
-738 KB → 53 KB) and **SEE EVERY DETAIL** (`Picture5`, the CT bone/metal render
-with the ICD and leads, 2434 KB → 181 KB) — smooth gradients are where WebP
-artifacts would show first. Then either:
+Look hardest at **THE REVEAL** (`Picture4`, heart + PET scar heatmap, 738 KB ->
+53 KB) and **SEE EVERY DETAIL** (`Picture5`, CT bone/metal with the ICD and
+leads, 2434 KB -> 181 KB) — smooth gradients are where WebP artifacts show first.
+Then either:
 
-- **Happy:** `git push origin master` — Actions deploys in 1–2 min.
-- **Not happy:** the original PNGs are intact at `2046a84~1`. Recover one with
-  `git show 2046a84~1:public/Picture5.png > public\Picture5.png`, or re-encode
-  at higher quality — q95 measured 0.90 MB total, lossless 3.03 MB, versus 0.62 MB
-  at q90 and 7.62 MB for the originals.
-- **Changed your mind:** `git reset --hard origin/master` discards both commits.
-
-Nothing else is pending. Everything else this session touched is deployed and live.
+- **Happy:** `git push origin master` — Actions deploys in 1-2 min.
+- **Not happy:** originals are intact at `bd82b64~1`. Recover one with
+  `git show bd82b64~1:public/Picture5.png > public\Picture5.png`, or re-encode
+  higher — q95 measured 0.90 MB total, lossless 3.03 MB, vs 0.62 MB at q90 and
+  7.62 MB for the originals.
+- **Changed your mind:** `git reset --hard origin/master` discards both.
 
 ## Status
 
-**Live and healthy.** The v1.1 launch site is published and serving:
-apex `200`; `http://` now `301`s to `https://`; `www` `301`s to apex; `/pricing`,
-`/support`, `/system-requirements`, `/account` and all eight `/legal/*` pages `200`.
+**Live and healthy.** Verified 2026-09-02 after the beta-copy deploy: apex `200`;
+`http://` `301`s to `https://`; `www` `301`s to apex; `/pricing`, `/support`,
+`/system-requirements`, `/account` and all eight `/legal/*` pages `200`.
+
+**The site now describes a free BETA ending July 1, 2027.** Zero occurrences of
+"no time limit" or "free trial" survive anywhere. `/pricing`, `/support`,
+`/account`, `/legal/eula` and `/legal/tos` all state the end date.
 
 **Downloads remain gated.** `PUBLIC_DOWNLOADS_LIVE` is false in production, so
 `/pricing` reads "MyBodyPrism — coming soon" and takes waitlist signups via
 Formspree. Correct and deliberate — the flag flip waits on tracker step W4.1.
 
-## What changed 2026-08-30
+## What changed
 
 | | |
 |---|---|
+| **Deployed 2026-09-02** | `e97c3eb` + `fcd841f` — free-beta copy across index/pricing/support/account, and the `eula` + `tos` mirrors re-synced with canonical `0f85a9f0`. Verified live: no false claims anywhere; beta terms on five pages |
+| **Deployed 2026-09-02** | Beta feedback ask (mailto to `support@mybodyprism.com`, matching the viewer's own mechanism — deliberately not the Formspree waitlist) |
 | **Deployed** | `db819c3` — legal privacy mirror re-synced with canonical. The live page had been serving text the desktop team corrected on 2026-08-28 |
 | **Deployed** | GitHub Pages **Enforce HTTPS turned on** (was off; the site served plaintext with no upgrade and no HSTS while carrying an email form). Verified propagated |
 | **Committed, not pushed** | WebP re-encode + brand-art move — see *Resume here* |
@@ -169,7 +105,8 @@ repo** — see Guardrails.
   `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. The other four
   (`cookies`, `hipaa`, `refunds`, `copyright`) originate here. Fix upstream, then
   re-sync. The mirror rewrites relative `.md` links to `/legal/*` routes; that
-  difference is correct and is **not** drift. All four verified in sync 2026-08-30.
+  difference is correct and is **not** drift. All four verified in sync 2026-09-02
+  against canonical `0f85a9f0`.
 - **`public/` is deployed verbatim.** Anything dropped there goes live. Source art
   belongs in `brand/`, which is not published.
 - **`public/CNAME` is load-bearing.** If it stops reaching `dist/`, the custom
@@ -181,9 +118,16 @@ repo** — see Guardrails.
 - **`logo.png` stays PNG.** It is the Open Graph image and social scrapers handle
   WebP inconsistently. Everything else on the homepage is WebP.
 - Owner-directed copy — the `/pricing` lede, the homepage "How it works" steps, and
-  the support "Is it really free?" answer — must not be reworded. Add alongside it,
-  as the gated notices do.
-- **Copy must stay consistent with the totally-free v1 positioning.** No
+  the support free/beta answer — must not be reworded on a session's own judgement.
+  Add alongside it, as the gated notices do. **They were rewritten on 2026-09-02**,
+  but only because the beta decision made their central claim false, and only after
+  the owner approved the diff; that is the bar for touching them again.
+- **v1.1 is a FREE BETA ending July 1, 2027** (owner decision 2026-09-02). Free, with
+  no payment details and no subscription — but **not** unlimited, perpetual, forever,
+  or "no time limit". Those phrasings were live and false until 2026-09-02; do not
+  reintroduce them. Canonical terms: the desktop repo's `legal/eula.md` §3.1 and
+  `legal/terms-of-service.md` §4.1.
+- **Copy must stay consistent with the free-beta positioning.** No
   subscription or renewal wording.
 - Do not "fix" the `origin` remote to `mybodyprism-com`. The GitHub repo is
   **`Website_BolthouseLabs`**; only the local folder was renamed.
