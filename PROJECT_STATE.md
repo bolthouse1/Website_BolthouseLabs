@@ -58,14 +58,47 @@ repo** — see Guardrails.
    waitlist as the site's only interactive element with no backend. Half-true now.
    Cosmetic; a two-line superseded note would settle it. The rest of `docs/` is
    pre-migration, which `README.md`, `AGENTS.md` and this file all say explicitly.
-3. **W4.1 → then flip `PUBLIC_DOWNLOADS_LIVE` to `true`** (repo variable) and
-   re-run the deploy workflow. **Not before:** until W2.3 `api.mybodyprism.com` is
-   NXDOMAIN, and between W2.3 and W4.1 the download endpoint returns
-   `404 NO_RELEASE` *and silently drops the lead*. Coordinate via
-   `C:\Projects_MedViz\Launch-Manager` (W4.3/W4.4).
-4. **W6.5 is a site-stated commitment.** The gated site promises a launch email in
-   five places, one of which sits under the email field as the collection notice.
-   If W6.5 is ever dropped, all five must change together.
+3. **Formspree recipient switch → `leads@mybodyprism.com`.** Owner-side, behind his
+   Formspree login. Not actionable from this repo — the form `action` in
+   `src/site-config.ts` does not change, only where Formspree delivers.
+
+## W4.4 — the launch flip, stated exactly
+
+This is the one remaining action on this site, and it is **not** a code change or a
+merge. Recorded here in full so nobody reconstructs it under time pressure.
+
+**Procedure:** set the repository variable `PUBLIC_DOWNLOADS_LIVE` to `true`
+(Settings → Secrets and variables → Actions → Variables), then re-run the deploy
+workflow. That is all. No merge, no commit, no branch.
+
+**Preconditions — both required:**
+
+1. **Launch-Manager has recorded W4.1 evidence** — the release-pointer row plus an
+   actual download-and-verify. Before W2.3 `api.mybodyprism.com` is NXDOMAIN; between
+   W2.3 and W4.1 the endpoint returns `404 NO_RELEASE` **and silently drops the lead**
+   (the `release_pointers` lookup runs before `_record_lead`, and prod's table starts
+   empty). An early flip loses signups with no trace.
+2. **The owner's in-the-moment word, given to whoever performs the flip.** Never on a
+   relay, and never inferred from an earlier approval. Authority for one-way actions is
+   per-action.
+
+**The check that proves the flip took** (verified in both states 2026-09-02):
+
+| | `false` (now) | `true` (after the flip) |
+|---|---|---|
+| `/pricing` form element | `mbp-waitlist-form` | `mbp-trial-form` |
+| Waitlist-promise strings | **5** — `index` 2, `pricing` 2, `support` 1 | **0** |
+
+The five strings go together, because they are all gated on the same flag. Their
+disappearance **is** the W6.5 email-commitment window closing — after the flip the
+site no longer promises anyone a launch email, because there is nothing left to wait
+for. Confirm both rows live before calling W4.4 done.
+
+**W6.5 while the flag is still `false`:** those five strings are a live, site-stated
+commitment to email registered users at launch. If W6.5 is ever dropped, all five
+must change together. Separately, `/pricing` and `/account` promise to tell
+registered users what happens before the beta ends on 2027-07-01 — that one mirrors
+canonical ToS §4.1, so it moves only when the upstream terms move.
 
 ## Guardrails for the next change
 
