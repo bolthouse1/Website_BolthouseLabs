@@ -1,52 +1,21 @@
 # Project state
 
-Snapshot written 2026-09-02. Branch `master`, tree clean, **2 commits unpushed** —
-the WebP image review, which is the only thing still open.
-
-## Resume here — one decision is waiting
-
-The beta copy and the legal mirrors **shipped 2026-09-02 and are live**. What
-remains on `master` is the image re-encode, held since 2026-08-30 because no
-session here can display an image and it is the owner's own medical imaging.
-
-```
-bd82b64  perf: re-encode homepage imagery to WebP q90 (7.62 MB -> 0.59 MB)  <- needs your eye
-d17c597  chore: move unreferenced brand art out of public/
-```
-
-Anything stacked above them is documentation and is safe to push either way.
-
-**To finish it:**
-
-```powershell
-npm ci && npm run build && npm run preview   # scroll the homepage
-```
-
-Look hardest at **THE REVEAL** (`Picture4`, heart + PET scar heatmap, 738 KB ->
-53 KB) and **SEE EVERY DETAIL** (`Picture5`, CT bone/metal with the ICD and
-leads, 2434 KB -> 181 KB) — smooth gradients are where WebP artifacts show first.
-Then either:
-
-- **Happy:** `git push origin master` — Actions deploys in 1-2 min.
-- **Not happy:** originals are intact at `bd82b64~1`. Recover one with
-  `git show bd82b64~1:public/Picture5.png > public\Picture5.png`, or re-encode
-  higher — q95 measured 0.90 MB total, lossless 3.03 MB, vs 0.62 MB at q90 and
-  7.62 MB for the originals.
-- **Changed your mind:** `git reset --hard origin/master` discards both.
+Snapshot written 2026-09-02. Branch `master`, tree clean, **fully pushed — nothing
+pending**. The site is live and everything this project was holding has shipped.
 
 ## Status
 
-**Live and healthy.** Verified 2026-09-02 after the beta-copy deploy: apex `200`;
-`http://` `301`s to `https://`; `www` `301`s to apex; `/pricing`, `/support`,
-`/system-requirements`, `/account` and all eight `/legal/*` pages `200`.
+**Live, current, and clean.** Verified 2026-09-02 after both deploys:
 
-**The site now describes a free BETA ending July 1, 2027.** Zero occurrences of
-"no time limit" or "free trial" survive anywhere. `/pricing`, `/support`,
-`/account`, `/legal/eula` and `/legal/tos` all state the end date.
-
-**Downloads remain gated.** `PUBLIC_DOWNLOADS_LIVE` is false in production, so
-`/pricing` reads "MyBodyPrism — coming soon" and takes waitlist signups via
-Formspree. Correct and deliberate — the flag flip waits on tracker step W4.1.
+- All routes `200` — `/`, `/pricing`, `/support`, `/system-requirements`,
+  `/account`, all eight `/legal/*`. `http://` `301`s to `https://`; `www` to apex.
+- **Free BETA ending July 1, 2027** stated across the site and in the EULA and ToS.
+  Zero occurrences of "no time limit" or "free trial" survive anywhere.
+- **Homepage imagery 0.59 MB**, down from 7.62 MB — all seven WebP verified live and
+  byte-valid. `logo.png` remains PNG for Open Graph. Old PNGs and the moved brand art
+  correctly `404`.
+- **Downloads still gated.** `PUBLIC_DOWNLOADS_LIVE` is false; `/pricing` reads
+  "MyBodyPrism — coming soon" and takes waitlist signups via Formspree.
 
 ## What changed
 
@@ -56,7 +25,7 @@ Formspree. Correct and deliberate — the flag flip waits on tracker step W4.1.
 | **Deployed 2026-09-02** | Beta feedback ask (mailto to `support@mybodyprism.com`, matching the viewer's own mechanism — deliberately not the Formspree waitlist) |
 | **Deployed** | `db819c3` — legal privacy mirror re-synced with canonical. The live page had been serving text the desktop team corrected on 2026-08-28 |
 | **Deployed** | GitHub Pages **Enforce HTTPS turned on** (was off; the site served plaintext with no upgrade and no HSTS while carrying an email form). Verified propagated |
-| **Committed, not pushed** | WebP re-encode + brand-art move — see *Resume here* |
+| **Deployed 2026-09-02** | WebP re-encode + brand-art move. Owner reviewed the originals against the WebP side by side on every image and saw no difference; homepage imagery 7.62 MB → 0.59 MB, whole deploy 8.8 MB → 1.1 MB |
 | **Audited** | Data audit: **no missing data**. Recorded in `Projects_MedViz_Folders.xlsx` |
 
 ## Data dependencies: none
