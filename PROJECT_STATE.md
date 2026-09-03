@@ -58,9 +58,13 @@ repo** — see Guardrails.
    waitlist as the site's only interactive element with no backend. Half-true now.
    Cosmetic; a two-line superseded note would settle it. The rest of `docs/` is
    pre-migration, which `README.md`, `AGENTS.md` and this file all say explicitly.
-3. **Formspree recipient switch → `leads@mybodyprism.com`.** Owner-side, behind his
-   Formspree login. Not actionable from this repo — the form `action` in
-   `src/site-config.ts` does not change, only where Formspree delivers.
+3. ~~**Formspree recipient switch → `leads@mybodyprism.com`.**~~ **DONE 2026-09-02,
+   owner-reported.** Recorded as reported, not verified: it lives behind the owner's
+   Formspree login and is **not observable from this repo or from the desktop repo**,
+   so no session here can confirm it — do not restate it as a verified fact. Nothing
+   changed in code either way: the form `action` in `src/site-config.ts` is unchanged
+   and only Formspree's delivery target moved. The first real confirmation will be a
+   waitlist signup arriving at `leads@`.
 
 ## W4.4 — the launch flip, stated exactly
 
