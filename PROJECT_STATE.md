@@ -71,6 +71,12 @@ repo** — see Guardrails.
 This is the one remaining action on this site, and it is **not** a code change or a
 merge. Recorded here in full so nobody reconstructs it under time pressure.
 
+**Timing, as of 2026-09-09 (Launch-Manager tracker `5f8f7b0`): further out than it
+was.** The signed 2026-09-02 artifacts are superseded — a twelve-item fix list changes
+the shipped binary — so the order is now: one more rebuild-and-signing session → W4.1 →
+W4.4. **Nothing on this site changes until then**, and `PUBLIC_DOWNLOADS_LIVE` was
+re-verified false on the live site the same day.
+
 **Procedure:** set the repository variable `PUBLIC_DOWNLOADS_LIVE` to `true`
 (Settings → Secrets and variables → Actions → Variables), then re-run the deploy
 workflow. That is all. No merge, no commit, no branch.
@@ -86,14 +92,42 @@ workflow. That is all. No merge, no commit, no branch.
    relay, and never inferred from an earlier approval. Authority for one-way actions is
    per-action.
 
-**The check that proves the flip took** (verified in both states 2026-09-02):
+**The check that proves the flip took.** Measured in both build states and against the
+live gated site, 2026-09-09.
 
-| | `false` (now) | `true` (after the flip) |
+> ### ⚠ Do not check this with a bare string grep
+>
+> `curl https://mybodyprism.com/pricing | grep mbp-trial-form` returns **3 hits on a
+> correctly-gated page** and 4 on a flipped one. It is not merely a false positive — it
+> is nonzero in *both* states and differs by one, so it cannot distinguish them at all.
+> Launch-Manager lost time to this on 2026-09-09.
+>
+> Two things ship the id unconditionally, regardless of the flag:
+> 1. Astro emits the scoped CSS rule `#mbp-trial-form[data-astro-cid-…]{display:flex…}`
+>    into every build of the page.
+> 2. The inline download-form script ships in both states too — it early-returns via
+>    `if (!form) return;` when gated, but the literal `getElementById("mbp-trial-form")`
+>    is still in the source.
+
+Use any of these instead. All four were measured, not assumed:
+
+| Check | `false` (gated — current) | `true` (flipped) |
 |---|---|---|
-| `/pricing` form element | `mbp-waitlist-form` | `mbp-trial-form` |
-| Waitlist-promise strings | **5** — `index` 2, `pricing` 2, `support` 1 | **0** |
+| Rendered `<form id="…">` element | `mbp-waitlist-form` | `mbp-trial-form` |
+| `"Download free"` count | **0** | **1** |
+| `"Join the waitlist"` count | **4** | **0** |
+| Waitlist-promise strings, all pages | **5** — `index` 2, `pricing` 2, `support` 1 | **0** |
+| ~~bare `grep mbp-trial-form`~~ | ~~3~~ | ~~4~~ — **useless, do not use** |
 
-The five strings go together, because they are all gated on the same flag. Their
+`"Download free"` is the cleanest single check: a true 0/1 binary with no CSS or script
+noise behind it. For the structural check, match the rendered tag —
+`<form[^>]*id="…"` — not the bare id.
+
+Live in the gated state on 2026-09-09: exactly one
+`<form id="mbp-waitlist-form" action="https://formspree.io/f/xykbbnql" method="POST" …>`,
+zero `"Download free"`.
+
+The five promise strings go together, because they are all gated on the same flag. Their
 disappearance **is** the W6.5 email-commitment window closing — after the flip the
 site no longer promises anyone a launch email, because there is nothing left to wait
 for. Confirm both rows live before calling W4.4 done.

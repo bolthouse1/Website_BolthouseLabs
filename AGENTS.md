@@ -74,11 +74,15 @@ page renders blank with JS disabled.
 ## Current work
 
 Read [`PROJECT_STATE.md`](PROJECT_STATE.md) for the live snapshot and open
-questions. **The site is live** — the 2026-08-26 migration was merged and the
-Pages source switched on 2026-08-29 — but `master` carries **unpushed commits that
-change the homepage imagery**, held back for a human to review because no agent
-session here can display an image. Do not push them on your own judgement; that
-file's *Resume here* section is the authority.
+questions. **The site is live and nothing is pending** — the migration, the
+free-beta copy, the legal mirrors and the WebP imagery all shipped by 2026-09-02.
+
+The one remaining action is **W4.4**, the `PUBLIC_DOWNLOADS_LIVE` flip, and it is
+**not yours to perform**: it needs W4.1 evidence recorded by Launch-Manager *and*
+the owner's in-the-moment word, never a relay. If you are verifying its state, read
+the proof-of-flip table in `PROJECT_STATE.md` first — a bare `grep mbp-trial-form`
+returns hits on a correctly-gated page and will tell you the flag is on when it is
+off.
 
 Deeper context: [`docs/`](docs) — but note the whole set predates the 2026-08-26
 migration, so verify any claim against `src/` before relying on it.

@@ -20,9 +20,9 @@ few inline vanilla-JS IIFEs. No tests.
 ## 2. Learn the current state (2 minutes)
 
 - [`PROJECT_STATE.md`](PROJECT_STATE.md) — **read this before doing anything.**
-  The site is live and healthy, but `master` carries unpushed commits that change
-  the homepage imagery and are waiting on a human to look at them. That file opens
-  with a *Resume here* section saying exactly what to do.
+  The site is live, fully deployed, and nothing is pending. That file holds the
+  W4.4 launch-flip procedure — including the verifier trap that makes a bare
+  `grep mbp-trial-form` useless — and the standing guardrails.
 - [`STATUS.md`](STATUS.md) — the portfolio review's machine-written card
 
 ## 3. Read the rules before touching copy (3 minutes)
