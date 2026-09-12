@@ -1,11 +1,11 @@
 # Project state
 
-Snapshot written 2026-09-02. Branch `master`, tree clean, **fully pushed — nothing
+Snapshot written 2026-09-12. Branch `master`, tree clean, **fully pushed — nothing
 pending**. The site is live and everything this project was holding has shipped.
 
 ## Status
 
-**Live, current, and clean.** Verified 2026-09-02 after both deploys:
+**Live, current, and clean.** Verified 2026-09-12 after the FDA wording pass and the layout fix:
 
 - All routes `200` — `/`, `/pricing`, `/support`, `/system-requirements`,
   `/account`, all eight `/legal/*`. `http://` `301`s to `https://`; `www` to apex.
@@ -14,6 +14,12 @@ pending**. The site is live and everything this project was holding has shipped.
 - **Homepage imagery 0.59 MB**, down from 7.62 MB — all seven WebP verified live and
   byte-valid. `logo.png` remains PNG for Open Graph. Old PNGs and the moved brand art
   correctly `404`.
+- **FDA intended-use wording applied** (2026-09-12, owner-approved rows W1—W12): the owner-set
+  standard disclaimer appears verbatim in the footer of all 15 pages, and none of "Multi-Year
+  Progression", "scar tissue", "See Every Detail", "tracking changes across scans" or
+  "wellness" survives anywhere on the rendered site.
+- **Each legal page has its own title and description** since `ba23072` ("Medical Disclaimer —
+  MyBodyPrism", and so on). From 2026-08-26 until then, all eight shared the site default.
 - **Downloads still gated.** `PUBLIC_DOWNLOADS_LIVE` is false; `/pricing` reads
   "MyBodyPrism — coming soon" and takes waitlist signups via Formspree.
 
@@ -21,6 +27,9 @@ pending**. The site is live and everything this project was holding has shipped.
 
 | | |
 |---|---|
+| **Deployed 2026-09-12** | `ba23072` — the layout now renders each legal page's own front-matter title and description; all eight had shown the site default since 2026-08-26, which also hid W10. Privacy and HIPAA descriptions no longer name Bolthouse Labs (owner decision). Verified live: 15/15 routes identical to the verified build |
+| **Deployed 2026-09-12** | `22d3ecc` — FDA intended-use wording, rows W1—W12 from Launch-Manager `CLAIMS-CLEANUP.md`, owner-approved: standard disclaimer in every footer, homepage headings that no longer read as disease-tracking, a new "diagnose or monitor?" support FAQ, and legal mirrors re-synced to canonical `69c190cc` (removing "tracking changes across scans over time" from the intended-use statement). Verified live |
+| **Docs 2026-09-12** | `78644cb` — ADR 0004 written for the Astro migration; 0001 superseded, 0003 partly superseded, 0002 corrected for the `CNAME` move |
 | **Deployed 2026-09-02** | `e97c3eb` + `fcd841f` — free-beta copy across index/pricing/support/account, and the `eula` + `tos` mirrors re-synced with canonical `0f85a9f0`. Verified live: no false claims anywhere; beta terms on five pages |
 | **Deployed 2026-09-02** | Beta feedback ask (mailto to `support@mybodyprism.com`, matching the viewer's own mechanism — deliberately not the Formspree waitlist) |
 | **Deployed** | `db819c3` — legal privacy mirror re-synced with canonical. The live page had been serving text the desktop team corrected on 2026-08-28 |
@@ -67,6 +76,15 @@ repo** — see Guardrails.
    changed in code either way: the form `action` in `src/site-config.ts` is unchanged
    and only Formspree's delivery target moved. The first real confirmation will be a
    waitlist signup arriving at `leads@`.
+4. **Owner-approved, waiting on a number: `pricing.astro` quotes the download as "~2.5 GB".**
+   It is 404 MB today and heading to ~1.5 GB with the walkthrough videos. The owner approved
+   correcting it on 2026-09-12, **but only to the rebuild's measured installer size**.
+   Launch-Manager will send that figure, and it goes in before `PUBLIC_DOWNLOADS_LIVE` flips.
+   **Do not estimate it.** The text renders only once the flag flips, so it is not live today.
+5. **Known: routes with a trailing slash return 404.** Verified 2026-09-12: `/pricing/` and
+   `/support/` return 404 while `/pricing` and `/support` return 200. A consequence of
+   `build.format: "file"`, which emits `pricing.html` rather than `pricing/index.html`.
+   Leave it unless the owner asks; a redirect is the likely fix.
 
 ## W4.4 — the launch flip, stated exactly
 
@@ -125,7 +143,7 @@ Use any of these instead. All four were measured, not assumed:
 noise behind it. For the structural check, match the rendered tag —
 `<form[^>]*id="…"` — not the bare id.
 
-Live in the gated state on 2026-09-09: exactly one
+Live in the gated state, re-verified 2026-09-12: exactly one
 `<form id="mbp-waitlist-form" action="https://formspree.io/f/xykbbnql" method="POST" …>`,
 zero `"Download free"`.
 
@@ -147,8 +165,12 @@ canonical ToS §4.1, so it moves only when the upstream terms move.
   `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. The other four
   (`cookies`, `hipaa`, `refunds`, `copyright`) originate here. Fix upstream, then
   re-sync. The mirror rewrites relative `.md` links to `/legal/*` routes; that
-  difference is correct and is **not** drift. All four verified in sync 2026-09-02
-  against canonical `0f85a9f0`.
+  difference is correct and is **not** drift. All four verified in sync 2026-09-12
+  against canonical `69c190cc` (desktop `release/v1.1`). **Re-sync with
+  `git show <commit>:legal/<file>` on `release/v1.1` — never from the desktop working
+  tree or `main`**, both of which carried stale legal text on 2026-09-12. The mirror's
+  front-matter (title, description) is website-owned, not mirrored, and since `ba23072`
+  it **renders**: editing it changes live search snippets.
 - **`public/` is deployed verbatim.** Anything dropped there goes live. Source art
   belongs in `brand/`, which is not published.
 - **`public/CNAME` is load-bearing.** If it stops reaching `dist/`, the custom
@@ -175,3 +197,11 @@ canonical ToS §4.1, so it moves only when the upstream terms move.
   **`Website_BolthouseLabs`**; only the local folder was renamed.
 - When touching anything gated, build in **both** `PUBLIC_DOWNLOADS_LIVE` states.
   `npm run build` is the only pre-flight; there is no staging environment.
+- **Verify the rendered `<head>`, not the source front-matter.** A layout bug hid every legal
+  page's title and description from 2026-08-26 to 2026-09-12, and nobody noticed, because
+  the source looked right. The layout's `frontmatter` prop is what carries Markdown pages'
+  titles and descriptions; remove it and all eight legal pages silently share one title again.
+- **FDA intended-use wording is not a session's to reword.** The footer disclaimer, the
+  "diagnose or monitor?" FAQ and homepage sections 6—8 were set by the owner on 2026-09-12
+  (see CLAUDE.md, Homepage Narrative Arc). After any copy change, re-run a residual sweep of
+  the rendered site for the old phrasing.
