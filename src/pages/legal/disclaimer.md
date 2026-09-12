@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Default.astro
 title: Medical Disclaimer — MyBodyPrism
-description: MyBodyPrism is not a medical device and is not intended for clinical diagnosis or treatment decisions.
+description: The MyBodyPrism medical disclaimer. For personal review only. Not a medical device. Not for diagnosis.
 ---
 
 <div class="container narrow">
@@ -15,10 +15,12 @@ description: MyBodyPrism is not a medical device and is not intended for clinica
 **Applies to:** MyBodyPrism v1.1.0 (Desktop Viewer)
 **Owner:** Bolthouse Labs, Inc.
 
-**MyBodyPrism is not a medical device, is not intended for clinical
-diagnosis or treatment decisions, and has not been reviewed by the
-U.S. Food and Drug Administration (FDA), the European Medicines
-Agency (EMA), or any other regulatory body.**
+**MyBodyPrism is for personal review. It is not a medical device, is
+not intended to diagnose, treat, cure, prevent or monitor any disease
+or condition, and has not been cleared or approved by the FDA. Always
+consult a licensed physician about your medical images and care.** It
+has also not been reviewed by the European Medicines Agency (EMA) or
+any other regulatory body.
 
 This disclaimer governs your use of MyBodyPrism software. The
 "Service" is the **MyBodyPrism Desktop Viewer**, which runs entirely
@@ -29,20 +31,19 @@ you have read, understood, and agreed to this Disclaimer.
 
 ## 1. What MyBodyPrism is
 
-MyBodyPrism is a **patient-facing wellness and self-education tool**
-for viewing your own medical imaging data (CT, MRI, PET/CT, NIfTI,
-DICOM). Patients increasingly receive their own scans — on a CD from
-a hospital, as a download from an imaging center, or as part of a
-longitudinal-monitoring program — and many have no good way to look
-at them. MyBodyPrism is that viewer.
+MyBodyPrism is a **personal viewer** for looking at your own medical
+imaging data (CT, MRI, PET/CT, NIfTI, DICOM). Patients increasingly
+receive their own scans — on a CD from a hospital or as a download
+from an imaging center — and many have no good way to look at them.
+MyBodyPrism is that viewer.
 
 The Service is intended to:
 
 - Let you see your own imaging in 2D and 3D in a way that's
   intuitive without medical training.
-- Help you ask better questions of your clinician — by pointing at
-  something you noticed, by tracking changes across scans over time,
-  or by becoming more familiar with your own anatomy.
+- Help you bring better questions to your doctor — by becoming more
+  familiar with your own anatomy, and by making it easy to share what
+  you were looking at.
 - Be a private viewer that keeps your imaging under your own
   control. This version of the Service runs on your own computer and
   does not transmit your scans, or anything derived from them, off
@@ -66,13 +67,12 @@ The Service is intended to:
   or back up your imaging. You are responsible for retaining and
   backing up your own source imaging files.
 
-## 3. Regulatory classification
+## 3. Regulatory status
 
-Our intended classification is **wellness software, not a medical
-device.** This is consistent with the FDA's General Wellness Policy
-guidance (FDA-2014-D-1622): products that promote a general state
-of health or well-being and do not make a specific
-disease-or-condition claim are not regulated as medical devices.
+MyBodyPrism is **not a medical device** and has not been cleared or
+approved by the FDA. It is designed and offered only for personal
+review of your own imaging — not to diagnose, treat, cure, prevent or
+monitor any disease or condition.
 
 Specifically, MyBodyPrism:
 
@@ -99,10 +99,9 @@ at the same location.
 - The Service does not modify your source imaging files. Your
   DICOM, NIfTI, or case-bundle files on disk are read but never
   written by the Desktop Viewer.
-- Derived sidecar files (such as `.somaviz_findings.json`,
-  `.somaviz_roi_masks.json`, and `mybodyprism_overrides.json`) are
-  written alongside your source data and can be deleted to restore
-  the case to its original state.
+- Derived sidecar files (such as `.somaviz_roi_masks.json` and
+  `mybodyprism_overrides.json`) are written alongside your source data
+  and can be deleted to restore the case to its original state.
 - The viewer renders your imaging as faithfully as the loaded data
   permits. A canonical-LPS reorientation step occurs at load time
   to normalize orientation for display; this does not alter

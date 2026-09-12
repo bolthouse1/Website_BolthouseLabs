@@ -37,9 +37,8 @@ Email: [support@mybodyprism.com](mailto:support@mybodyprism.com)
 
 ## 2. The Service
 
-The Service is a patient-facing wellness and self-education tool for
-viewing your own medical imaging data. The Service is **not a
-medical device**. Read the
+The Service is a personal viewer for looking at your own medical
+imaging data. The Service is **not a medical device**. Read the
 [Medical Disclaimer](/legal/disclaimer) before using the Service.
 
 The Desktop Viewer is **provided free of charge as a beta release** in
@@ -211,10 +210,12 @@ the [Privacy Policy](/legal/privacy) §5.
 
 ### 10.1 Medical disclaimer
 
-**The Service is not a medical device and is not intended for
-clinical diagnosis or treatment decisions.** See the
-[Medical Disclaimer](/legal/disclaimer). You agree to use the Service
-only as a wellness and self-education tool and to consult a
+**MyBodyPrism is for personal review. It is not a medical device, is
+not intended to diagnose, treat, cure, prevent or monitor any disease
+or condition, and has not been cleared or approved by the FDA. Always
+consult a licensed physician about your medical images and care.**
+See the [Medical Disclaimer](/legal/disclaimer). You agree to use the
+Service only for personal review of your own imaging and to consult a
 qualified healthcare professional for any clinical matters.
 
 ### 10.2 No warranty

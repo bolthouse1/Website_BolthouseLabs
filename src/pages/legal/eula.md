@@ -140,8 +140,8 @@ You **may not**:
   Software.
 - Remove, alter, or obscure any proprietary notices, labels, or
   marks on or in the Software.
-- Use the Software for any purpose other than personal, wellness,
-  and self-education use of your own medical imaging.
+- Use the Software for any purpose other than personal and
+  self-education use of your own medical imaging.
 - Use the Software in a manner that violates applicable law,
   including without limitation laws governing the practice of
   medicine, patient privacy, and data protection.
@@ -160,9 +160,11 @@ to any specific user or version.
 
 ## 6. Medical disclaimer (incorporated)
 
-THE SOFTWARE IS NOT A MEDICAL DEVICE AND IS NOT INTENDED FOR
-CLINICAL DIAGNOSIS OR TREATMENT DECISIONS. SEE THE
-[MEDICAL DISCLAIMER](/legal/disclaimer), INCORPORATED BY REFERENCE.
+MYBODYPRISM IS FOR PERSONAL REVIEW. IT IS NOT A MEDICAL DEVICE, IS NOT
+INTENDED TO DIAGNOSE, TREAT, CURE, PREVENT OR MONITOR ANY DISEASE OR
+CONDITION, AND HAS NOT BEEN CLEARED OR APPROVED BY THE FDA. ALWAYS
+CONSULT A LICENSED PHYSICIAN ABOUT YOUR MEDICAL IMAGES AND CARE. SEE
+THE [MEDICAL DISCLAIMER](/legal/disclaimer), INCORPORATED BY REFERENCE.
 
 YOU AGREE NOT TO USE THE SOFTWARE AS A SUBSTITUTE FOR PROFESSIONAL
 MEDICAL ADVICE, DIAGNOSIS, OR TREATMENT. YOU AGREE TO CONSULT A
@@ -256,7 +258,7 @@ Upon termination:
 - Your license to use the Software ends.
 - You must immediately cease all use of the Software and
   uninstall it from your machine.
-- You may retain your local data (logs, crash archive, findings
+- You may retain your local data (logs, crash archive, enhancement
   cache, ROI sidecars); the Software's data files in
   `%APPDATA%\MyBodyPrism\` and in your case folders are yours.
 - Sections that by their nature survive termination (including

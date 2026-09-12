@@ -19,7 +19,7 @@ interface Props {
 
 const {
   title = "MyBodyPrism — Your medical imaging, in your hands",
-  description = "MyBodyPrism is a desktop viewer for your own medical imaging. Take control of your DICOM scans. For personal review only — not approved for medical diagnosis.",
+  description = "MyBodyPrism is a desktop viewer for your own medical imaging. Take control of your DICOM scans. For personal review only. Not a medical device. Not for diagnosis.",
   image = "/logo.png",
   bare = false,
 } = Astro.props;
@@ -292,8 +292,11 @@ const year = new Date().getFullYear();
     <footer class="site-footer">
       <div class="container">
         <p class="disclaimer">
-          <strong>Disclaimer:</strong> For personal review only. Not approved for
-          medical diagnosis. Consult a licensed physician for medical decisions.
+          <strong>Disclaimer:</strong> MyBodyPrism is for personal review. It is not
+          a medical device, is not intended to diagnose, treat, cure, prevent or
+          monitor any disease or condition, and has not been cleared or approved by
+          the FDA. Always consult a licensed physician about your medical images and
+          care.
         </p>
         <nav aria-label="Legal">
           <a href="/legal/eula">EULA</a>
