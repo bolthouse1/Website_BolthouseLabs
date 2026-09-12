@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Default.astro
 title: HIPAA Notice — MyBodyPrism
-description: MyBodyPrism v1.1 is desktop-only — no PHI is transmitted to or processed by Bolthouse Labs.
+description: MyBodyPrism v1.1 is desktop-only — no PHI is transmitted to or processed by us.
 ---
 
 <div class="container narrow">

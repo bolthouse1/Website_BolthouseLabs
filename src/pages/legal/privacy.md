@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Default.astro
 title: Privacy Policy — MyBodyPrism
-description: How Bolthouse Labs, Inc. collects, uses, and protects your personal information.
+description: How MyBodyPrism collects, uses, and protects your personal information.
 ---
 
 <div class="container narrow">

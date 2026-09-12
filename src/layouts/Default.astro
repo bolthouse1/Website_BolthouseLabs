@@ -15,12 +15,25 @@ interface Props {
   image?: string;
   /** Set on the homepage, which supplies its own full-bleed hero. */
   bare?: boolean;
+  /**
+   * Markdown pages (src/pages/legal/*.md) don't pass title/description as
+   * props — Astro hands their front-matter to the layout as `frontmatter`.
+   * It has to be read explicitly, or every legal page silently falls back to
+   * the site defaults below. From the 2026-08-26 migration until 2026-09-12,
+   * all eight legal pages shared one <title> and one description for exactly
+   * this reason.
+   */
+  frontmatter?: { title?: string; description?: string; image?: string };
 }
 
+// Precedence: an explicit prop (the .astro pages), then front-matter (the
+// Markdown pages), then the site default.
+const fm = Astro.props.frontmatter ?? {};
 const {
-  title = "MyBodyPrism — Your medical imaging, in your hands",
-  description = "MyBodyPrism is a desktop viewer for your own medical imaging. Take control of your DICOM scans. For personal review only. Not a medical device. Not for diagnosis.",
-  image = "/logo.png",
+  title = fm.title ?? "MyBodyPrism — Your medical imaging, in your hands",
+  description = fm.description ??
+    "MyBodyPrism is a desktop viewer for your own medical imaging. Take control of your DICOM scans. For personal review only. Not a medical device. Not for diagnosis.",
+  image = fm.image ?? "/logo.png",
   bare = false,
 } = Astro.props;
 
