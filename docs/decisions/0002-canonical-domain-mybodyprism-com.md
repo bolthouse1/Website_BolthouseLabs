@@ -1,9 +1,20 @@
 # 0002 — `mybodyprism.com` is the canonical domain
 
-- **Status:** Accepted (2026-05-10), superseding the original 2026-04 plan
+- **Status:** Accepted (2026-05-10), superseding the original 2026-04 plan.
+  **Still in force** — see the 2026-09-12 correction below.
 - **Date recorded:** 2026-08-05
 - **Reconstructed from:** the `CNAME` file, the governing instructions, the
   portfolio status card, and the archived deploy plan
+
+> **Correction 2026-09-12 — the decision stands; the file moved.** The `CNAME` file
+> is no longer at the repository root. The 2026-08-26 Astro migration (`0e3cd9d`,
+> recorded in [0004](0004-astro-site-with-actions-deploy.md)) moved it to
+> **`public/CNAME`**, so Astro copies it into `dist/` on every build; the
+> `../../CNAME` link below now points at nothing. Two consequences changed with the
+> move: removing it no longer silently falls back to the `github.io` path, because
+> the deploy workflow now **fails the build** if `dist/CNAME` is missing; and the
+> "one product's teaser" framing below predates the site becoming the full product
+> site. The canonical host is unchanged — apex `mybodyprism.com`, `www` 301s to it.
 
 ## Context
 

@@ -54,10 +54,12 @@ repo** — see Guardrails.
    interest-capture path while downloads are gated. Check form `xykbbnql` on
    formspree.io; upgrade only if the count is near the ceiling. Retires entirely
    at the W4.1 flag flip.
-2. **`docs/decisions/0003-formspree-waitlist-without-backend.md`** describes the
-   waitlist as the site's only interactive element with no backend. Half-true now.
-   Cosmetic; a two-line superseded note would settle it. The rest of `docs/` is
-   pre-migration, which `README.md`, `AGENTS.md` and this file all say explicitly.
+2. ~~**Stale ADRs.**~~ **DONE 2026-09-12.** `docs/decisions/0001` marked superseded,
+   `0003` marked partly superseded (what's now false is listed in it), `0002`
+   corrected for the `CNAME` move, and **`0004` written** — the record of the
+   2026-08-26 Astro migration that 0001's own boundary clause required and that had
+   never existed. The rest of `docs/` is still pre-migration, which `README.md`,
+   `AGENTS.md` and this file all say explicitly.
 3. ~~**Formspree recipient switch → `leads@mybodyprism.com`.**~~ **DONE 2026-09-02,
    owner-reported.** Recorded as reported, not verified: it lives behind the owner's
    Formspree login and is **not observable from this repo or from the desktop repo**,

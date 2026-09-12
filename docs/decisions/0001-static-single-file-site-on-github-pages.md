@@ -1,9 +1,19 @@
 # 0001 — One static file, published by GitHub Pages
 
-- **Status:** Accepted (in force since the initial commit, 2026-04-04)
+- **Status:** **Superseded** by [0004](0004-astro-site-with-actions-deploy.md) on
+  2026-08-26. Was: Accepted (in force since the initial commit, 2026-04-04)
 - **Date recorded:** 2026-08-05
 - **Reconstructed from:** the shipped artifact, the governing instructions, and
   the archived 2026-04 design spec
+
+> **Superseded 2026-08-26 — this describes a design that no longer exists.** The
+> single `index.html` was deleted when the Astro site was migrated in (`0e3cd9d`),
+> and the site now builds with Astro 6 and deploys through GitHub Actions — both of
+> which appear below as *rejected alternatives*. This decision's own boundary clause
+> said that adding a build step or framework "reverses part of this decision and
+> needs its own record"; that record is [0004](0004-astro-site-with-actions-deploy.md),
+> written 2026-09-12. The body below is kept as written, as the record of why the
+> site started this way.
 
 ## Context
 
