@@ -27,6 +27,7 @@ pending**. The site is live and everything this project was holding has shipped.
 
 | | |
 |---|---|
+| **Deployed 2026-09-12** | `d506116` — URLs with a trailing slash (`/pricing/`, and every other route) now redirect to the slashless page instead of dead-ending on 404. Logic tested 10/10, live-verified, and click-verified by the owner |
 | **Deployed 2026-09-12** | `ba23072` — the layout now renders each legal page's own front-matter title and description; all eight had shown the site default since 2026-08-26, which also hid W10. Privacy and HIPAA descriptions no longer name Bolthouse Labs (owner decision). Verified live: 15/15 routes identical to the verified build |
 | **Deployed 2026-09-12** | `22d3ecc` — FDA intended-use wording, rows W1—W12 from Launch-Manager `CLAIMS-CLEANUP.md`, owner-approved: standard disclaimer in every footer, homepage headings that no longer read as disease-tracking, a new "diagnose or monitor?" support FAQ, and legal mirrors re-synced to canonical `69c190cc` (removing "tracking changes across scans over time" from the intended-use statement). Verified live |
 | **Docs 2026-09-12** | `78644cb` — ADR 0004 written for the Astro migration; 0001 superseded, 0003 partly superseded, 0002 corrected for the `CNAME` move |
@@ -81,10 +82,16 @@ repo** — see Guardrails.
    correcting it on 2026-09-12, **but only to the rebuild's measured installer size**.
    Launch-Manager will send that figure, and it goes in before `PUBLIC_DOWNLOADS_LIVE` flips.
    **Do not estimate it.** The text renders only once the flag flips, so it is not live today.
-5. **Known: routes with a trailing slash return 404.** Verified 2026-09-12: `/pricing/` and
-   `/support/` return 404 while `/pricing` and `/support` return 200. A consequence of
-   `build.format: "file"`, which emits `pricing.html` rather than `pricing/index.html`.
-   Leave it unless the owner asks; a redirect is the likely fix.
+5. ~~**Known: routes with a trailing slash return 404.**~~ **FIXED 2026-09-12 (`d506116`).** The 404
+   page now bounces any slash-ended URL to its slashless form, keeping the query string and
+   anchor, and it cannot loop. Verified: the redirect logic passes 10/10 in both flag states
+   against the built page; the live 404 page carries it; all 15 routes are byte-identical to
+   the verified build; **and the owner click-tested `mybodyprism.com/pricing/` → `/pricing`
+   in a real browser.** Chosen over switching `build.format` to `directory`, which would have
+   touched every route, the canonical logic and the sitemap 19 days before launch.
+   Note: `/pricing/` still returns **HTTP 404**, because the hop happens in the browser, so a
+   status-code monitor or crawler will still see a 404 there. **If `build.format` ever
+   changes, re-check this** — the redirect assumes the slashless path is the real page.
 
 ## W4.4 — the launch flip, stated exactly
 
