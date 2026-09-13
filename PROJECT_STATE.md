@@ -3,6 +3,10 @@
 Snapshot written 2026-09-13. Branch `master`, tree clean, **fully pushed — nothing
 pending**. The site is live and everything this project was holding has shipped.
 
+**Parked 2026-09-13 by the owner** until v1.1 is finalized and the four walkthrough videos
+are recorded. Nothing here moves until he brings the site back for the final launch checks.
+Start from [`docs/handoffs/HANDOFF_2026-09-13.md`](docs/handoffs/HANDOFF_2026-09-13.md).
+
 ## Status
 
 **Live, current, and clean.** Verified 2026-09-12 after the FDA wording pass and the layout fix:
@@ -116,7 +120,9 @@ repo** — see Guardrails.
    `api.mybodyprism.com` is NXDOMAIN and that W2.3→W4.1 silently drops the lead. The host
    resolves (W2.3 done 2026-09-01), and cloud `2fe90e6` (2026-08-26) calls `_capture_lead` on
    the `NO_RELEASE` path. Not re-read in prod from here. **The gate itself is unchanged:** a flip
-   before W4.1 still shows every visitor "Couldn't start the download."
+   before W4.1 still shows every visitor "Couldn't start the download." **Also stale since
+   2026-09-13:** CLAUDE.md's route table says `/pricing` redirects to "a 5-minute presigned
+   S3 URL"; links have been one hour since the TTL deploy. Same fix, same go.
 
 ## W4.4 — the launch flip, stated exactly
 
@@ -128,6 +134,14 @@ was.** The signed 2026-09-02 artifacts are superseded — a twelve-item fix list
 the shipped binary — so the order is now: one more rebuild-and-signing session → W4.1 →
 W4.4. **Nothing on this site changes until then**, and `PUBLIC_DOWNLOADS_LIVE` was
 re-verified false on the live site the same day.
+
+**Update 2026-09-13, at the park (Launch-Manager tracker, read from this repo):** the
+remaining path is the theme merge on the owner's go → the unsigned test build → the four
+walkthrough videos and the manual click-through → rebuild → sign → W5.1 clean-machine test →
+W4.1 → W4.4. **W4.1's download-TTL gate is met:** one-hour download links went live in prod at
+2026-09-13T13:43:24Z (Launch-Manager read `3600` in both download functions' deployed code;
+not re-read from here). The measured installer size for `/pricing` comes out of that
+rebuild. `PUBLIC_DOWNLOADS_LIVE` re-verified false on the live site at the park.
 
 **Procedure:** set the repository variable `PUBLIC_DOWNLOADS_LIVE` to `true`
 (Settings → Secrets and variables → Actions → Variables), then re-run the deploy
