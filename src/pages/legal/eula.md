@@ -6,9 +6,6 @@ description: End-User License Agreement for the MyBodyPrism Desktop Viewer.
 
 <div class="container narrow">
 
-> **Pre-launch draft pending lawyer review.** Final binding text will replace
-> this page before any paid customer is onboarded.
-
 # End-User License Agreement
 
 **Effective date:** August 7, 2026

@@ -6,9 +6,6 @@ description: How MyBodyPrism collects, uses, and protects your personal informat
 
 <div class="container narrow">
 
-> **Pre-launch draft pending lawyer review.** Final binding text will replace
-> this page before any paid customer is onboarded.
-
 # Privacy Policy
 
 **Effective date:** August 7, 2026

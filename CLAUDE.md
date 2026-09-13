@@ -121,10 +121,12 @@ Canonical legal text lives in the **desktop repo** at
 `eula.md`, `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. Whoever owns this
 site inherits the **re-sync duty**: when canonical text changes, update the mirror here.
 The mirrors are not byte-identical — each wraps the canonical body in Astro frontmatter,
-a `<div class="container narrow">`, a "Pre-launch draft pending lawyer review" banner, and
-a `<style>` block, so re-sync means porting the *body*, not copying the file. Note only 4
-of the 8 have a canonical upstream; `cookies`, `hipaa`, `refunds`, and `copyright`
-originate here.
+a `<div class="container narrow">` and a `<style>` block, so re-sync means porting the
+*body*, not copying the file. Note only 4 of the 8 have a canonical upstream; `cookies`,
+`hipaa`, `refunds`, and `copyright` originate here. The "Pre-launch draft pending lawyer
+review" banner that used to open seven of these pages was **removed 2026-09-13 by owner
+decision** — v1.1 launches without formal counsel review (decided 2026-08-24) — so do
+not restore it.
 
 ## Homepage Narrative Arc
 Single vertical scroll on `/`, in this document order. Verify against `src/pages/index.astro`

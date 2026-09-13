@@ -6,9 +6,6 @@ description: MyBodyPrism v1.1 is desktop-only — no PHI is transmitted to or pr
 
 <div class="container narrow">
 
-> **Pre-launch draft pending lawyer review.** Final binding text will replace
-> this page before any paid customer is onboarded.
-
 # HIPAA Notice
 
 **Effective date:** August 7, 2026

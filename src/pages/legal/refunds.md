@@ -6,9 +6,6 @@ description: MyBodyPrism is free in this version — there are no charges and no
 
 <div class="container narrow">
 
-> **Pre-launch draft pending lawyer review.** Final binding text will replace
-> this page before any paid customer is onboarded.
-
 # Refunds
 
 **Effective date:** August 7, 2026
