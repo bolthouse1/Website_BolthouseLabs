@@ -23,6 +23,8 @@ pending**. The site is live and everything this project was holding has shipped.
 - **Legal mirrors current.** `eula`, `tos`, `privacy` and `disclaimer` are content-identical to
   desktop canonical `6bdaf2ef` (`release/v1.1`), verified 2026-09-13 after the EULA re-sync
   shipped in `f618ab2`. At that time `release/v1.1` had no `legal/` commits after `6bdaf2ef`.
+- **No "pending lawyer review" banner on any legal page** since `35accb4` (owner decision
+  2026-09-13). Verified live on all seven pages that carried it.
 - **Downloads still gated.** `PUBLIC_DOWNLOADS_LIVE` is false; `/pricing` reads
   "MyBodyPrism — coming soon" and takes waitlist signups via Formspree.
 
@@ -30,6 +32,7 @@ pending**. The site is live and everything this project was holding has shipped.
 
 | | |
 |---|---|
+| **Deployed 2026-09-13** | `35accb4` — the "Pre-launch draft pending lawyer review" banner removed from the seven legal pages that carried it (eula, tos, privacy, disclaimer, hipaa, cookies, refunds; copyright never had it). Owner decision 2026-09-13, recorded in Launch-Manager DECISIONS, pushed on his go in this repo's window. It contradicted the locked 2026-08-24 decision to launch without formal counsel review, and CC.12. No terms change; canonical desktop legal and the in-app EULA never carried it. CLAUDE.md's mirror-structure paragraph updated in the same commit. Verified live: each page equals its pre-deploy fetch minus the banner, with the same title; the other eight routes are byte-identical; `/pricing` still gated |
 | **Deployed 2026-09-13** | `f618ab2` — EULA mirror re-synced to desktop canonical `6bdaf2ef` (`release/v1.1`), porting `2c1c8d3a`: two activation-code sentences in §3.2 and §4, owner-approved 2026-09-12. Body only, taken from `git show 6bdaf2ef:legal/eula.md`. Built in both flag states; the live page is byte-identical to the verified build; ToS, privacy and disclaimer were unchanged and remain identical to canonical |
 | **Deployed 2026-09-12** | `d506116` — URLs with a trailing slash (`/pricing/`, and every other route) now redirect to the slashless page instead of dead-ending on 404. Logic tested 10/10, live-verified, and click-verified by the owner |
 | **Deployed 2026-09-12** | `ba23072` — the layout now renders each legal page's own front-matter title and description; all eight had shown the site default since 2026-08-26, which also hid W10. Privacy and HIPAA descriptions no longer name Bolthouse Labs (owner decision). Verified live: 15/15 routes identical to the verified build |
@@ -96,6 +99,20 @@ repo** — see Guardrails.
    Note: `/pricing/` still returns **HTTP 404**, because the hop happens in the browser, so a
    status-code monitor or crawler will still see a 404 there. **If `build.format` ever
    changes, re-check this** — the redirect assumes the slashless path is the real page.
+
+6. **Found 2026-09-13, owner question pending: the download button can create duplicate leads.**
+   After a successful request, the `/pricing` download script re-enables the button 8 s later.
+   A second click signs a new link, bumps that person's `download_count` and sends a second SNS
+   lead email. Launch-Manager flagged it 2026-09-09 (tracker, "Cloud (data quality, before
+   W4.4)") as a small site fix; no website session had picked it up. Proposed fix: keep the
+   button disabled for the link's `expires_in` and offer a retry link that reuses the same URL.
+   Renders only after the flip, so it must land before W4.4 if approved.
+7. **Found 2026-09-13, owner question pending: the early-flip rationale here is stale.** CLAUDE.md,
+   this file's W4.4 precondition 1, `AGENTS.md` and a `src/site-config.ts` comment say
+   `api.mybodyprism.com` is NXDOMAIN and that W2.3→W4.1 silently drops the lead. The host
+   resolves (W2.3 done 2026-09-01), and cloud `2fe90e6` (2026-08-26) calls `_capture_lead` on
+   the `NO_RELEASE` path. Not re-read in prod from here. **The gate itself is unchanged:** a flip
+   before W4.1 still shows every visitor "Couldn't start the download."
 
 ## W4.4 — the launch flip, stated exactly
 
@@ -182,6 +199,9 @@ canonical ToS §4.1, so it moves only when the upstream terms move.
   tree or `main`**, both of which carried stale legal text on 2026-09-12. The mirror's
   front-matter (title, description) is website-owned, not mirrored, and since `ba23072`
   it **renders**: editing it changes live search snippets.
+- **No "pending lawyer review" banner on the legal pages.** Removed 2026-09-13 (`35accb4`,
+  owner decision): v1.1 launches without formal counsel review. Canonical never carried it,
+  so a body-only re-sync will not bring it back; do not add it by hand.
 - **`public/` is deployed verbatim.** Anything dropped there goes live. Source art
   belongs in `brand/`, which is not published.
 - **`public/CNAME` is load-bearing.** If it stops reaching `dist/`, the custom
