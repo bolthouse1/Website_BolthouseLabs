@@ -32,6 +32,7 @@ pending**. The site is live and everything this project was holding has shipped.
 
 | | |
 |---|---|
+| **Deployed 2026-09-13** | `0ad99f1` — `/pricing` download script: a repeat submit of the same email re-uses the still-valid signed link instead of calling the API again, so a second click no longer mints another link, bumps `download_count` or sends a duplicate SNS lead email (open item 6). No markup or copy change; inert while gated. Verified live: `/pricing` differs from the previous deploy only inside the download script and equals the verified build, the other 14 routes are byte-identical, the page is still gated, and the deployed script passes the 18-check harness |
 | **Deployed 2026-09-13** | `35accb4` — the "Pre-launch draft pending lawyer review" banner removed from the seven legal pages that carried it (eula, tos, privacy, disclaimer, hipaa, cookies, refunds; copyright never had it). Owner decision 2026-09-13, recorded in Launch-Manager DECISIONS, pushed on his go in this repo's window. It contradicted the locked 2026-08-24 decision to launch without formal counsel review, and CC.12. No terms change; canonical desktop legal and the in-app EULA never carried it. CLAUDE.md's mirror-structure paragraph updated in the same commit. Verified live: each page equals its pre-deploy fetch minus the banner, with the same title; the other eight routes are byte-identical; `/pricing` still gated |
 | **Deployed 2026-09-13** | `f618ab2` — EULA mirror re-synced to desktop canonical `6bdaf2ef` (`release/v1.1`), porting `2c1c8d3a`: two activation-code sentences in §3.2 and §4, owner-approved 2026-09-12. Body only, taken from `git show 6bdaf2ef:legal/eula.md`. Built in both flag states; the live page is byte-identical to the verified build; ToS, privacy and disclaimer were unchanged and remain identical to canonical |
 | **Deployed 2026-09-12** | `d506116` — URLs with a trailing slash (`/pricing/`, and every other route) now redirect to the slashless page instead of dead-ending on 404. Logic tested 10/10, live-verified, and click-verified by the owner |
@@ -100,13 +101,16 @@ repo** — see Guardrails.
    status-code monitor or crawler will still see a 404 there. **If `build.format` ever
    changes, re-check this** — the redirect assumes the slashless path is the real page.
 
-6. **Found 2026-09-13, owner question pending: the download button can create duplicate leads.**
-   After a successful request, the `/pricing` download script re-enables the button 8 s later.
-   A second click signs a new link, bumps that person's `download_count` and sends a second SNS
-   lead email. Launch-Manager flagged it 2026-09-09 (tracker, "Cloud (data quality, before
-   W4.4)") as a small site fix; no website session had picked it up. Proposed fix: keep the
-   button disabled for the link's `expires_in` and offer a retry link that reuses the same URL.
-   Renders only after the flip, so it must land before W4.4 if approved.
+6. ~~**Found 2026-09-13: the download button can create duplicate leads.**~~ **FIXED 2026-09-13
+   (`0ad99f1`, on the owner's go).** After a successful request the button re-enabled 8 s later,
+   and a second click signed a new link, bumped that person's `download_count` and sent a second
+   SNS lead email (Launch-Manager tracker, "Cloud (data quality, before W4.4)", 2026-09-09). The
+   script now re-uses the link it was given for the same email until a minute before
+   `expires_in` (300 s if absent). A different email, or the same one after that, calls the API
+   as before, so a mistyped address can still be corrected; failures are never cached. No markup
+   or copy change, and inert while gated. **Tested only in a harness** — the built script run
+   against a fake DOM, fetch and clock, 18/18, with the old script failing the 7 re-use checks.
+   Its first run in a real browser against the real API will be W4.4's download check.
 7. **Found 2026-09-13, owner question pending: the early-flip rationale here is stale.** CLAUDE.md,
    this file's W4.4 precondition 1, `AGENTS.md` and a `src/site-config.ts` comment say
    `api.mybodyprism.com` is NXDOMAIN and that W2.3→W4.1 silently drops the lead. The host
