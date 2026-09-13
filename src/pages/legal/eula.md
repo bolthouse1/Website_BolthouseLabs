@@ -116,7 +116,7 @@ Service §4), you will receive an activation code by email upon
 purchase. To activate the Software:
 
 - Open the Software on the Authorized Machine.
-- Enter the activation code in the prompt at launch.
+- Enter the activation code where the Software asks for it.
 - The Software exchanges the code for a signed license file
   bound to your machine-ID hash.
 
@@ -128,8 +128,8 @@ activate on a new machine, contact support per §2 above.
 You **may not**:
 
 - Distribute, sell, lease, sublicense, rent, lend, give, or
-  otherwise transfer the Software or your activation code to any
-  third party.
+  otherwise transfer the Software, or any activation code issued to
+  you, to any third party.
 - Use the Software on more than one Authorized Machine
   concurrently.
 - Reverse-engineer, decompile, or disassemble the Software, or
