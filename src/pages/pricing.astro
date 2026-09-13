@@ -190,6 +190,23 @@ const apiBase = API_BASE;
       var err = document.getElementById("mbp-trial-error");
       var ok = document.getElementById("mbp-trial-ok");
       if (!form) return;
+      var label = btn.textContent;
+      // A signed link stays valid for `expires_in` seconds. Submitting the same
+      // email again while it is valid re-uses that link instead of asking the API
+      // for another, so a second click neither mints a new link nor records a
+      // duplicate lead. A different email, or the same one once the link has
+      // lapsed, asks the API as before.
+      var last = null;
+      function startDownload(url) {
+        ok.hidden = false;
+        btn.disabled = true;
+        btn.textContent = "Downloading…";
+        location.href = url;
+        setTimeout(function () {
+          btn.disabled = false;
+          btn.textContent = label;
+        }, 8000);
+      }
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         var email = (input.value || "").trim();
@@ -197,10 +214,14 @@ const apiBase = API_BASE;
           err.hidden = false;
           return;
         }
-        btn.disabled = true;
-        var original = btn.textContent;
-        btn.textContent = "Preparing download…";
         err.hidden = true;
+        var key = email.toLowerCase();
+        if (last && last.email === key && Date.now() < last.until) {
+          startDownload(last.url);
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = "Preparing download…";
         ok.hidden = true;
         fetch(apiBase + "/downloads/trial-installer", {
           method: "POST",
@@ -210,20 +231,17 @@ const apiBase = API_BASE;
           .then(function (r) { return r.ok ? r.json() : null; })
           .then(function (data) {
             if (data && data.url) {
-              ok.hidden = false;
-              btn.textContent = "Downloading…";
-              location.href = data.url;
-              setTimeout(function () {
-                btn.disabled = false;
-                btn.textContent = original;
-              }, 8000);
+              // Stop re-using a minute early, so a re-used link is never about to lapse.
+              var ttl = typeof data.expires_in === "number" ? data.expires_in : 300;
+              last = { email: key, url: data.url, until: Date.now() + Math.max(0, ttl - 60) * 1000 };
+              startDownload(data.url);
             } else {
               throw new Error("no url");
             }
           })
           .catch(function () {
             btn.disabled = false;
-            btn.textContent = original;
+            btn.textContent = label;
             err.hidden = false;
           });
       });
