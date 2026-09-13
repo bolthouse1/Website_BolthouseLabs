@@ -1,6 +1,6 @@
 # Project state
 
-Snapshot written 2026-09-12. Branch `master`, tree clean, **fully pushed — nothing
+Snapshot written 2026-09-13. Branch `master`, tree clean, **fully pushed — nothing
 pending**. The site is live and everything this project was holding has shipped.
 
 ## Status
@@ -20,6 +20,9 @@ pending**. The site is live and everything this project was holding has shipped.
   "wellness" survives anywhere on the rendered site.
 - **Each legal page has its own title and description** since `ba23072` ("Medical Disclaimer —
   MyBodyPrism", and so on). From 2026-08-26 until then, all eight shared the site default.
+- **Legal mirrors current.** `eula`, `tos`, `privacy` and `disclaimer` are content-identical to
+  desktop canonical `6bdaf2ef` (`release/v1.1`), verified 2026-09-13 after the EULA re-sync
+  shipped in `f618ab2`. At that time `release/v1.1` had no `legal/` commits after `6bdaf2ef`.
 - **Downloads still gated.** `PUBLIC_DOWNLOADS_LIVE` is false; `/pricing` reads
   "MyBodyPrism — coming soon" and takes waitlist signups via Formspree.
 
@@ -27,6 +30,7 @@ pending**. The site is live and everything this project was holding has shipped.
 
 | | |
 |---|---|
+| **Deployed 2026-09-13** | `f618ab2` — EULA mirror re-synced to desktop canonical `6bdaf2ef` (`release/v1.1`), porting `2c1c8d3a`: two activation-code sentences in §3.2 and §4, owner-approved 2026-09-12. Body only, taken from `git show 6bdaf2ef:legal/eula.md`. Built in both flag states; the live page is byte-identical to the verified build; ToS, privacy and disclaimer were unchanged and remain identical to canonical |
 | **Deployed 2026-09-12** | `d506116` — URLs with a trailing slash (`/pricing/`, and every other route) now redirect to the slashless page instead of dead-ending on 404. Logic tested 10/10, live-verified, and click-verified by the owner |
 | **Deployed 2026-09-12** | `ba23072` — the layout now renders each legal page's own front-matter title and description; all eight had shown the site default since 2026-08-26, which also hid W10. Privacy and HIPAA descriptions no longer name Bolthouse Labs (owner decision). Verified live: 15/15 routes identical to the verified build |
 | **Deployed 2026-09-12** | `22d3ecc` — FDA intended-use wording, rows W1—W12 from Launch-Manager `CLAIMS-CLEANUP.md`, owner-approved: standard disclaimer in every footer, homepage headings that no longer read as disease-tracking, a new "diagnose or monitor?" support FAQ, and legal mirrors re-synced to canonical `69c190cc` (removing "tracking changes across scans over time" from the intended-use statement). Verified live |
@@ -172,8 +176,8 @@ canonical ToS §4.1, so it moves only when the upstream terms move.
   `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. The other four
   (`cookies`, `hipaa`, `refunds`, `copyright`) originate here. Fix upstream, then
   re-sync. The mirror rewrites relative `.md` links to `/legal/*` routes; that
-  difference is correct and is **not** drift. All four verified in sync 2026-09-12
-  against canonical `69c190cc` (desktop `release/v1.1`). **Re-sync with
+  difference is correct and is **not** drift. All four verified in sync 2026-09-13
+  against canonical `6bdaf2ef` (desktop `release/v1.1`). **Re-sync with
   `git show <commit>:legal/<file>` on `release/v1.1` — never from the desktop working
   tree or `main`**, both of which carried stale legal text on 2026-09-12. The mirror's
   front-matter (title, description) is website-owned, not mirrored, and since `ba23072`
