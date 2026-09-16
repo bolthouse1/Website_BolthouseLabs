@@ -12,7 +12,7 @@ import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
 
 <Layout
   title="MyBodyPrism — See yourself like never before"
-  description="A desktop viewer that turns your own DICOM scans into immersive, explorable 3D — running entirely on your machine, where your data stays."
+  description="A desktop viewer that turns your own medical scans — CT, MRI, PET — into immersive, explorable 3D, running entirely on your machine, where your data stays."
   bare={true}
 >
   <script is:inline>
@@ -46,7 +46,7 @@ import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
       <p class="eyebrow reveal">Introducing</p>
       <h2 class="product-name reveal reveal-delay-1">MyBodyPrism</h2>
       <p class="lead reveal reveal-delay-2">
-        A desktop app that turns your DICOM scans into immersive, explorable 3D —
+        A desktop app that turns your medical scans into immersive, explorable 3D —
         on your own machine, where your data stays.
       </p>
       <div class="app-window reveal reveal-delay-3">
@@ -81,7 +81,7 @@ import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
           src="/Picture1.webp"
           width="4106"
           height="2149"
-          alt="Traditional DICOM viewer with four panels showing flat 2D cross-sections and a 'No 3D' panel"
+          alt="A traditional medical-scan viewer with four panels showing flat 2D cross-sections and a 'No 3D' panel"
           loading="lazy"
           decoding="async"
         />
@@ -106,13 +106,13 @@ import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
         I survived a sudden cardiac arrest. While recovering I discovered that
         the medical images describing the inside of my chest were locked behind
         portals I couldn't browse, formats I couldn't open, and rules that
-        treated me as a stranger to my own body. I had spent twenty-eight years
-        writing visualization software for cardiac surgeons; the irony was
-        unmissable.
+        treated me as a stranger to my own body. I had spent nearly thirty years
+        building advanced 3D visualization software for engineering; the irony
+        was unmissable.
       </p>
       <p class="reveal reveal-delay-2">
         MyBodyPrism is what I wanted on the day I came home from the hospital.
-        It's a self-pay viewer that runs on your own machine — not a service
+        It's free, and it runs on your own machine — not a service
         that ingests your PHI. There is no upload and no AI processing. Your
         data stays yours.
       </p>
@@ -216,8 +216,8 @@ import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
     <div class="container narrative container-prose">
       <h2 class="reveal">How it works</h2>
       <ol class="reveal reveal-delay-1">
-        <li><strong>Download free.</strong> Enter your email on the download page and get the viewer — free beta, no payment details needed, valid until July 1, 2027.</li>
-        <li><strong>Open your scans.</strong> Drop a CD, USB stick, or zip from your hospital portal into the viewer. Render in 2D, MPR, MIP, and volume modes.</li>
+        <li><strong>Download free.</strong> Enter your email on the download page and get the viewer — it's free.</li>
+        <li><strong>Open your scans.</strong> Drop a CD, USB stick, or zip from your hospital portal into the viewer — the files inside are DICOM, the standard format hospitals use for CT, MRI and PET. Render in 2D, MPR, MIP, and volume modes.</li>
       </ol>
       {
         /* Additive pre-launch note. The two steps above are owner-directed copy
@@ -233,11 +233,10 @@ import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
         )
       }
       <p class="muted reveal reveal-delay-2">
-        A free beta, valid until July 1, 2027 — and genuinely early, so
+        A free beta, and genuinely early — so
         <a href="mailto:support@mybodyprism.com?subject=MyBodyPrism%20beta%20feedback"
           >tell us what breaks and what you wish it did</a
-        >. We may add paid features later (browser-based streaming will be paid);
-        we'll give registered users notice first.
+        >.
       </p>
     </div>
   </section>
@@ -263,8 +262,8 @@ import { DOWNLOADS_LIVE, PRIMARY_CTA } from "../site-config";
       <p class="lead reveal reveal-delay-1">
         {
           DOWNLOADS_LIVE
-            ? "The full MyBodyPrism viewer, free — no payment details needed. A beta licence valid until July 1, 2027. Windows 10/11."
-            : "The full MyBodyPrism viewer will be a free beta — no payment details needed, valid until July 1, 2027. Leave your email and we'll tell you the moment it's ready. Windows 10/11."
+            ? "The full MyBodyPrism viewer, free. Windows 10/11."
+            : "The full MyBodyPrism viewer will be a free beta. Leave your email and we'll tell you the moment it's ready. Windows 10/11."
         }
       </p>
       <div class="cta-row centered reveal reveal-delay-2">

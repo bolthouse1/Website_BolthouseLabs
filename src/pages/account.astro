@@ -23,9 +23,10 @@ const portalReturnURL = "https://mybodyprism.com/account";
 
     <div id="mbp-account-noauth" hidden>
       <p>
-        We didn't find an active session. To manage your subscription, return
-        to <a href="/pricing">the pricing page</a> or open the link in your
-        purchase confirmation email.
+        We didn't find an active session. MyBodyPrism is free and there's no
+        account to set up — head to <a href="/pricing">the download page</a>, or
+        write to <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>
+        if you need a hand.
       </p>
     </div>
 
@@ -35,10 +36,10 @@ const portalReturnURL = "https://mybodyprism.com/account";
           <h2>Your license</h2>
           <p id="mbp-tier-line">Desktop Viewer — free beta</p>
           <p>
-            MyBodyPrism v1.1 is a free beta — there's nothing to pay or manage.
-            Your beta licence is valid until <strong>July 1, 2027</strong>. We'll
-            email registered users about what happens next before that date; if
-            we add paid features later, you'll hear about it first.
+            MyBodyPrism v1.1 is a free beta. Your licence activates itself the
+            first time you launch the viewer, so there is nothing to set up or
+            manage here. See the <a href="/legal/eula">EULA</a> for the full
+            licence terms.
           </p>
           <p class="feedback-line">
             Found a bug, or something you wish it did?
@@ -46,9 +47,6 @@ const portalReturnURL = "https://mybodyprism.com/account";
               >Send beta feedback</a
             >.
           </p>
-          <a id="mbp-portal-link" class="btn btn-primary" href="/support" hidden>
-            Billing &amp; receipts
-          </a>
         </div>
       </div>
     </div>
@@ -92,14 +90,13 @@ const portalReturnURL = "https://mybodyprism.com/account";
         return;
       }
 
-      // Desktop-only in v1.1: no usage/tier lookup needed. Show the
-      // subscription card and wire the Stripe Customer Portal link so the
-      // customer can update payment method or cancel.
+      // Desktop-only in v1.1, and free: no usage or tier lookup, and no
+      // commerce surface on this page. The Customer Portal link was unwired
+      // 2026-09-16 with the rest of that copy; apiBase and portalReturnURL are
+      // kept here for the day v1.2 needs them again.
+      void apiBase; void portalReturnURL;
       $("mbp-account-loading").hidden = true;
       $("mbp-account-main").hidden = false;
-      $("mbp-portal-link").href =
-        apiBase + "/portal/session?token=" + encodeURIComponent(token) +
-        "&return_url=" + encodeURIComponent(portalReturnURL);
     })();
   </script>
 </Layout>
