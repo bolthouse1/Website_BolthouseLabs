@@ -1,6 +1,6 @@
 # Project state
 
-Snapshot written 2026-09-21. Branch `master` at `669b5cd` before this record, tree clean,
+Snapshot written 2026-09-21. Branch `master` at `2aae7b5` before this record, tree clean,
 in sync with `origin`. The site is live and gated.
 
 **The launch moved to Fri 2027-01-01** (owner decision 2026-09-21, for legal and patent work;
@@ -20,8 +20,8 @@ is the last handoff; it predates everything below dated after it.
   `/account`, all eight `/legal/*`. `http://` `301`s to `https://`; `www` to apex.
 - **Free beta, with no end date on any page outside `/legal`** since the 2026-09-16 copy pass
   (owner decision: the date lives only in the EULA and ToS). "July 1, 2027" renders **0** times
-  outside `/legal` in both flag states. The EULA (4) and ToS (3) mirrors still read July 1, 2027
-  until the desktop's canonical date move lands (open item 8).
+  outside `/legal` in both flag states. **The EULA (4 places) and ToS (3) read January 1, 2028**
+  since `2aae7b5`, and "July 1, 2027" appears nowhere on the site.
   Zero occurrences of "no time limit" or "free trial" survive anywhere.
 - **Homepage imagery 0.59 MB**, down from 7.62 MB — all seven WebP verified live and
   byte-valid. `logo.png` remains PNG for Open Graph. Old PNGs and the moved brand art
@@ -33,8 +33,8 @@ is the last handoff; it predates everything below dated after it.
 - **Each legal page has its own title and description** since `ba23072` ("Medical Disclaimer —
   MyBodyPrism", and so on). From 2026-08-26 until then, all eight shared the site default.
 - **Legal mirrors current.** `eula`, `tos`, `privacy` and `disclaimer` are content-identical to
-  desktop canonical `6bdaf2ef` (`release/v1.1`), verified 2026-09-13 after the EULA re-sync
-  shipped in `f618ab2`. At that time `release/v1.1` had no `legal/` commits after `6bdaf2ef`.
+  desktop canonical `ce58724e` (`release/v1.1`), verified 2026-09-21 before `2aae7b5` shipped.
+  At that time `origin/release/v1.1` was `f29ba243`, with no `legal/` commits after `ce58724e`.
 - **No "pending lawyer review" banner on any legal page** since `35accb4` (owner decision
   2026-09-13). Verified live on all seven pages that carried it.
 - **Downloads still gated.** `PUBLIC_DOWNLOADS_LIVE` is false; `/pricing` reads
@@ -44,8 +44,10 @@ is the last handoff; it predates everything below dated after it.
 
 | | |
 |---|---|
+| **Deployed 2026-09-21** | `2aae7b5` — EULA and ToS mirrors re-synced to desktop canonical `ce58724e` (the date move, owner-approved in the desktop's window): the beta ends **January 1, 2028** (EULA §1, §3.1, §10.1, §10.3; ToS §2, §4.1, §20), and both after-beta lists read "which may include a free license for some or all features, a paid license, a new version, or a combination". Effective dates unchanged (August 7, 2026; set at the 4 Dec freeze). Body only, from `git show ce58724e:legal/…`. Pushed on the owner's go. Built in both flag states: only `legal/eula.html` and `legal/tos.html` changed. Verified live: 4 and 3 "January 1, 2028", 0 "July 1, 2027", all 15 routes byte-identical to the verified build, `/pricing` still gated |
+| **Docs 2026-09-21** | `3fd5c56` — the date move (ship 2027-01-01, beta end 2028-01-01) and the 09-16 copy pass recorded in CLAUDE.md (owner-approved text), this file, START_HERE and AGENTS. Pushed on the owner's go |
 | **Deployed 2026-09-16** | `669b5cd` — founder prose, dictated by the owner: "the irony was unmissable." became "I knew there had to be a better way to visualize medical data.", and the paragraph beginning "MyBodyPrism is what I wanted on the day I came home from the hospital" was deleted. Committed and pushed by a **BodyAtlas-rooted session** on his instruction, not from this repo's window. Verified live 2026-09-21 from here |
-| **Deployed 2026-09-16** | `bd238f0` — the owner's copy pass from his phone, prepared as a patch on Launch-Manager branch `claude/website-copy-updates-23g5qo` (rows and his four scoping decisions in that branch's `DISPATCH-2026-09-16-website-copy.md`; **not merged to Launch-Manager `main`**). Scan wording in plain language (DICOM explained once, on the homepage and in a new support FAQ); the founder career line corrected to "nearly thirty years building advanced 3D visualization software for engineering"; **every payment, subscription and beta-expiry mention removed** — decision 1: the licence end date appears only in `/legal/eula` and `/legal/tos`. The support "Is it really free? How long does the beta last?" FAQ was deleted and "Does it cost anything?" rewritten; `/account`'s hidden "Billing & receipts" link removed and its Stripe portal call unwired. Applied and pushed by the same BodyAtlas session on his instruction. Verified 2026-09-21 from here: live, and in both flag states "July 1, 2027" renders 0 times outside `/legal`, with the W4.4 proof-of-flip counts unchanged |
+| **Deployed 2026-09-16** | `bd238f0` — the owner's copy pass from his phone, prepared as a patch on Launch-Manager branch `claude/website-copy-updates-23g5qo` (rows and his four scoping decisions in that branch's `DISPATCH-2026-09-16-website-copy.md`; merged into Launch-Manager `main` on 2026-09-21 as `8218092`). Scan wording in plain language (DICOM explained once, on the homepage and in a new support FAQ); the founder career line corrected to "nearly thirty years building advanced 3D visualization software for engineering"; **every payment, subscription and beta-expiry mention removed** — decision 1: the licence end date appears only in `/legal/eula` and `/legal/tos`. The support "Is it really free? How long does the beta last?" FAQ was deleted and "Does it cost anything?" rewritten; `/account`'s hidden "Billing & receipts" link removed and its Stripe portal call unwired. Applied and pushed by the same BodyAtlas session on his instruction. Verified 2026-09-21 from here: live, and in both flag states "July 1, 2027" renders 0 times outside `/legal`, with the W4.4 proof-of-flip counts unchanged |
 | **Deployed 2026-09-13** | `0ad99f1` — `/pricing` download script: a repeat submit of the same email re-uses the still-valid signed link instead of calling the API again, so a second click no longer mints another link, bumps `download_count` or sends a duplicate SNS lead email (open item 6). No markup or copy change; inert while gated. Verified live: `/pricing` differs from the previous deploy only inside the download script and equals the verified build, the other 14 routes are byte-identical, the page is still gated, and the deployed script passes the 18-check harness |
 | **Deployed 2026-09-13** | `35accb4` — the "Pre-launch draft pending lawyer review" banner removed from the seven legal pages that carried it (eula, tos, privacy, disclaimer, hipaa, cookies, refunds; copyright never had it). Owner decision 2026-09-13, recorded in Launch-Manager DECISIONS, pushed on his go in this repo's window. It contradicted the locked 2026-08-24 decision to launch without formal counsel review, and CC.12. No terms change; canonical desktop legal and the in-app EULA never carried it. CLAUDE.md's mirror-structure paragraph updated in the same commit. Verified live: each page equals its pre-deploy fetch minus the banner, with the same title; the other eight routes are byte-identical; `/pricing` still gated |
 | **Deployed 2026-09-13** | `f618ab2` — EULA mirror re-synced to desktop canonical `6bdaf2ef` (`release/v1.1`), porting `2c1c8d3a`: two activation-code sentences in §3.2 and §4, owner-approved 2026-09-12. Body only, taken from `git show 6bdaf2ef:legal/eula.md`. Built in both flag states; the live page is byte-identical to the verified build; ToS, privacy and disclaimer were unchanged and remain identical to canonical |
@@ -136,15 +138,11 @@ repo** — see Guardrails.
    before W4.1 still shows every visitor "Couldn't start the download." **Also stale since
    2026-09-13:** CLAUDE.md's route table says `/pricing` redirects to "a 5-minute presigned
    S3 URL"; links have been one hour since the TTL deploy. Same fix, same go.
-8. **Waiting on the desktop: re-sync the EULA and ToS mirrors for the beta's new end date.**
-   Launch-Manager `DISPATCH-2026-09-21-date-move.md` §1 changes canonical `legal/eula.md`
-   (four dates, and the after-beta list gains "a free license for some or all features … or a
-   combination") and `legal/terms-of-service.md` (two dates, the same list) to
-   **January 1, 2028**. Checked 2026-09-21: `origin/release/v1.1` = `265b1d26`, no `legal/`
-   commit after `6bdaf2ef`, neither phrase present. When it lands, re-sync both bodies from
-   `git show origin/release/v1.1:legal/<file>`, as `f618ab2` did. Canonical's ToS wraps
-   "July 1,⏎2027" across a line, so match dates whitespace-tolerantly. **Leave the effective
-   dates as canonical has them**; they are set at the 4 Dec freeze.
+8. ~~**Waiting on the desktop: re-sync the EULA and ToS mirrors for the beta's new end date.**~~
+   **DONE 2026-09-21 (`2aae7b5`, on the owner's go).** Synced from canonical `ce58724e`; see
+   What changed. Canonical's ToS wraps dates across lines ("January 1,⏎2028"), so match
+   whitespace-tolerantly when checking. **Next legal re-sync: after the 4 Dec freeze**, when
+   the owner sets every changed legal doc's effective date to the freeze date.
 
 ## W4.4 — the launch flip, stated exactly
 
@@ -241,8 +239,8 @@ expiry wording; that commitment now lives only in canonical ToS §4.1, via its m
   `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. The other four
   (`cookies`, `hipaa`, `refunds`, `copyright`) originate here. Fix upstream, then
   re-sync. The mirror rewrites relative `.md` links to `/legal/*` routes; that
-  difference is correct and is **not** drift. All four verified in sync 2026-09-13
-  against canonical `6bdaf2ef` (desktop `release/v1.1`). **Re-sync with
+  difference is correct and is **not** drift. All four verified in sync 2026-09-21
+  against canonical `ce58724e` (desktop `release/v1.1`). **Re-sync with
   `git show <commit>:legal/<file>` on `release/v1.1` — never from the desktop working
   tree or `main`**, both of which carried stale legal text on 2026-09-12. The mirror's
   front-matter (title, description) is website-owned, not mirrored, and since `ba23072`
