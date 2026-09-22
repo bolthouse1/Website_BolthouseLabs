@@ -1,19 +1,27 @@
 # Project state
 
-Snapshot written 2026-09-13. Branch `master`, tree clean, **fully pushed — nothing
-pending**. The site is live and everything this project was holding has shipped.
+Snapshot written 2026-09-21. Branch `master` at `669b5cd` before this record, tree clean,
+in sync with `origin`. The site is live and gated.
 
-**Parked 2026-09-13 by the owner** until v1.1 is finalized and the four walkthrough videos
-are recorded. Nothing here moves until he brings the site back for the final launch checks.
-Start from [`docs/handoffs/HANDOFF_2026-09-13.md`](docs/handoffs/HANDOFF_2026-09-13.md).
+**The launch moved to Fri 2027-01-01** (owner decision 2026-09-21, for legal and patent work;
+it was 2026-10-01), and **the free beta now ends January 1, 2028** (was July 1, 2027). What
+follows the beta is deliberately undecided. Launch-Manager
+`DISPATCH-2026-09-21-date-move.md` §3 carries this repo's share. Calendar: freeze Fri 4 Dec;
+final build 14–18 Dec; W5.1 and W4.1 21–23 Dec; **W4.4 flip on 1 Jan 2027**.
+
+The 2026-09-13 park ended for this date move. [`docs/handoffs/HANDOFF_2026-09-13.md`](docs/handoffs/HANDOFF_2026-09-13.md)
+is the last handoff; it predates everything below dated after it.
 
 ## Status
 
-**Live, current, and clean.** Verified 2026-09-12 after the FDA wording pass and the layout fix:
+**Live and gated.** Verified 2026-09-21, live and in local builds of both flag states:
 
 - All routes `200` — `/`, `/pricing`, `/support`, `/system-requirements`,
   `/account`, all eight `/legal/*`. `http://` `301`s to `https://`; `www` to apex.
-- **Free BETA ending July 1, 2027** stated across the site and in the EULA and ToS.
+- **Free beta, with no end date on any page outside `/legal`** since the 2026-09-16 copy pass
+  (owner decision: the date lives only in the EULA and ToS). "July 1, 2027" renders **0** times
+  outside `/legal` in both flag states. The EULA (4) and ToS (3) mirrors still read July 1, 2027
+  until the desktop's canonical date move lands (open item 8).
   Zero occurrences of "no time limit" or "free trial" survive anywhere.
 - **Homepage imagery 0.59 MB**, down from 7.62 MB — all seven WebP verified live and
   byte-valid. `logo.png` remains PNG for Open Graph. Old PNGs and the moved brand art
@@ -36,6 +44,8 @@ Start from [`docs/handoffs/HANDOFF_2026-09-13.md`](docs/handoffs/HANDOFF_2026-09
 
 | | |
 |---|---|
+| **Deployed 2026-09-16** | `669b5cd` — founder prose, dictated by the owner: "the irony was unmissable." became "I knew there had to be a better way to visualize medical data.", and the paragraph beginning "MyBodyPrism is what I wanted on the day I came home from the hospital" was deleted. Committed and pushed by a **BodyAtlas-rooted session** on his instruction, not from this repo's window. Verified live 2026-09-21 from here |
+| **Deployed 2026-09-16** | `bd238f0` — the owner's copy pass from his phone, prepared as a patch on Launch-Manager branch `claude/website-copy-updates-23g5qo` (rows and his four scoping decisions in that branch's `DISPATCH-2026-09-16-website-copy.md`; **not merged to Launch-Manager `main`**). Scan wording in plain language (DICOM explained once, on the homepage and in a new support FAQ); the founder career line corrected to "nearly thirty years building advanced 3D visualization software for engineering"; **every payment, subscription and beta-expiry mention removed** — decision 1: the licence end date appears only in `/legal/eula` and `/legal/tos`. The support "Is it really free? How long does the beta last?" FAQ was deleted and "Does it cost anything?" rewritten; `/account`'s hidden "Billing & receipts" link removed and its Stripe portal call unwired. Applied and pushed by the same BodyAtlas session on his instruction. Verified 2026-09-21 from here: live, and in both flag states "July 1, 2027" renders 0 times outside `/legal`, with the W4.4 proof-of-flip counts unchanged |
 | **Deployed 2026-09-13** | `0ad99f1` — `/pricing` download script: a repeat submit of the same email re-uses the still-valid signed link instead of calling the API again, so a second click no longer mints another link, bumps `download_count` or sends a duplicate SNS lead email (open item 6). No markup or copy change; inert while gated. Verified live: `/pricing` differs from the previous deploy only inside the download script and equals the verified build, the other 14 routes are byte-identical, the page is still gated, and the deployed script passes the 18-check harness |
 | **Deployed 2026-09-13** | `35accb4` — the "Pre-launch draft pending lawyer review" banner removed from the seven legal pages that carried it (eula, tos, privacy, disclaimer, hipaa, cookies, refunds; copyright never had it). Owner decision 2026-09-13, recorded in Launch-Manager DECISIONS, pushed on his go in this repo's window. It contradicted the locked 2026-08-24 decision to launch without formal counsel review, and CC.12. No terms change; canonical desktop legal and the in-app EULA never carried it. CLAUDE.md's mirror-structure paragraph updated in the same commit. Verified live: each page equals its pre-deploy fetch minus the banner, with the same title; the other eight routes are byte-identical; `/pricing` still gated |
 | **Deployed 2026-09-13** | `f618ab2` — EULA mirror re-synced to desktop canonical `6bdaf2ef` (`release/v1.1`), porting `2c1c8d3a`: two activation-code sentences in §3.2 and §4, owner-approved 2026-09-12. Body only, taken from `git show 6bdaf2ef:legal/eula.md`. Built in both flag states; the live page is byte-identical to the verified build; ToS, privacy and disclaimer were unchanged and remain identical to canonical |
@@ -94,6 +104,7 @@ repo** — see Guardrails.
    correcting it on 2026-09-12, **but only to the rebuild's measured installer size**.
    Launch-Manager will send that figure, and it goes in before `PUBLIC_DOWNLOADS_LIVE` flips.
    **Do not estimate it.** The text renders only once the flag flips, so it is not live today.
+   Since the 2026-09-21 date move, that measured figure comes from the final build, 14–18 Dec.
 5. ~~**Known: routes with a trailing slash return 404.**~~ **FIXED 2026-09-12 (`d506116`).** The 404
    page now bounces any slash-ended URL to its slashless form, keeping the query string and
    anchor, and it cannot loop. Verified: the redirect logic passes 10/10 in both flag states
@@ -115,7 +126,9 @@ repo** — see Guardrails.
    or copy change, and inert while gated. **Tested only in a harness** — the built script run
    against a fake DOM, fetch and clock, 18/18, with the old script failing the 7 re-use checks.
    Its first run in a real browser against the real API will be W4.4's download check.
-7. **Found 2026-09-13, owner question pending: the early-flip rationale here is stale.** CLAUDE.md,
+7. **Found 2026-09-13; deferred to W4.4 by the owner on 2026-09-16** (Launch-Manager tracker,
+   W4.4 row: docs-only, no visitor sees them). **Do not fix these before the W4.4 session.**
+   The early-flip rationale here is stale. CLAUDE.md,
    this file's W4.4 precondition 1, `AGENTS.md` and a `src/site-config.ts` comment say
    `api.mybodyprism.com` is NXDOMAIN and that W2.3→W4.1 silently drops the lead. The host
    resolves (W2.3 done 2026-09-01), and cloud `2fe90e6` (2026-08-26) calls `_capture_lead` on
@@ -123,6 +136,15 @@ repo** — see Guardrails.
    before W4.1 still shows every visitor "Couldn't start the download." **Also stale since
    2026-09-13:** CLAUDE.md's route table says `/pricing` redirects to "a 5-minute presigned
    S3 URL"; links have been one hour since the TTL deploy. Same fix, same go.
+8. **Waiting on the desktop: re-sync the EULA and ToS mirrors for the beta's new end date.**
+   Launch-Manager `DISPATCH-2026-09-21-date-move.md` §1 changes canonical `legal/eula.md`
+   (four dates, and the after-beta list gains "a free license for some or all features … or a
+   combination") and `legal/terms-of-service.md` (two dates, the same list) to
+   **January 1, 2028**. Checked 2026-09-21: `origin/release/v1.1` = `265b1d26`, no `legal/`
+   commit after `6bdaf2ef`, neither phrase present. When it lands, re-sync both bodies from
+   `git show origin/release/v1.1:legal/<file>`, as `f618ab2` did. Canonical's ToS wraps
+   "July 1,⏎2027" across a line, so match dates whitespace-tolerantly. **Leave the effective
+   dates as canonical has them**; they are set at the 4 Dec freeze.
 
 ## W4.4 — the launch flip, stated exactly
 
@@ -142,6 +164,13 @@ W4.1 → W4.4. **W4.1's download-TTL gate is met:** one-hour download links went
 2026-09-13T13:43:24Z (Launch-Manager read `3600` in both download functions' deployed code;
 not re-read from here). The measured installer size for `/pricing` comes out of that
 rebuild. `PUBLIC_DOWNLOADS_LIVE` re-verified false on the live site at the park.
+
+**Update 2026-09-21 (Launch-Manager tracker, read from this repo): the ship date is Fri
+2027-01-01.** Freeze Fri 4 Dec (legal text and UI final) → a fresh unsigned test build and the
+four videos 7–11 Dec → final build and one signing session 14–18 Dec → W5.1 and W4.1, with the
+55-minute resume check, 21–23 Dec → **W4.4 and the W6.5 email on 1 Jan 2027**. W4.1 is still
+blocked on that final build's hash. The owner added on 2026-09-16 that a failed resume check
+blocks W4.4.
 
 **Procedure:** set the repository variable `PUBLIC_DOWNLOADS_LIVE` to `true`
 (Settings → Secrets and variables → Actions → Variables), then re-run the deploy
@@ -200,9 +229,10 @@ for. Confirm both rows live before calling W4.4 done.
 
 **W6.5 while the flag is still `false`:** those five strings are a live, site-stated
 commitment to email registered users at launch. If W6.5 is ever dropped, all five
-must change together. Separately, `/pricing` and `/account` promise to tell
-registered users what happens before the beta ends on 2027-07-01 — that one mirrors
-canonical ToS §4.1, so it moves only when the upstream terms move.
+must change together. (Re-counted 2026-09-21 after the 09-16 copy pass: still 5 gated, 0
+flipped.) The separate `/pricing` and `/account` promise to tell registered users what
+happens before the beta ends was **removed by the 2026-09-16 copy pass** with the rest of the
+expiry wording; that commitment now lives only in canonical ToS §4.1, via its mirror.
 
 ## Guardrails for the next change
 
@@ -230,15 +260,19 @@ canonical ToS §4.1, so it moves only when the upstream terms move.
   Never hardcode a colour in a page.
 - **`logo.png` stays PNG.** It is the Open Graph image and social scrapers handle
   WebP inconsistently. Everything else on the homepage is WebP.
-- Owner-directed copy — the `/pricing` lede, the homepage "How it works" steps, and
-  the support free/beta answer — must not be reworded on a session's own judgement.
-  Add alongside it, as the gated notices do. **They were rewritten on 2026-09-02**,
-  but only because the beta decision made their central claim false, and only after
-  the owner approved the diff; that is the bar for touching them again.
-- **v1.1 is a FREE BETA ending July 1, 2027** (owner decision 2026-09-02). Free, with
-  no payment details and no subscription — but **not** unlimited, perpetual, forever,
-  or "no time limit". Those phrasings were live and false until 2026-09-02; do not
-  reintroduce them. Canonical terms: the desktop repo's `legal/eula.md` §3.1 and
+- Owner-directed copy — the `/pricing` lede, the homepage "How it works" steps, the
+  founder prose, and the support "Does it cost anything?" answer — must not be reworded on a
+  session's own judgement. Add alongside it, as the gated notices do. **They were rewritten
+  on 2026-09-02**, because the beta decision made their central claim false, and **again by
+  the owner's own copy pass on 2026-09-16**; both times only on his approval. That is the bar
+  for touching them again.
+- **v1.1 is a FREE BETA ending January 1, 2028** (owner decision 2026-09-21; July 1, 2027
+  from 2026-09-02 until then). Free, with no payment details and no subscription — but
+  **not** unlimited, perpetual, forever, or "no time limit". Those phrasings were live and
+  false until 2026-09-02; do not reintroduce them. **What follows the beta is undecided**
+  (owner, 2026-09-21), so copy may neither promise nor rule out a free version afterwards.
+  **The end date appears only in `/legal/eula` and `/legal/tos`** (owner decision 2026-09-16);
+  do not put it back on a page. Canonical terms: the desktop repo's `legal/eula.md` §3.1 and
   `legal/terms-of-service.md` §4.1.
 - **Copy must stay consistent with the free-beta positioning.** No
   subscription or renewal wording.

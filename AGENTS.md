@@ -32,8 +32,9 @@ read the Brand Identity, Product Model, and Design Rules sections of
 - All media must sit on dark or black backgrounds.
 
 **Some copy is owner-directed and must not be reworded.** The `/pricing` lede,
-the homepage "How it works" steps, and the support "Is it really free?" answer
-are legally-adjacent and were dictated. If they read wrong in a given state, add
+the homepage "How it works" steps, the founder prose, and the support "Does it
+cost anything?" answer are legally-adjacent and were dictated. (The "Is it really
+free?" FAQ was deleted by the owner's 2026-09-16 copy pass.) If they read wrong in a given state, add
 a separate notice alongside them — as the gated pre-launch notices do — rather
 than editing the sentence.
 

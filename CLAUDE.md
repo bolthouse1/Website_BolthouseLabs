@@ -57,16 +57,22 @@ calls this "the teaser" predates that migration.
   above it on mobile, where the header is not sticky.) Bolthouse Labs appears ONLY in the
   footer copyright line; nowhere else in the site copy.
 
-## Product Model (Critical Context — updated 2026-08-26, owner-directed)
+## Product Model (Critical Context — updated 2026-09-21, owner-directed)
 MyBodyPrism is NOT a concierge/mail-in service. It is self-service, and **v1.1
-(launching 2026-10-01) ships the desktop app ONLY**:
-1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. **Free BETA licence, one per machine, ending July 1, 2027** (owner decision 2026-09-02; canonical terms in the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1).
+(launching 2027-01-01, moved from 2026-10-01 by owner decision 2026-09-21) ships the desktop app ONLY**:
+1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. **Free BETA licence, one per machine, ending January 1, 2028** (owner decision 2026-09-21; it was July 1, 2027 from 2026-09-02). Canonical terms: the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1. Until the desktop's date move lands on `release/v1.1` and the EULA/ToS mirrors here are re-synced from it, both still read July 1, 2027. **What follows the beta is deliberately undecided** (owner, 2026-09-21). It may include a free licence for some or all features, a paid one, or both, so copy may neither promise nor rule out a free version afterwards.
 
    **The licence is free, but it is NOT non-expiring.** This section said "Free,
    non-expiring license" until 2026-09-02, and the site said "no time limit" — both
    were made false by the beta decision and both are now corrected. Do not describe
    the licence as unlimited, perpetual, forever, or without a time limit. Say
-   *free beta*, and give the date.
+   *free beta*.
+
+   **The end date appears only in `/legal/eula` and `/legal/tos`.** Owner decision
+   2026-09-16 (Launch-Manager `DISPATCH-2026-09-16-website-copy.md`, decision 1): no other
+   page names it, and no page carries payment, subscription or "paid features later"
+   wording. Do not add the date back to a page; the legal mirrors carry it. (This
+   paragraph said "give the date" until 2026-09-21.)
 2. **Cloud streaming viewer + VR streaming** — ROADMAP (v1.2+, gated on AWS GPU quota + CloudFront verification), NOT shipped. The page copy must NOT claim streaming, browser viewing, VR, HIPAA-compliant cloud, or end-to-end encryption until those services actually exist. (Overselling copy corrected 2026-08-26 by the Launch-Manager session at the owner's direction.)
 
 If/when streaming copy returns: do NOT mention which cloud provider (AWS/Azure) and do NOT mention that the user pays for streaming costs. Until then the trust strip sells the local-first story: "Runs entirely on your computer · No uploads, no cloud · Your data stays yours."
@@ -136,7 +142,7 @@ before trusting any prose about structure — this section has fallen out of dat
 2. **INTRODUCING MYBODYPRISM** — Product intro directly under the hero. Desktop app in one sentence, local-first ("on your own machine, where your data stays") — no streaming/VR claims. Picture2 in app-window chrome.
 3. **THE DIAGNOSIS** — "2013" eyebrow, "I was diagnosed with cardiac sarcoidosis." Picture1 (traditional DICOM 4-pane viewer).
 4. **EMOTIONAL PIVOT** — Italic quote: *"I couldn't understand my own disease."* Cyan accent line.
-5. **WHY THIS EXISTS** — Founder prose, carried across verbatim from the pre-migration marketing homepage. **Do not paraphrase**: the medical specifics are the owner's own history.
+5. **WHY THIS EXISTS** — Founder prose, in the owner's own words. It was carried across from the pre-migration homepage, then edited by the owner on 2026-09-16: the career line corrected to "nearly thirty years building advanced 3D visualization software for engineering", a new closing line, and the second paragraph removed. **Do not paraphrase**: the medical specifics are the owner's own history.
 6. **THE REVEAL** — "So I built a better viewer." Picture4 (heart with a PET overlay shown as a color heatmap) in app-window chrome.
 7. **YEARS OF SCANS, SIDE BY SIDE** — "2013 → 2025" eyebrow, heading "Years of scans, side by side", then "MyBodyPrism Comparison Mode." Picture3 (2013/2018/2023/2025 PET-CT comparison).
 8. **EXPLORE IN DETAIL** — Picture5 (CT bone-window revealing ICD, lead, sternal wires) in app-window chrome.
@@ -149,7 +155,7 @@ intended use from labeling and marketing, not from a disclaimer alone. The found
 (sections 3–5) was kept verbatim by the same decision (W8), as were "What if you could truly see
 inside your own body?" and the ICD captions (W9).
 9. **HIGHLIGHT YOUR DATA** — Custom markup tools. Picture6 (ICD lead traced).
-10. **HOW IT WORKS** — Two numbered steps. Step 1's wording is owner-directed (2026-08-26) and legally-adjacent — **do not "correct" it**.
+10. **HOW IT WORKS** — Two numbered steps. Their wording is owner-directed (2026-08-26, last revised by the owner 2026-09-16: step 1 now ends "it's free", step 2 explains DICOM once) and legally-adjacent — **do not "correct" it**.
 11. **TRUST STRIP** — Three badges: Runs entirely on your computer · No uploads, no cloud · Your data stays yours.
 12. **FINAL CTA** — "See yourself like never before." Download + support buttons.
 

@@ -34,7 +34,8 @@ never say. Treat Brand Identity, Product Model, and Design Rules as constraints.
 Two things there that are easy to trip over:
 
 - **Some copy is owner-directed and must not be reworded** — the `/pricing` lede,
-  the homepage "How it works" steps, the support "Is it really free?" answer. If
+  the homepage "How it works" steps, the founder prose, the support "Does it cost
+  anything?" answer (the "Is it really free?" FAQ was deleted 2026-09-16). If
   they read wrong in a given state, add alongside them rather than editing them.
 - **`src/pages/legal/*.md` are mirrors.** Canonical text lives in the desktop repo
   at `SomaViz_Desktop_Volume_Viewer/legal/`. Fix upstream, then re-sync here.
