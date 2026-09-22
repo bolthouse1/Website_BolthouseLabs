@@ -42,8 +42,8 @@ The Desktop Viewer is **provided free of charge as a beta release** in
 this version. There is no purchase, license fee, or subscription
 required to download, install, or use it. On first launch the Software
 obtains a free beta license (one per machine — see the
-[End-User License Agreement](/legal/eula) §3) that **ends on July 1,
-2027**. See §4 for how this may change in the future.
+[End-User License Agreement](/legal/eula) §3) that **ends on January 1,
+2028**. See §4 for how this may change in the future.
 
 ## 3. Account creation and security
 
@@ -71,13 +71,13 @@ suspect any unauthorized use.
 The MyBodyPrism Desktop Viewer is provided to you **free of charge, as
 a beta release,** in this version. We do not require a purchase,
 license fee, subscription, or payment method to download, install, or
-use it. The free beta license issued to your machine **ends on July 1,
-2027** (the "Beta Period" — [End-User License Agreement](/legal/eula)
+use it. The free beta license issued to your machine **ends on January 1,
+2028** (the "Beta Period" — [End-User License Agreement](/legal/eula)
 §3.1). Before the Beta Period ends we will describe at
 [mybodyprism.com](https://mybodyprism.com) what the Software and its
-terms provide after that date, which may be a new free license, a paid
-license, or a new version. A beta release may contain defects and may
-change or be discontinued.
+terms provide after that date, which may include a free license for some
+or all features, a paid license, a new version, or a combination. A beta
+release may contain defects and may change or be discontinued.
 
 ### 4.2 Free access is not guaranteed to continue
 
@@ -393,8 +393,8 @@ Sacramento, CA 95834, or by telephone at (800) 952-5210.
 
 - There is no subscription, no automatic renewal, and no charge of
   any kind to download, install, or use the Desktop Viewer.
-- This version is a free **beta**; its license ends on **July 1,
-  2027** (§4.1). Free access is not guaranteed to continue beyond that
+- This version is a free **beta**; its license ends on **January 1,
+  2028** (§4.1). Free access is not guaranteed to continue beyond that
   date. We may introduce fees or paid features in the future, and may
   require payment to continue using the Service, on prior notice to
   registered users (see §4).

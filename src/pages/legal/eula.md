@@ -40,7 +40,7 @@ revocable, royalty-free license to:
 - Use the Software solely for your **personal, non-commercial
   purpose** of viewing your own medical imaging data,
 - Use the Software while it is made available to you free of charge
-  — currently as a **free beta** whose license ends on **July 1, 2027**
+  — currently as a **free beta** whose license ends on **January 1, 2028**
   (see §3.1) — or, if we introduce a paid model under the
   [Terms of Service](/legal/tos) §4, during your paid
   term.
@@ -83,12 +83,13 @@ charge**. On first launch:
   Software records issuance on our license server (indexed by
   machine-ID hash) and locally (defensive backup).
 - The free beta license provides full Software functionality and
-  **ends on July 1, 2027** (the "Beta Period"). After the Beta Period
+  **ends on January 1, 2028** (the "Beta Period"). After the Beta Period
   the Software will stop running under this license, following a short
   grace period, and continued use will require whatever the current
   version of the Software and its terms provide at that time (which may
-  be a new free license, a paid license, or a new version — see Terms of
-  Service §4). We will describe what comes next at
+  include a free license for some or all features, a paid license, a new
+  version, or a combination — see Terms of Service §4). We will describe
+  what comes next at
   [mybodyprism.com](https://mybodyprism.com) before the Beta Period ends.
 - Free access is not guaranteed to continue beyond the Beta Period and
   may end earlier on notice to registered users (Terms of Service §4).
@@ -218,7 +219,7 @@ This EULA takes effect when you first install or use the Software
 and continues until terminated as described below.
 
 This version of the Software is a **free beta** and your free beta
-license **ends on July 1, 2027** (§3.1). Free access is not guaranteed
+license **ends on January 1, 2028** (§3.1). Free access is not guaranteed
 to continue beyond that date and may end earlier on prior notice to
 registered users; we may change to a paid model under the
 [Terms of Service](/legal/tos) §4.
@@ -233,7 +234,7 @@ so no fees or refunds are involved.
 
 This EULA automatically terminates if:
 
-- The Beta Period ends (July 1, 2027, plus any grace period) and you
+- The Beta Period ends (January 1, 2028, plus any grace period) and you
   do not obtain whatever license the then-current version of the
   Software provides (§3.1).
 - We discontinue free access or move to a paid model and you do not
