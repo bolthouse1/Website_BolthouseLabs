@@ -1,6 +1,6 @@
 # Project state
 
-Snapshot written 2026-09-21. Branch `master` at `2aae7b5` before this record, tree clean,
+Snapshot written 2026-09-21. Branch `master` at `ef0f27b` before this record, tree clean,
 in sync with `origin`. The site is live and gated.
 
 **The launch moved to Fri 2027-01-01** (owner decision 2026-09-21, for legal and patent work;
@@ -9,8 +9,9 @@ follows the beta is deliberately undecided. Launch-Manager
 `DISPATCH-2026-09-21-date-move.md` §3 carries this repo's share. Calendar: freeze Fri 4 Dec;
 final build 14–18 Dec; W5.1 and W4.1 21–23 Dec; **W4.4 flip on 1 Jan 2027**.
 
-The 2026-09-13 park ended for this date move. [`docs/handoffs/HANDOFF_2026-09-13.md`](docs/handoffs/HANDOFF_2026-09-13.md)
-is the last handoff; it predates everything below dated after it.
+The 2026-09-13 park ended for this date move. Start from
+[`docs/handoffs/HANDOFF_2026-09-21.md`](docs/handoffs/HANDOFF_2026-09-21.md), which carries the
+next session's starting prompt; the 2026-09-13 handoff is superseded.
 
 ## Status
 
