@@ -1,5 +1,23 @@
 # Project state
 
+## Start here
+
+The public website for **MyBodyPrism** (Bolthouse Labs, Inc.), an Astro 6 static site served
+by GitHub Pages. **This repo changed shape on 2026-08-26**: it was a single-file
+`index.html` teaser for most of its life, so most of [`docs/`](docs) predates the
+migration. The rules — brand, copy, product model, structure, the launch switch and
+deployment — are in [`AGENTS.md`](AGENTS.md) (which `CLAUDE.md` imports). `src/` is the
+only executable artifact and wins over any prose; open the file before making a
+structural claim. [`STATUS.md`](STATUS.md) is the portfolio review's machine-written card.
+
+| If your task is… | Read |
+|---|---|
+| Understanding the launch switch or go-live | `AGENTS.md` → "The launch switch", "Deployment Notes"; then W4.4 below |
+| Changing what the product claims | [`docs/product/PRD.md`](docs/product/PRD.md) — pre-migration, verify against `src/` |
+| Asking "why is it built this way?" | [`docs/decisions/`](docs/decisions) — pre-migration; ADR 0001 (single-file site) is superseded |
+
+## Current state
+
 Snapshot written 2026-09-21. Branch `master` at `ef0f27b` before this record, tree clean,
 in sync with `origin`. The site is live and gated.
 
@@ -131,13 +149,14 @@ repo** — see Guardrails.
    Its first run in a real browser against the real API will be W4.4's download check.
 7. **Found 2026-09-13; deferred to W4.4 by the owner on 2026-09-16** (Launch-Manager tracker,
    W4.4 row: docs-only, no visitor sees them). **Do not fix these before the W4.4 session.**
-   The early-flip rationale here is stale. CLAUDE.md,
-   this file's W4.4 precondition 1, `AGENTS.md` and a `src/site-config.ts` comment say
+   The early-flip rationale here is stale. `AGENTS.md` (its "Deployment is gated" rule and
+   "The launch switch", the latter moved from CLAUDE.md on 2026-09-29),
+   this file's W4.4 precondition 1 and a `src/site-config.ts` comment say
    `api.mybodyprism.com` is NXDOMAIN and that W2.3→W4.1 silently drops the lead. The host
    resolves (W2.3 done 2026-09-01), and cloud `2fe90e6` (2026-08-26) calls `_capture_lead` on
    the `NO_RELEASE` path. Not re-read in prod from here. **The gate itself is unchanged:** a flip
    before W4.1 still shows every visitor "Couldn't start the download." **Also stale since
-   2026-09-13:** CLAUDE.md's route table says `/pricing` redirects to "a 5-minute presigned
+   2026-09-13:** the route table (now in `AGENTS.md`, "Site Structure") says `/pricing` redirects to "a 5-minute presigned
    S3 URL"; links have been one hour since the TTL deploy. Same fix, same go.
 8. ~~**Waiting on the desktop: re-sync the EULA and ToS mirrors for the beta's new end date.**~~
    **DONE 2026-09-21 (`2aae7b5`, on the owner's go).** Synced from canonical `ce58724e`; see
@@ -285,5 +304,5 @@ expiry wording; that commitment now lives only in canonical ToS §4.1, via its m
   titles and descriptions; remove it and all eight legal pages silently share one title again.
 - **FDA intended-use wording is not a session's to reword.** The footer disclaimer, the
   "diagnose or monitor?" FAQ and homepage sections 6—8 were set by the owner on 2026-09-12
-  (see CLAUDE.md, Homepage Narrative Arc). After any copy change, re-run a residual sweep of
+  (see `AGENTS.md`, Homepage Narrative Arc). After any copy change, re-run a residual sweep of
   the rendered site for the old phrasing.
