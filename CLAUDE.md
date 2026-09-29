@@ -237,11 +237,9 @@ No framework and no client bundle — plain `<script is:inline>` IIFEs (no globa
   `npm run build` with `PUBLIC_API_BASE` and `PUBLIC_DOWNLOADS_LIVE`, a `dist/CNAME` guard,
   then `actions/deploy-pages`. Both env values come from repo variables of the same name, so
   neither the API host nor the launch switch needs a code change — see **The launch switch**.
-- **The Pages source must be set to "GitHub Actions"** (Settings → Pages → Build and
-  deployment → Source) for that workflow to publish. Until it is, the repo still serves the
-  old "deploy from `master` branch root" way. These two must change together: deleting the
-  root `index.html` while the source is still "branch" takes the site down, and switching the
-  source before a successful Actions run leaves nothing to serve.
+- **The Pages source is "GitHub Actions"** (Settings → Pages → Build and deployment →
+  Source; switched together with the merge on 2026-08-29, `c6724ce`, ADR 0004). Keep it so:
+  the workflow is the only thing that publishes, and every push to `master` runs it.
 - There is no staging environment. `npm run build` locally is the only pre-flight.
 - GitHub repo: `https://github.com/bolthouse1/Website_BolthouseLabs`
 - Smoke test URL: `https://bolthouse1.github.io/Website_BolthouseLabs/` (301s to the apex)

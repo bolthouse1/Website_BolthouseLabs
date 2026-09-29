@@ -38,7 +38,9 @@ Two things there that are easy to trip over:
   anything?" answer (the "Is it really free?" FAQ was deleted 2026-09-16). If
   they read wrong in a given state, add alongside them rather than editing them.
 - **`src/pages/legal/*.md` are mirrors.** Canonical text lives in the desktop repo
-  at `SomaViz_Desktop_Volume_Viewer/legal/`. Fix upstream, then re-sync here.
+  at `SomaViz_Desktop_Volume_Viewer/legal/`. An upstream fix goes as a request in
+  `docs/handoffs/` to PrismPlatform, which commits it under D042; re-sync here once
+  it lands. Commit only in this repository.
 
 ## 4. Go deeper only if the task needs it
 
@@ -57,9 +59,9 @@ been restructured more than once and prose has lagged behind every time.
 
 ## The five facts most often needed
 
-1. **Deploy is a GitHub Actions run**, not a bare push — see
+1. **Deploy is a GitHub Actions run**, started by every push to `master` — see
    [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). The Pages source
-   must be set to "GitHub Actions" for it to publish.
+   is "GitHub Actions"; keep it so.
 2. **The GitHub repo is `bolthouse1/Website_BolthouseLabs`**, not `mybodyprism-com`
    (which 404s). Only the local folder was renamed. The `origin` remote is correct.
 3. **The custom domain is pinned by [`public/CNAME`](public/CNAME)** — it must land in
