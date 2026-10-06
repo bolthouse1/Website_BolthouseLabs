@@ -354,6 +354,25 @@ No framework and no client bundle — plain `<script is:inline>` IIFEs (no globa
 - Possible second page for more detailed product info post-launch
 - Analytics (privacy-respecting — Plausible, Fathom, or Cloudflare Web Analytics)
 
+## MCP servers
+
+`.mcp.json` declares **`chrome-devtools`** (`npx chrome-devtools-mcp@latest`), matching
+`Launch-Manager`, `AWS-HIPPA`, `Project_Briefings` and the viewer. Added 2026-10-06, on the
+owner's go, because this repo had none and so had no browser tools at all — which will be
+needed at W4.4, where someone must read the Actions **Variables** page and the workflow run in
+a browser. **Project scope only, never user scope** (the global rule, for the same
+name-collision reason as the slicer entry).
+
+Two things to know before relying on it:
+
+- **MCP servers load at session start.** Adding or changing this file does nothing for the
+  session that edited it; a new session is needed.
+- **It drives Chrome over the DevTools protocol and normally starts its own instance with a
+  fresh profile**, so it does **not** inherit the owner's logins. Anything behind his
+  account — Formspree's dashboard, the GitHub repository-variable page — needs his real
+  profile or him signing in. **He types every credential; a session never does**, and a click
+  that changes something waits for his word (the portfolio browser rule).
+
 ## Repo Conventions
 - `docs/superpowers/` holds the archived 2026-04 deploy plan and design spec. They target the old `www.bolthouselabs.com` domain and are kept as historical records — do not "fix" them.
 - `.claude/` and `.superpowers/` are gitignored local session state and are never published.
