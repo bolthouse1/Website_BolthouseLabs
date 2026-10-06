@@ -176,22 +176,50 @@ repo** — see Guardrails.
 9. **The three-product site — mostly built 2026-10-05, two pieces open.**
    `/vault` and `/educate` exist, `system-requirements` covers three products, nav links both,
    and PrismEducate has its own download switch. Still open:
-   - **The attributions page is not written yet**, deliberately. It must mirror what
-     PrismEducate's app shows, and that repo's `licensing.py` still carried only four works
-     and no share-alike licence URLs when read on 2026-10-05, while four share-alike
-     collections plus the BodyParts3D models were just accepted — so its list is mid-change.
-     **Asked `PrismEducate14` for the generated output** (`work`, `licence`, `licence_url`,
-     `source_url`, `paper`, or its `NO_PAPER` marker). Build the page from that, state each
-     work's **licence** and not merely a credit (the shipped content now carries a share-alike
-     obligation), and do not hand-write a citation: an invented one is worse than an absent
-     one. The footer link and `/educate`'s link are **held back** until the page exists, so
-     nothing points at a 404.
+   - **The attributions page is not written yet.** It waits only on `prismeducate-ab`'s commit,
+     which will send the rendered text; the crash that blocked it is fixed and the screen now
+     renders **eight works**. Take the **rendered strings** from their `credit_text()` —
+     never a paraphrase, and never a hand-written citation.
+     **Design constraint, settled before the page exists (their PE-LIC-21): one work's licence
+     is a sentence, not a token.** BodyParts3D renders as "CC BY 4.0, as version 4.0's own
+     README states; share-alike accepted under the earlier CC BY-SA 2.1 Japan statement",
+     because the source carries two licence statements and neither may be read alone (their
+     D133). **Render each licence string whole and do not parse a licence name out of it** — a
+     page built around a short licence token per work breaks on that block. The five distinct
+     licence strings are CC BY 3.0, CC BY 4.0, CC BY-SA 4.0, CC BY (the case-report articles)
+     and that compound sentence.
+     **Eight blocks, not the six Launch-Manager counted**, which covered scan collections only:
+     `other_credits()` adds **BodyParts3D** (the organ models the 3D pane draws) and the
+     **open-access case reports** via Europe PMC and PubMed Central. Both appear on nearly
+     every page and are owed credit the same way.
+     The six scan works are LIDC-IDRI (CC BY 3.0), Colorectal-Liver-Metastases (CC BY 4.0 —
+     the **`NO_PAPER`** case: no author citation is recorded, and the screen says so rather
+     than inventing one), SPIDER, TotalSegmentator v2.0.1, the Medical Segmentation Decathlon
+     and VerSe 2019/2020 (both CC BY-SA 4.0; VerSe's record requires **three** citations).
+     Their new slow-tier test (PE-LIC-22) renders the screen against the real catalog with a
+     mutation check, so a future ruling that adds a collection fails there instead of arriving
+     here as a crash.
+     The footer link and `/educate`'s link stay **held back** until the page exists.
    - **PrismEducate's installer has no backend.** See W4.4 below. Someone must add a release
      pointer and an endpoint before `PUBLIC_EDUCATE_DOWNLOADS_LIVE` can flip; no section of
      the 2026-10-05 dispatch assigns it.
    Constraints that still bind: **"free", never "forever"**; the approved privacy sentence
    verbatim and unwidened; name organs rather than counts, so a change in what ships cannot
    falsify the page.
+
+   **The share-alike rulings, as that repo records them** (four of them on 2026-10-05;
+   Launch-Manager's account differed twice along the way, and the generated artifact was right
+   each time): share-alike was first excluded; then **D245** took `msd-colon` and
+   `msd-pancreas` in and deliberately left `verse` and `verse-normal` out; then **D246**
+   accepted share-alike **project-wide**, so all four share-alike collections ship, and
+   **D247** accepted it on the BodyParts3D organ models too — against that repo's own
+   recommendation that v4.0's CC BY 4.0 governs. Both were given **directly in that session's
+   window**, not relayed, and their Q18 is closed. **The share-alike obligation on the public
+   build is therefore the owner's own word**, which is what this site's licence claims rest on.
+   **None of it changed `/educate`:** `verse` added a *condition* to the spine (Compressed
+   vertebra, CT, beside its two MRI ones), not an organ to the atlas, so the eight names held
+   through all four rulings. That is why the page carries no counts and does not enumerate
+   conditions per organ — it survived two rulings in one evening without an edit.
 
 ## W4.4 — the launch flip, stated exactly
 
