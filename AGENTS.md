@@ -253,6 +253,12 @@ inside your own body?" and the ICD captions (W9).
 9. **HIGHLIGHT YOUR DATA** — Custom markup tools. Picture6 (ICD lead traced).
 10. **HOW IT WORKS** — Two numbered steps. Their wording is owner-directed (2026-08-26, last revised by the owner 2026-09-16: step 1 now ends "it's free", step 2 explains DICOM once) and legally-adjacent — **do not "correct" it**.
 11. **TRUST STRIP** — Three badges: Runs entirely on your computer · No uploads, no cloud · Your data stays yours.
+11b. **THE THREE FREE PRODUCTS** — added 2026-10-06, owner-approved, because the header nav was
+    the only route to Vault Local and PrismEducate and the header is not sticky on mobile. Three
+    names, a line each, linking `/pricing`, `/vault` and `/educate`. **Additive by design:**
+    it sits after the arc so sections 1–11, the founder's story and the FDA intended-use wording
+    are untouched. It does **not** restate the Vault's approved privacy sentence — that lives on
+    `/vault` and is not to be paraphrased — and it describes the atlas without counts.
 12. **FINAL CTA** — "See yourself like never before." Download + support buttons.
 
 Footer (in the layout, on every page): `© <year> Bolthouse Labs, Inc.` — the only Bolthouse
