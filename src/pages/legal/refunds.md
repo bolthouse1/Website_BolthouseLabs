@@ -15,7 +15,7 @@ description: MyBodyPrism is free in this version — there are no charges and no
 There is no purchase, fee, or subscription — so there is nothing to cancel and
 nothing to refund.
 
-Free access is not guaranteed to continue. If we introduce paid features in the
+If we introduce paid features in the
 future, we will present their payment, cancellation, and refund terms **at the
 time of purchase**, and provide the disclosures required by applicable law. See
 the [Terms of Service](/legal/tos) §4 (Free access and future changes) and §5.

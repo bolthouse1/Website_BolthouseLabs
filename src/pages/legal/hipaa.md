@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/Default.astro
-title: HIPAA Notice — MyBodyPrism
+title: HIPAA and MyBodyPrism
 description: MyBodyPrism v1.1 is desktop-only — no PHI is transmitted to or processed by us.
 ---
 
 <div class="container narrow">
 
-# HIPAA Notice
+# HIPAA and MyBodyPrism
 
 **Effective date:** August 7, 2026
 **Applies to:** MyBodyPrism v1.1.0
@@ -16,8 +16,8 @@ description: MyBodyPrism v1.1 is desktop-only — no PHI is transmitted to or pr
 Bolthouse Labs in this version.**
 
 MyBodyPrism v1.1 is desktop-only and local-only: the Desktop Viewer runs
-entirely on your own computer, and **your imaging never leaves your
-device**. No feature of the Service transmits your scans, or anything
+entirely on your own computer, and **in this version your imaging stays on
+your device**. No feature of this version transmits your scans, or anything
 derived from them, off your machine.
 
 Because no PHI reaches our servers, Bolthouse Labs does not receive,
@@ -26,10 +26,13 @@ HIPAA Business Associate in connection with MyBodyPrism v1.1. We are not a
 Covered Entity and do not provide healthcare services.
 
 The Viewer's only outbound network calls are to activate and verify your
-license — these send a hashed machine ID and your activation/trial
+license — these send a hashed machine ID and your activation
 details, never your imaging. The limited, non-PHI account information we
-do collect (email address, payment metadata, machine-ID hash) is described
+do collect (email address and machine-ID hash) is described
 in the [Privacy Policy](/legal/privacy).
+
+HIPAA does not apply to MyBodyPrism v1.1, and we do not claim HIPAA
+compliance or certification.
 
 ## Questions
 

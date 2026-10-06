@@ -9,26 +9,26 @@ const apiBase = API_BASE;
 ---
 
 <Layout
-  title={DOWNLOADS_LIVE ? "Get MyBodyPrism — free beta" : "MyBodyPrism — Coming soon"}
+  title={DOWNLOADS_LIVE ? "Get MyBodyPrism — free" : "MyBodyPrism — Coming soon"}
   description={
     DOWNLOADS_LIVE
-      ? "The MyBodyPrism Desktop Viewer is a free beta. Enter your email and download. In this version, your imaging stays on your device."
-      : "The MyBodyPrism Desktop Viewer is coming soon as a free beta. Join the waitlist to hear the moment it's ready to download."
+      ? "The MyBodyPrism Desktop Viewer is free. Enter your email and download. In this version, your imaging stays on your device."
+      : "The MyBodyPrism Desktop Viewer is coming soon, free. Join the waitlist to hear the moment it's ready to download."
   }
 >
   <section class="container">
-    <h1>{DOWNLOADS_LIVE ? "Get MyBodyPrism — free beta" : "MyBodyPrism — coming soon"}</h1>
+    <h1>{DOWNLOADS_LIVE ? "Get MyBodyPrism — free" : "MyBodyPrism — coming soon"}</h1>
 
     {
       DOWNLOADS_LIVE ? (
         <p class="lede">
-          The full MyBodyPrism viewer, as a <strong>free beta</strong>. Enter
+          The full MyBodyPrism viewer, <strong>free</strong>. Enter
           your email and download. In this version, your imaging stays on your
           device, and there's no AI processing.
         </p>
       ) : (
         <p class="lede">
-          The full MyBodyPrism viewer will be a <strong>free beta</strong>. It
+          The full MyBodyPrism viewer will be <strong>free</strong>. It
           isn't available to download yet. Leave your email and we'll tell you the
           moment it is. In this version, your imaging stays on your device, and
           there's no AI processing.

@@ -35,15 +35,16 @@ Subject to your compliance with this EULA, Bolthouse Labs grants
 you a limited, non-exclusive, non-transferable, non-sublicensable,
 revocable, royalty-free license to:
 
-- Install and use **one (1) copy** of the Software on **one (1)
-  computer** that you own or control (the "Authorized Machine"),
+- Install and use the Software on a computer that you own or
+  control (an "Authorized Machine") — under the free license, on
+  each computer you own or control (§2),
 - Use the Software solely for your **personal, non-commercial
   purpose** of viewing your own medical imaging data,
-- Use the Software while it is made available to you free of charge
-  — currently as a **free beta** whose license ends on **January 1, 2028**
-  (see §3.1) — or, if we introduce a paid model under the
-  [Terms of Service](/legal/tos) §4, during your paid
-  term.
+- Use the Software **free of charge**. The free license has **no
+  fixed end date**; it continues until it ends under §10, including
+  after a change to a paid subscription made with notice under
+  §3.1. If you subscribe to a paid version or feature, you may use
+  it during your paid term.
 
 This is a license, not a sale. We retain all right, title, and
 interest in and to the Software, including all intellectual
@@ -64,48 +65,54 @@ The Software is licensed per machine, not per user. To enforce this:
   transmit your MAC address, hard drive serial number, IP address,
   username, computer name, or any other directly identifying
   information for license-binding purposes.
-- Your license is **valid for one (1) Authorized Machine at a
-  time.** To move your license to a new machine, contact
+- **Free license:** one (1) free license per computer, activated
+  automatically on first launch. You may activate it on each
+  computer you own or control, for your personal use.
+- **Paid licenses** (if offered, §3.2) are valid for one (1)
+  Authorized Machine at a time. To move a paid license to a new
+  machine, contact
   [support@mybodyprism.com](mailto:support@mybodyprism.com); we
   will deactivate the old machine and issue a new activation. We
-  permit up to **three (3) machine transfers per 12-month
-  license period** at no additional charge.
+  permit up to **three (3) machine transfers per 12-month period**
+  at no additional charge.
 
-## 3. Free beta license and activation
+## 3. Free license and activation
 
-### 3.1 Free beta license
+### 3.1 Free license
 
-This version of the Software is a **beta release, provided free of
-charge**. On first launch:
+This version of the Software is provided **free of charge**. On first
+launch:
 
-- The Software obtains a **free beta license** bound to your machine
-  (see §2), limited to **one (1) free beta license per machine.** The
-  Software records issuance on our license server (indexed by
-  machine-ID hash) and locally (defensive backup).
-- The free beta license provides full Software functionality and
-  **ends on January 1, 2028** (the "Beta Period"). After the Beta Period
-  the Software will stop running under this license, following a short
-  grace period, and continued use will require whatever the current
-  version of the Software and its terms provide at that time (which may
-  include a free license for some or all features, a paid license, a new
-  version, or a combination — see Terms of Service §4). We will describe
-  what comes next at
-  [mybodyprism.com](https://mybodyprism.com) before the Beta Period ends.
-- Free access is not guaranteed to continue beyond the Beta Period and
-  may end earlier on notice to registered users (Terms of Service §4).
-- **Beta software.** A beta release may contain defects and may change
-  or be discontinued. The warranty disclaimers and limitations in §§12
-  and 13 apply with full force to the beta.
-- **Feedback.** We invite feedback on the beta (Help → Send Feedback…
-  in the Software, or [support@mybodyprism.com](mailto:support@mybodyprism.com)).
-  By sending feedback you grant Bolthouse Labs a perpetual, irrevocable,
-  royalty-free right to use it to improve the Software and our services,
-  without obligation or attribution to you. Please do not include
-  medical images or personal health information in feedback.
+- The Software obtains a **free license** bound to your machine (see
+  §2), limited to **one (1) free license per machine.** Activation
+  needs a one-time internet connection; after it, the Software works
+  offline. The Software records issuance on our license server
+  (indexed by machine-ID hash) and locally (defensive backup).
+- The free license provides full Software functionality and has **no
+  fixed end date**.
+- **Changes to the free license.** We may in the future offer the
+  Software, or some of its features, only under a paid subscription,
+  including for continued use of a version you have already
+  installed. If we do, we will give registered users at least 30
+  days' notice by email and post the change at
+  [mybodyprism.com](https://mybodyprism.com) before it takes effect,
+  and we will present the price and terms before you are asked to
+  pay. If you do not subscribe, your free license ends on the date the
+  change takes effect (§10.3).
+- **Early release.** This is an early release of new software. It may
+  contain defects and may change or be discontinued. The warranty
+  disclaimers and limitations in §§13 and 14 apply in full.
+- **Feedback.** We invite feedback on the Software (Help → Send
+  Feedback… in the Software, or
+  [support@mybodyprism.com](mailto:support@mybodyprism.com)). By
+  sending feedback you grant Bolthouse Labs a perpetual, irrevocable,
+  royalty-free right to use it to improve the Software and our
+  services, without obligation or attribution to you. Please do not
+  include medical images or personal health information in feedback.
 
-Attempting to circumvent the one-free-beta-license-per-machine limit
-(e.g., by deleting local files, by virtual-machine fingerprint
-manipulation, or by other means) is a violation of this EULA.
+Attempting to circumvent the one-free-license-per-machine limit (e.g.,
+by deleting local files, by virtual-machine fingerprint manipulation,
+or by other means) is a violation of this EULA.
 
 ### 3.2 Paid activation codes (future)
 
@@ -128,7 +135,7 @@ You **may not**:
 - Distribute, sell, lease, sublicense, rent, lend, give, or
   otherwise transfer the Software, or any activation code issued to
   you, to any third party.
-- Use the Software on more than one Authorized Machine
+- Use a paid license on more than one Authorized Machine
   concurrently.
 - Reverse-engineer, decompile, or disassemble the Software, or
   attempt to derive the source code of the Software, except to
@@ -177,7 +184,7 @@ the [Privacy Policy](/legal/privacy). Key points:
   files locally on your device.
 - The Software does not transmit your imaging to us.
 - The Software's only outbound network calls are to activate and
-  verify your license (machine-ID hash + activation/trial details —
+  verify your license (machine-ID hash + activation details —
   never your imaging). Crash reports stay local on your device. See
   Privacy Policy §4.
 - The Software writes derived files (ROI mask sidecars, per-series
@@ -218,11 +225,8 @@ not extend to the proprietary portions of the Software.
 This EULA takes effect when you first install or use the Software
 and continues until terminated as described below.
 
-This version of the Software is a **free beta** and your free beta
-license **ends on January 1, 2028** (§3.1). Free access is not guaranteed
-to continue beyond that date and may end earlier on prior notice to
-registered users; we may change to a paid model under the
-[Terms of Service](/legal/tos) §4.
+The free license has **no fixed end date** (§3.1). It ends only as
+described in §10.3.
 
 ### 10.2 Termination by you
 
@@ -234,15 +238,14 @@ so no fees or refunds are involved.
 
 This EULA automatically terminates if:
 
-- The Beta Period ends (January 1, 2028, plus any grace period) and you
-  do not obtain whatever license the then-current version of the
-  Software provides (§3.1).
-- We discontinue free access or move to a paid model and you do not
-  obtain a paid license after notice (Terms of Service §4).
+- We change the Software to a paid subscription under §3.1, the
+  notice period has passed, and you have not subscribed.
 - You materially breach any provision of this EULA, the
   [Terms of Service](/legal/tos), or applicable law, and
   do not cure the breach within 14 days of written notice (where
   cure is reasonable).
+- We are required by law to stop making the Software available to
+  you.
 
 We may terminate immediately without notice in cases of (a)
 security violations, (b) license-evasion or activation-code abuse,

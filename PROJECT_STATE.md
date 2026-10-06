@@ -18,30 +18,35 @@ structural claim. [`STATUS.md`](STATUS.md) is the portfolio review's machine-wri
 
 ## Current state
 
-Snapshot written 2026-09-21. Branch `master` at `ef0f27b` before this record, tree clean,
+Snapshot written 2026-10-05. Branch `master` at `7b16552` before this record, tree clean,
 in sync with `origin`. The site is live and gated.
 
-**The launch moved to Fri 2027-01-01** (owner decision 2026-09-21, for legal and patent work;
-it was 2026-10-01), and **the free beta now ends January 1, 2028** (was July 1, 2027). What
-follows the beta is deliberately undecided. Launch-Manager
-`DISPATCH-2026-09-21-date-move.md` §3 carries this repo's share. Calendar: freeze Fri 4 Dec;
-final build 14–18 Dec; W5.1 and W4.1 21–23 Dec; **W4.4 flip on 1 Jan 2027**.
+**v1.1 is free, with no fixed end date, one licence per computer on each computer the user
+owns or controls** (owner decision 2026-09-26/27). The word *beta* is gone from legal, the
+app, this site and email, and a switch to a paid subscription is **reserved only in the
+EULA**. Never write "forever" (avoid-list, owner 2026-09-26).
 
-The 2026-09-13 park ended for this date move. Start from
-[`docs/handoffs/HANDOFF_2026-09-21.md`](docs/handoffs/HANDOFF_2026-09-21.md), which carries the
-next session's starting prompt; the 2026-09-13 handoff is superseded.
+**Three products ship on Fri 2027-01-01** (owner decision 2026-10-05): the viewer, **Vault
+Local bundled in the viewer's installer**, and **PrismEducate standalone** — all free.
+Launch-Manager `DISPATCH-2026-10-05-three-products.md` §4 carries this repo's share; §4a (the
+free-viewer pass) shipped 2026-10-05, §4b (the three-product site) is open item 9. Calendar:
+freeze Fri 4 Dec; final build 14–18 Dec; W5.1 and W4.1 21–23 Dec; **W4.4 flip on 1 Jan 2027**,
+now covering all three downloads.
+
+Start from [`docs/handoffs/HANDOFF_2026-09-21.md`](docs/handoffs/HANDOFF_2026-09-21.md) for the
+last full handoff, and `docs/handoffs/2026-09-29-rules-review.md` for the rules move into
+`AGENTS.md`; both predate the free-viewer pass.
 
 ## Status
 
-**Live and gated.** Verified 2026-09-21, live and in local builds of both flag states:
+**Live and gated.** Verified 2026-10-05, live and in local builds of both flag states:
 
 - All routes `200` — `/`, `/pricing`, `/support`, `/system-requirements`,
   `/account`, all eight `/legal/*`. `http://` `301`s to `https://`; `www` to apex.
-- **Free beta, with no end date on any page outside `/legal`** since the 2026-09-16 copy pass
-  (owner decision: the date lives only in the EULA and ToS). "July 1, 2027" renders **0** times
-  outside `/legal` in both flag states. **The EULA (4 places) and ToS (3) read January 1, 2028**
-  since `2aae7b5`, and "July 1, 2027" appears nowhere on the site.
-  Zero occurrences of "no time limit" or "free trial" survive anywhere.
+- **Free, with no end date anywhere and no "beta" anywhere.** Since the free-viewer pass, the
+  built output in **both** flag states has **0** hits for "beta", "2028", "2125", "valid until"
+  and "forever" — the mirrors carry "no fixed end date" instead of a date. Zero "no time
+  limit" or "free trial" too. Re-grep the **built** output after any copy change.
 - **Homepage imagery 0.59 MB**, down from 7.62 MB — all seven WebP verified live and
   byte-valid. `logo.png` remains PNG for Open Graph. Old PNGs and the moved brand art
   correctly `404`.
@@ -52,8 +57,9 @@ next session's starting prompt; the 2026-09-13 handoff is superseded.
 - **Each legal page has its own title and description** since `ba23072` ("Medical Disclaimer —
   MyBodyPrism", and so on). From 2026-08-26 until then, all eight shared the site default.
 - **Legal mirrors current.** `eula`, `tos`, `privacy` and `disclaimer` are content-identical to
-  desktop canonical `ce58724e` (`release/v1.1`), verified 2026-09-21 before `2aae7b5` shipped.
-  At that time `origin/release/v1.1` was `f29ba243`, with no `legal/` commits after `ce58724e`.
+  desktop canonical **`9a395e2c`** (`release/v1.1`), verified 2026-10-05. That is the legal
+  commit pinned by Launch-Manager's `OCTOBER-SITTING.md`; `origin/release/v1.1` was `8a42bc10`,
+  with no `legal/` commit after `9a395e2c`.
 - **No "pending lawyer review" banner on any legal page** since `35accb4` (owner decision
   2026-09-13). Verified live on all seven pages that carried it.
 - **Downloads still gated.** `PUBLIC_DOWNLOADS_LIVE` is false; `/pricing` reads
@@ -63,6 +69,7 @@ next session's starting prompt; the 2026-09-13 handoff is superseded.
 
 | | |
 |---|---|
+| **Deployed 2026-10-05** | the free-viewer pass — Launch-Manager `DISPATCH-2026-09-27-free-viewer.md` §3, owner-approved 2026-09-27 and unapplied here until now, with exact rows in `FREE-VIEWER-CHANGE.md` §4. EULA and ToS mirrors re-synced from desktop canonical **`9a395e2c`** (pinned by `OCTOBER-SITTING.md`; identical to the branch tip `8a42bc10` for both files): free, **no fixed end date**, one licence per computer on **each computer you own or control**, no "beta". "free beta" → "free" on index, pricing, support and account; homepage step 2 now says to open the folder from a CD, USB stick or unzipped portal download, because the viewer opens folders only (`QFileDialog.getExistingDirectory`) and has no drop or zip handling; mailto subject → "MyBodyPrism feedback" and "Send feedback"; support heading → "It's early"; `beta-notice`/`beta-asks` renamed `feedback-*` so the built output greps clean. `refunds.md`: "Free access is not guaranteed to continue." deleted (a paid-switch statement belongs only in the EULA). `hipaa.md`: retitled **"HIPAA and MyBodyPrism"** (URL unchanged), "never leaves your device" → "in this version your imaging stays on your device", "activation/trial details" → "activation details", "payment metadata" dropped, and the plain line "HIPAA does not apply to MyBodyPrism v1.1, and we do not claim HIPAA compliance or certification." added. Effective dates unchanged — they move at the 4 Dec freeze. `AGENTS.md`'s Product Model rewritten on the owner's approval. Built in both flag states: 15 pages, `dist/CNAME` correct, 0 hits for "beta"/"2028"/"2125"/"valid until"/"forever", and the gate holds (`mbp-waitlist-form` + 0 "Download free" gated; `mbp-trial-form` + 1 flipped) |
 | **Deployed 2026-09-21** | `2aae7b5` — EULA and ToS mirrors re-synced to desktop canonical `ce58724e` (the date move, owner-approved in the desktop's window): the beta ends **January 1, 2028** (EULA §1, §3.1, §10.1, §10.3; ToS §2, §4.1, §20), and both after-beta lists read "which may include a free license for some or all features, a paid license, a new version, or a combination". Effective dates unchanged (August 7, 2026; set at the 4 Dec freeze). Body only, from `git show ce58724e:legal/…`. Pushed on the owner's go. Built in both flag states: only `legal/eula.html` and `legal/tos.html` changed. Verified live: 4 and 3 "January 1, 2028", 0 "July 1, 2027", all 15 routes byte-identical to the verified build, `/pricing` still gated |
 | **Docs 2026-09-21** | `3fd5c56` — the date move (ship 2027-01-01, beta end 2028-01-01) and the 09-16 copy pass recorded in CLAUDE.md (owner-approved text), this file, START_HERE and AGENTS. Pushed on the owner's go |
 | **Deployed 2026-09-16** | `669b5cd` — founder prose, dictated by the owner: "the irony was unmissable." became "I knew there had to be a better way to visualize medical data.", and the paragraph beginning "MyBodyPrism is what I wanted on the day I came home from the hospital" was deleted. Committed and pushed by a **BodyAtlas-rooted session** on his instruction, not from this repo's window. Verified live 2026-09-21 from here |
@@ -163,6 +170,21 @@ repo** — see Guardrails.
    What changed. Canonical's ToS wraps dates across lines ("January 1,⏎2028"), so match
    whitespace-tolerantly when checking. **Next legal re-sync: after the 4 Dec freeze**, when
    the owner sets every changed legal doc's effective date to the freeze date.
+
+9. **Open: the three-product site** (`DISPATCH-2026-10-05-three-products.md` §4b). Three products
+   ship 2027-01-01 — the viewer, **Vault Local bundled in the viewer's installer**, and
+   **PrismEducate standalone**, all free. Still to build here: a Vault Local page and a
+   PrismEducate page; download flows for **two** installers (viewer-with-Vault, and
+   PrismEducate); an **attributions page** for PrismEducate's CC BY collections, matching what
+   its app ships; `system-requirements.astro` covering three products; and W4.4 extended to all
+   three downloads. Constraints: **"free" and never "forever"**; the **approved privacy
+   sentence, verbatim and not widened** — "Your scans and records never leave your computer.
+   The only thing that ever goes out is a one-time licence check, which carries no health
+   data." — on the Vault page, noting the licence check belongs to the **viewer** (the Vault
+   itself makes no outbound call). **PrismEducate's page specifics wait** for that repo's
+   organ-by-organ report: five of its collections cannot ship publicly, and the owner ruled on
+   2026-10-05 that share-alike collections stay out of the public build, so the atlas is
+   smaller than the dispatch implied. Do not promise content that is absent.
 
 ## W4.4 — the launch flip, stated exactly
 
@@ -284,15 +306,13 @@ expiry wording; that commitment now lives only in canonical ToS §4.1, via its m
   on 2026-09-02**, because the beta decision made their central claim false, and **again by
   the owner's own copy pass on 2026-09-16**; both times only on his approval. That is the bar
   for touching them again.
-- **v1.1 is a FREE BETA ending January 1, 2028** (owner decision 2026-09-21; July 1, 2027
-  from 2026-09-02 until then). Free, with no payment details and no subscription — but
-  **not** unlimited, perpetual, forever, or "no time limit". Those phrasings were live and
-  false until 2026-09-02; do not reintroduce them. **What follows the beta is undecided**
-  (owner, 2026-09-21), so copy may neither promise nor rule out a free version afterwards.
-  **The end date appears only in `/legal/eula` and `/legal/tos`** (owner decision 2026-09-16);
-  do not put it back on a page. Canonical terms: the desktop repo's `legal/eula.md` §3.1 and
-  `legal/terms-of-service.md` §4.1.
-- **Copy must stay consistent with the free-beta positioning.** No
+- **v1.1 is FREE, with no fixed end date** (owner decision 2026-09-26/27; a beta ending
+  January 1, 2028 until then, and July 1, 2027 before that). One licence per computer, on each
+  computer the user owns or controls. No payment details and no subscription — and **never**
+  "free forever", "permanently free", "stays free", unlimited or perpetual. The paid-subscription
+  switch is reserved **only in the EULA**, on 30 days' notice; it appears in no page copy.
+  Canonical terms: the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1.
+- **Copy must stay consistent with the free positioning.** No
   subscription or renewal wording.
 - Do not "fix" the `origin` remote to `mybodyprism-com`. The GitHub repo is
   **`Website_BolthouseLabs`**; only the local folder was renamed.

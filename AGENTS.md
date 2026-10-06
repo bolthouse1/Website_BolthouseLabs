@@ -70,7 +70,7 @@ page renders blank with JS disabled.
 
 Read [`PROJECT_STATE.md`](PROJECT_STATE.md) for the live snapshot and open
 questions. **The site is live and nothing is pending** — the migration, the
-free-beta copy, the legal mirrors and the WebP imagery all shipped by 2026-09-02.
+free-viewer copy, the legal mirrors and the WebP imagery all shipped by 2026-09-02.
 
 The one remaining action is **W4.4**, the `PUBLIC_DOWNLOADS_LIVE` flip, and it is
 **not yours to perform**: it needs W4.1 evidence recorded by Launch-Manager *and*
@@ -107,7 +107,7 @@ migration, so verify any claim against `src/` before relying on it.
 - **Email capture**: two paths, switched by `PUBLIC_DOWNLOADS_LIVE`. While it is false (today),
   `/pricing` takes **waitlist** signups via Formspree form `xykbbnql` — verified live 2026-09-12.
   Once it flips, the download form posts to the licence API (`PUBLIC_API_BASE`) and Formspree
-  retires. Beta **feedback** is a separate `mailto:support@mybodyprism.com`, never the waitlist
+  retires. **Feedback** is a separate `mailto:support@mybodyprism.com`, never the waitlist
   form.
 
 ## Brand Identity
@@ -123,15 +123,17 @@ migration, so verify any claim against `src/` before relying on it.
 ## Product Model (Critical Context — updated 2026-09-21, owner-directed)
 MyBodyPrism is NOT a concierge/mail-in service. It is self-service, and **v1.1
 (launching 2027-01-01, moved from 2026-10-01 by owner decision 2026-09-21) ships the desktop app ONLY**:
-1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. **Free BETA licence, one per machine, ending January 1, 2028** (owner decision 2026-09-21; it was July 1, 2027 from 2026-09-02). Canonical terms: the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1. The EULA/ToS mirrors here carry the new date since `2aae7b5` (synced from canonical `ce58724e`). **What follows the beta is deliberately undecided** (owner, 2026-09-21). It may include a free licence for some or all features, a paid one, or both, so copy may neither promise nor rule out a free version afterwards.
+1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. **Free licence, one per computer, on each computer the user owns or controls — with no fixed end date** (owner decision 2026-09-26/27; it was a beta ending January 1, 2028). Canonical terms: the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1. The EULA/ToS mirrors here carry that text since the `9a395e2c` re-sync. **A switch to a paid subscription is reserved on 30 days' notice, and that reservation is stated only in the EULA** — never in page copy.
 
-   **The licence is free, but it is NOT non-expiring.** Do not describe the licence as
-   unlimited, perpetual, forever, or without a time limit. Say *free beta*.
+   **The licence is free, and it has no fixed end date — but never say "forever".** Do not
+   write "free forever", "permanently free" or "stays free" (avoid-list, owner 2026-09-26),
+   and do not call it unlimited or perpetual. Say *free*. The word *beta* is dropped
+   everywhere: legal, app, website and email.
 
-   **The end date appears only in `/legal/eula` and `/legal/tos`.** Owner decision
-   2026-09-16 (Launch-Manager `DISPATCH-2026-09-16-website-copy.md`, decision 1): no other
-   page names it, and no page carries payment, subscription or "paid features later"
-   wording. Do not add the date back to a page; the legal mirrors carry it.
+   **No payment, subscription or "paid features later" wording on any page.** Owner decision
+   2026-09-16 (Launch-Manager `DISPATCH-2026-09-16-website-copy.md`, decision 1), carried
+   forward by the 2026-09-27 pass, which also removed the licence end date from the legal
+   mirrors: canonical now states no fixed end date.
 2. **Cloud streaming viewer + VR streaming** — ROADMAP (v1.2+, gated on AWS GPU quota + CloudFront verification), NOT shipped. The page copy must NOT claim streaming, browser viewing, VR, HIPAA-compliant cloud, or end-to-end encryption until those services actually exist.
 
 If/when streaming copy returns: do NOT mention which cloud provider (AWS/Azure) and do NOT mention that the user pays for streaming costs. Until then the trust strip sells the local-first story: "Runs entirely on your computer · No uploads, no cloud · Your data stays yours."

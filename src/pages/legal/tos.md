@@ -38,12 +38,11 @@ The Service is a personal viewer for looking at your own medical
 imaging data. The Service is **not a medical device**. Read the
 [Medical Disclaimer](/legal/disclaimer) before using the Service.
 
-The Desktop Viewer is **provided free of charge as a beta release** in
-this version. There is no purchase, license fee, or subscription
-required to download, install, or use it. On first launch the Software
-obtains a free beta license (one per machine — see the
-[End-User License Agreement](/legal/eula) §3) that **ends on January 1,
-2028**. See §4 for how this may change in the future.
+The Desktop Viewer is provided **free of charge**. There is no
+purchase, license fee, or subscription required to download, install,
+or use it. On first launch the Software obtains a free license (one per
+machine), which has **no fixed end date**. The license terms are in the
+[End-User License Agreement](/legal/eula) §3.
 
 ## 3. Account creation and security
 
@@ -66,35 +65,28 @@ suspect any unauthorized use.
 
 ## 4. Free access and future changes
 
-### 4.1 Free beta during this version
+### 4.1 The Desktop Viewer is free
 
-The MyBodyPrism Desktop Viewer is provided to you **free of charge, as
-a beta release,** in this version. We do not require a purchase,
-license fee, subscription, or payment method to download, install, or
-use it. The free beta license issued to your machine **ends on January 1,
-2028** (the "Beta Period" — [End-User License Agreement](/legal/eula)
-§3.1). Before the Beta Period ends we will describe at
-[mybodyprism.com](https://mybodyprism.com) what the Software and its
-terms provide after that date, which may include a free license for some
-or all features, a paid license, a new version, or a combination. A beta
-release may contain defects and may change or be discontinued.
+The MyBodyPrism Desktop Viewer is provided to you **free of charge**.
+We do not require a purchase, license fee, subscription, or payment
+method to download, install, or use it. The free license issued to your
+machine has **no fixed end date**; its terms are in the
+[End-User License Agreement](/legal/eula) §3.1. This is an early release of
+new software: it may contain defects and may change or be discontinued.
 
-### 4.2 Free access is not guaranteed to continue
+### 4.2 Changes to the Service
 
-Free access is provided at our discretion, **ends with the Beta
-Period unless we say otherwise, and is not guaranteed to remain
-free.** We reserve the right, at any time and in our sole
-discretion, to: (a) introduce fees, paid tiers, or paid features;
-(b) modify, limit, or discontinue any part of the Service; and
-(c) **require payment to continue using the Service or any feature,
-including features that are free today.** We will give registered
-users prior notice of a change that introduces a fee — by email to
-the address you provided and/or by posting on the Site — a
-reasonable time before it takes effect. If you do not agree to such
-a change, your remedy is to stop using the Service before the change
-takes effect; continued use after the effective date constitutes
-acceptance. **Nothing in these Terms grants you a perpetual or
-free-forever license, and no feature or price is guaranteed.**
+The Desktop Viewer's license is governed by the
+[End-User License Agreement](/legal/eula) §3. For the rest of the Service,
+we reserve the right, at any time and in our sole discretion, to: (a)
+introduce fees, paid tiers, or paid features; and (b) modify, limit, or
+discontinue any part of the Service. We will give registered users
+prior notice of a change that introduces a fee — by email to the
+address you provided and/or by posting on the Site — a reasonable time
+before it takes effect. If you do not agree to such a change, your
+remedy is to stop using the affected part of the Service before the
+change takes effect; continued use after the effective date constitutes
+acceptance.
 
 ### 4.3 Streaming will be a paid feature
 
@@ -393,11 +385,8 @@ Sacramento, CA 95834, or by telephone at (800) 952-5210.
 
 - There is no subscription, no automatic renewal, and no charge of
   any kind to download, install, or use the Desktop Viewer.
-- This version is a free **beta**; its license ends on **January 1,
-  2028** (§4.1). Free access is not guaranteed to continue beyond that
-  date. We may introduce fees or paid features in the future, and may
-  require payment to continue using the Service, on prior notice to
-  registered users (see §4).
+- The Desktop Viewer's free license has no fixed end date (§4.1); its
+  terms are in the End-User License Agreement §3.
 - If we introduce paid features, we will present their terms —
   including any price, renewal, and cancellation terms — and provide
   the disclosures required by applicable law, before you purchase.
