@@ -4,10 +4,15 @@ import Layout from "../layouts/Default.astro";
 
 <Layout
   title="System requirements — MyBodyPrism"
-  description="Hardware and operating-system requirements for the MyBodyPrism Desktop Viewer."
+  description="Hardware and operating-system requirements for the MyBodyPrism Desktop Viewer, Vault Local, and PrismEducate."
 >
   <section class="container narrow">
     <h1>System requirements</h1>
+
+    <p class="lede">
+      Three products, all free, all Windows. Vault Local installs with the
+      viewer; PrismEducate is its own download.
+    </p>
 
     <h2>Desktop Viewer</h2>
     <table>
@@ -28,6 +33,38 @@ import Layout from "../layouts/Default.astro";
       not supported in V1.
     </p>
 
+    <h2>Vault Local</h2>
+    <p class="muted">
+      Installed with the Desktop Viewer, so its requirements are the viewer's.
+      It runs a small server on your own computer and opens its pages in your
+      browser, so it also needs a current browser — Edge, Chrome or Firefox.
+      Allow for disk space for whatever you keep in it, on top of the viewer's.
+    </p>
+    <table>
+      <tbody>
+        <tr><th>Operating system</th><td>Windows 10 (64-bit) or Windows 11</td></tr>
+        <tr><th>Browser</th><td>A current version of Edge, Chrome or Firefox</td></tr>
+        <tr><th>Disk</th><td>Space for your own records, beyond the viewer's install</td></tr>
+        <tr><th>Network</th><td>Not required — Vault Local makes no network calls</td></tr>
+      </tbody>
+    </table>
+
+    <h2>PrismEducate</h2>
+    <p class="muted">
+      A separate download, and lighter than the viewer: it shows published
+      imaging rather than rendering your own scans, so it asks less of your
+      graphics card.
+    </p>
+    <table>
+      <tbody>
+        <tr><th>Operating system</th><td>Windows 10 (64-bit) or Windows 11</td></tr>
+        <tr><th>GPU</th><td>Any current graphics card with up-to-date drivers</td></tr>
+        <tr><th>RAM</th><td>8 GB or more</td></tr>
+        <tr><th>Display</th><td>1920×1080 or higher; HiDPI supported</td></tr>
+        <tr><th>Network</th><td>Required for activation; offline use after activation works</td></tr>
+      </tbody>
+    </table>
+
     <p>
       Questions? <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
     </p>
@@ -44,5 +81,7 @@ import Layout from "../layouts/Default.astro";
     }
     th { width: 35%; background: var(--c-accent); }
     .muted { color: var(--c-muted); font-size: 0.92rem; }
+    .lede { margin-bottom: 1.5rem; }
+    h2 { font-size: 1.15rem; margin: 2rem 0 0.5rem; }
   </style>
 </Layout>

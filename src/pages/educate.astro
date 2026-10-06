@@ -1,0 +1,266 @@
+---
+// PrismEducate — standalone product page (owner decision 2026-10-05,
+// Launch-Manager DISPATCH-2026-10-05-three-products §3 and §4b).
+//
+// WHAT THIS PAGE MAY CLAIM, and why it is worded the way it is:
+//
+// PrismEducate's public build carries only permissively licensed data, so its
+// atlas is smaller than its private build. Source of truth is that repo's own
+// generated report, docs/evidence/2026-10-05-public-build-contents.md
+// (PE-LIC-10, read 2026-10-05), NOT this page and NOT a hand-kept list:
+//   - scrollable scans ship for Bowel, Kidneys, Liver, Lungs, Pancreas,
+//     Prostate, Spine and Thyroid, after the owner accepted share-alike for
+//     the abdominal collections on 2026-10-05 (that report, regenerated 22:37);
+//   - the spine keeps its MRI conditions and loses its CT compressed-vertebra
+//     pages, because `verse` is still held back (D245). Launch-Manager relayed
+//     that the spine had both; the generated report says otherwise, and the
+//     report is the authority — raised with it 2026-10-05;
+//   - Brain, Breast and Heart ship published case-report figures but no
+//     scrollable scans, and no decision changes that;
+//   - every case-report figure is CC BY or CC0 and carries its citation.
+//
+// So: name the organs that have scrollable scans, never a count, and never
+// promise a set size. A count would be falsified by the share-alike decision
+// going either way; the names stay true.
+//
+// Downloads are behind EDUCATE_DOWNLOADS_LIVE, which is deliberately NOT the
+// viewer's switch — see src/site-config.ts for why.
+import Layout from "../layouts/Default.astro";
+import { EDUCATE_DOWNLOADS_LIVE, API_BASE, EDUCATE_INSTALLER_PATH, WAITLIST_ENDPOINT } from "../site-config";
+
+const educateEndpoint = API_BASE + EDUCATE_INSTALLER_PATH;
+---
+
+<Layout
+  title="PrismEducate — MyBodyPrism"
+  description="PrismEducate is a free educational atlas of real medical imaging: scroll through published scans, organ by organ, and see what each finding looks like."
+>
+  <section class="container narrow">
+    <p class="eyebrow">Free, and its own download</p>
+    <h1>PrismEducate</h1>
+
+    <p class="lede">
+      An atlas for learning what medical imaging actually looks like. Pick an
+      organ, pick a condition, and look at real published scans — labelled and
+      explained in plain words.
+    </p>
+
+    <h2>What's inside</h2>
+    <p>
+      Every organ in the atlas comes with figures from published case reports,
+      each shown with the credit its licence asks for. For these organs you can
+      also scroll through full scans, slice by slice, the way a radiologist
+      would:
+    </p>
+    <ul class="organs">
+      <li>Bowel</li>
+      <li>Kidneys</li>
+      <li>Liver</li>
+      <li>Lungs</li>
+      <li>Pancreas</li>
+      <li>Prostate</li>
+      <li>Spine</li>
+      <li>Thyroid</li>
+    </ul>
+    <p class="muted">
+      The brain, breast and heart sections show published figures rather than
+      scrollable scans: the scan collections for those organs aren't licensed
+      for us to pass on to you. We'd rather ship a smaller atlas than one we
+      don't have the right to give away. Where a licence allows more, more gets
+      added.
+    </p>
+    <p>
+      Everything here is somebody else's work, used under its own licence. The
+      app lists every collection, its licence and the credit it asks for, on a
+      screen you can open at any time.
+    </p>
+
+    <h2>What it is not</h2>
+    <p class="muted">
+      PrismEducate is for learning. It shows, labels and explains published
+      imaging — it does not diagnose, and it is not a medical device. It is not
+      a place to open your own scans: that's
+      <a href="/pricing">the MyBodyPrism viewer</a>.
+    </p>
+
+    <h2>{EDUCATE_DOWNLOADS_LIVE ? "Get PrismEducate" : "Not available to download yet"}</h2>
+    {
+      EDUCATE_DOWNLOADS_LIVE ? (
+        <form id="mbp-edu-form" novalidate>
+          <label class="visually-hidden" for="mbp-edu-email">Email address</label>
+          <input
+            id="mbp-edu-email"
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
+          <button id="mbp-edu-btn" type="submit" class="btn btn-primary">
+            Get PrismEducate
+          </button>
+          <p class="form-note">
+            We'll use your email to follow up about your experience and tell you
+            about updates — nothing else. See the
+            <a href="/legal/privacy">Privacy Policy</a>.
+          </p>
+          <p id="mbp-edu-error" class="form-error" hidden role="alert">
+            Couldn't start the download. Check your email address and retry, or
+            write to <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
+          </p>
+          <p id="mbp-edu-ok" class="form-ok" hidden role="status">
+            Your download is starting…
+          </p>
+        </form>
+      ) : (
+        <form id="mbp-edu-waitlist-form" action={WAITLIST_ENDPOINT} method="POST" novalidate>
+          <input type="hidden" name="product" value="PrismEducate" />
+          <label class="visually-hidden" for="mbp-edu-waitlist-email">Email address</label>
+          <input
+            id="mbp-edu-waitlist-email"
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
+          <button id="mbp-edu-waitlist-btn" type="submit" class="btn btn-primary">
+            Tell me when it's ready
+          </button>
+          <p class="form-note">
+            We'll email you once when PrismEducate is ready to download — nothing
+            else. See the <a href="/legal/privacy">Privacy Policy</a>.
+          </p>
+          <p id="mbp-edu-waitlist-error" class="form-error" hidden role="alert">
+            Couldn't add you to the list. Check your email address and retry, or
+            write to <a href="mailto:support@mybodyprism.com">support@mybodyprism.com</a>.
+          </p>
+          <p id="mbp-edu-waitlist-ok" class="form-ok" hidden role="status">
+            You're on the list — we'll be in touch when it's ready.
+          </p>
+        </form>
+      )
+    }
+
+    <p class="muted">
+      PrismEducate is free, with no fixed end date. See the
+      <a href="/legal/eula">EULA</a> and
+      <a href="/legal/tos">Terms of Service</a> for the licence terms, and the
+      <a href="/system-requirements">system requirements</a> before installing.
+    </p>
+  </section>
+
+  {
+    EDUCATE_DOWNLOADS_LIVE && (
+      <script is:inline define:vars={{ educateEndpoint }}>
+        // Download handler, same shape as /pricing's: POST the email, follow the
+        // signed URL the API returns. Re-uses a still-valid link for the same
+        // address instead of minting another, so a second click cannot create a
+        // duplicate lead (the lesson from the viewer flow's 0ad99f1).
+        (function () {
+          var form = document.getElementById("mbp-edu-form");
+          if (!form) return;
+          var btn = document.getElementById("mbp-edu-btn");
+          var err = document.getElementById("mbp-edu-error");
+          var ok = document.getElementById("mbp-edu-ok");
+          var cached = null;
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var email = (document.getElementById("mbp-edu-email").value || "").trim();
+            if (!email || email.indexOf("@") < 1) {
+              err.hidden = false;
+              return;
+            }
+            err.hidden = true;
+            if (cached && cached.email === email && Date.now() < cached.until) {
+              window.location.href = cached.url;
+              return;
+            }
+            btn.disabled = true;
+            fetch(educateEndpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email: email }),
+            })
+              .then(function (response) {
+                if (!response.ok) throw new Error("http " + response.status);
+                return response.json();
+              })
+              .then(function (data) {
+                if (!data || !data.download_url) throw new Error("no url");
+                var ttl = (data.expires_in || 300) - 60;
+                cached = {
+                  email: email,
+                  url: data.download_url,
+                  until: Date.now() + ttl * 1000,
+                };
+                ok.hidden = false;
+                window.location.href = data.download_url;
+              })
+              .catch(function () {
+                err.hidden = false;
+              })
+              .then(function () {
+                setTimeout(function () {
+                  btn.disabled = false;
+                }, 8000);
+              });
+          });
+        })();
+      </script>
+    )
+  }
+
+  <style>
+    .narrow { max-width: 760px; padding: 2.5rem 1.25rem 4rem; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: var(--c-brand);
+      margin: 0 0 0.6rem;
+    }
+    h1 { margin: 0 0 1rem; }
+    .lede { font-size: 1.08rem; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; margin: 2rem 0 0.75rem; }
+    .organs {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .organs li {
+      border: 1px solid var(--c-border);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.9rem;
+      color: var(--c-text);
+    }
+    .muted { color: var(--c-muted); font-size: 0.92rem; }
+    form { margin: 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+    input[type="email"] {
+      width: 100%;
+      max-width: 22rem;
+      padding: 0.65rem 0.8rem;
+      background: var(--c-bg-2);
+      border: 1px solid var(--c-border);
+      border-radius: 4px;
+      color: var(--c-text);
+      font: inherit;
+    }
+    .form-note, .form-error, .form-ok { font-size: 0.85rem; margin: 0; }
+    .form-note { color: var(--c-muted); }
+    .form-error { color: var(--c-warm); }
+    .form-ok { color: var(--c-brand); }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  </style>
+</Layout>

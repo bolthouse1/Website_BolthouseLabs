@@ -1,0 +1,110 @@
+---
+// Vault Local — the PrismVault product, bundled inside the viewer's installer
+// (owner decision 2026-10-05, Launch-Manager DISPATCH-2026-10-05-three-products §4b).
+//
+// There is no download form here on purpose: Vault Local ships inside the
+// MyBodyPrism installer, so /pricing is the one download page for both.
+//
+// The privacy paragraph below is the owner's APPROVED wording, verified
+// 2026-10-05, and it is the ceiling on what this page may claim. Do not widen
+// it, and do not reword it. The one-time licence check it mentions belongs to
+// the VIEWER; the Vault itself makes no outbound call at all.
+//
+// Every other claim here was read in PrismVault's own source on 2026-10-05:
+//   - binds 127.0.0.1 only           src/prismvault/app_runtime.py:81
+//   - local-only host allow-list     src/prismvault/api.py:310
+//   - encrypted database (SQLCipher) src/prismvault/db.py, crypto.py
+//   - recovery key shown once        src/prismvault/crypto.py:12
+//   - no outbound HTTP client in src/prismvault
+// If any of those change, this page changes with them.
+import Layout from "../layouts/Default.astro";
+---
+
+<Layout
+  title="Vault Local — MyBodyPrism"
+  description="Vault Local keeps your scans and records on your own computer, in an encrypted store, with no account to create. Included free with the MyBodyPrism viewer."
+>
+  <section class="container narrow">
+    <p class="eyebrow">Included free</p>
+    <h1>Vault Local</h1>
+
+    <p class="lede">
+      A place on your own computer to keep your scans and records together —
+      encrypted, searchable, and yours. It is installed with the MyBodyPrism
+      viewer, and there is no account to create.
+    </p>
+
+    <h2>Your records stay with you</h2>
+    <p class="claim">
+      Your scans and records never leave your computer. The only thing that ever
+      goes out is a one-time licence check, which carries no health data.
+    </p>
+    <p class="muted">
+      That licence check belongs to the viewer. Vault Local itself makes no
+      network call at all.
+    </p>
+
+    <h2>How it works</h2>
+    <ul class="points">
+      <li>
+        <strong>It runs on your machine.</strong> Starting Vault Local runs a
+        small server on your own computer and opens its pages in your browser.
+        Nothing is hosted by us.
+      </li>
+      <li>
+        <strong>No account, no sign-in, no network.</strong> First run needs none
+        of them.
+      </li>
+      <li>
+        <strong>The store is encrypted on disk.</strong> Your vault database is
+        encrypted where it sits, not just protected by your Windows login.
+      </li>
+      <li>
+        <strong>One recovery key, shown once.</strong> You are shown a recovery
+        key when the vault is created, and it is never written to a file for
+        you. Keep it somewhere safe — it is how you get back in.
+      </li>
+      <li>
+        <strong>Free, with no fixed end date.</strong> See the
+        <a href="/legal/eula">EULA</a> for the licence terms.
+      </li>
+    </ul>
+
+    <h2>Getting it</h2>
+    <p>
+      Vault Local is part of the MyBodyPrism installer — install the viewer and
+      the Vault is there, with its own entry in your Start menu. See
+      <a href="/pricing">the download page</a> and the
+      <a href="/system-requirements">system requirements</a>.
+    </p>
+
+    <p class="muted">
+      Vault Local is for keeping and reviewing your own records. It is not a
+      medical device, and it is not for diagnosis.
+    </p>
+  </section>
+
+  <style>
+    .narrow { max-width: 760px; padding: 2.5rem 1.25rem 4rem; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: var(--c-brand);
+      margin: 0 0 0.6rem;
+    }
+    h1 { margin: 0 0 1rem; }
+    .lede { font-size: 1.08rem; color: var(--c-text); margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; margin: 2rem 0 0.75rem; }
+    .claim {
+      border-left: 2px solid var(--c-brand);
+      padding: 0.1rem 0 0.1rem 1rem;
+      margin: 0 0 0.6rem;
+      color: var(--c-text);
+    }
+    .points { padding-left: 1.15rem; margin: 0 0 1.25rem; }
+    .points li { margin-bottom: 0.7rem; color: var(--c-muted); }
+    .points strong { color: var(--c-text); }
+    .muted { color: var(--c-muted); font-size: 0.92rem; }
+  </style>
+</Layout>

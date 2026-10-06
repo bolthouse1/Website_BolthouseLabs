@@ -41,8 +41,9 @@ last full handoff, and `docs/handoffs/2026-09-29-rules-review.md` for the rules 
 
 **Live and gated.** Verified 2026-10-05, live and in local builds of both flag states:
 
-- All routes `200` — `/`, `/pricing`, `/support`, `/system-requirements`,
-  `/account`, all eight `/legal/*`. `http://` `301`s to `https://`; `www` to apex.
+- **17 routes** — `/`, `/pricing`, **`/vault`**, **`/educate`**, `/support`,
+  `/system-requirements`, `/account`, `/404`, `/500` and all eight `/legal/*`.
+  `http://` `301`s to `https://`; `www` to apex.
 - **Free, with no end date anywhere and no "beta" anywhere.** Since the free-viewer pass, the
   built output in **both** flag states has **0** hits for "beta", "2028", "2125", "valid until"
   and "forever" — the mirrors carry "no fixed end date" instead of a date. Zero "no time
@@ -69,6 +70,7 @@ last full handoff, and `docs/handoffs/2026-09-29-rules-review.md` for the rules 
 
 | | |
 |---|---|
+| **Prepared 2026-10-05, not yet pushed** | the three-product site — `DISPATCH-2026-10-05-three-products.md` §4b. **`/vault`**: Vault Local, carrying the owner's approved privacy sentence verbatim ("Your scans and records never leave your computer. The only thing that ever goes out is a one-time licence check, which carries no health data."), with the licence check attributed to the **viewer** because the Vault makes no outbound call — every other claim read in PrismVault's source (binds `127.0.0.1` only, `app_runtime.py:81`; SQLCipher store; recovery key shown once, `crypto.py:12`; no HTTP client in `src/prismvault`). No download form: the Vault ships inside the viewer's installer. **`/educate`**: PrismEducate, standalone, with its **own** switch `PUBLIC_EDUCATE_DOWNLOADS_LIVE` (owner decision 2026-10-05) because the cloud serves one installer only. Organs with scrollable scans are **named, never counted** — Bowel, Kidneys, Liver, Lungs, Pancreas, Prostate, Spine, Thyroid — from that repo's generated `docs/evidence/2026-10-05-public-build-contents.md` (8 of 11 after the owner accepted share-alike for the abdominal collections); Brain, Breast and Heart are described as showing published figures without scrollable scans. `verse` is still held back, so the spine loses its CT vertebra pages — Launch-Manager relayed that it kept them, and the generated report says otherwise. `system-requirements` now covers three products; nav gained Vault and PrismEducate. Built in three flag states, 17 pages each, `dist/CNAME` correct, 0 hits for "beta"/"2028"/"2125"/"valid until"/"forever", and `/pricing` still renders one `mbp-waitlist-form` with 0 "Download free" |
 | **Deployed 2026-10-05** | the free-viewer pass — Launch-Manager `DISPATCH-2026-09-27-free-viewer.md` §3, owner-approved 2026-09-27 and unapplied here until now, with exact rows in `FREE-VIEWER-CHANGE.md` §4. EULA and ToS mirrors re-synced from desktop canonical **`9a395e2c`** (pinned by `OCTOBER-SITTING.md`; identical to the branch tip `8a42bc10` for both files): free, **no fixed end date**, one licence per computer on **each computer you own or control**, no "beta". "free beta" → "free" on index, pricing, support and account; homepage step 2 now says to open the folder from a CD, USB stick or unzipped portal download, because the viewer opens folders only (`QFileDialog.getExistingDirectory`) and has no drop or zip handling; mailto subject → "MyBodyPrism feedback" and "Send feedback"; support heading → "It's early"; `beta-notice`/`beta-asks` renamed `feedback-*` so the built output greps clean. `refunds.md`: "Free access is not guaranteed to continue." deleted (a paid-switch statement belongs only in the EULA). `hipaa.md`: retitled **"HIPAA and MyBodyPrism"** (URL unchanged), "never leaves your device" → "in this version your imaging stays on your device", "activation/trial details" → "activation details", "payment metadata" dropped, and the plain line "HIPAA does not apply to MyBodyPrism v1.1, and we do not claim HIPAA compliance or certification." added. Effective dates unchanged — they move at the 4 Dec freeze. `AGENTS.md`'s Product Model rewritten on the owner's approval. Built in both flag states: 15 pages, `dist/CNAME` correct, 0 hits for "beta"/"2028"/"2125"/"valid until"/"forever", and the gate holds (`mbp-waitlist-form` + 0 "Download free" gated; `mbp-trial-form` + 1 flipped) |
 | **Deployed 2026-09-21** | `2aae7b5` — EULA and ToS mirrors re-synced to desktop canonical `ce58724e` (the date move, owner-approved in the desktop's window): the beta ends **January 1, 2028** (EULA §1, §3.1, §10.1, §10.3; ToS §2, §4.1, §20), and both after-beta lists read "which may include a free license for some or all features, a paid license, a new version, or a combination". Effective dates unchanged (August 7, 2026; set at the 4 Dec freeze). Body only, from `git show ce58724e:legal/…`. Pushed on the owner's go. Built in both flag states: only `legal/eula.html` and `legal/tos.html` changed. Verified live: 4 and 3 "January 1, 2028", 0 "July 1, 2027", all 15 routes byte-identical to the verified build, `/pricing` still gated |
 | **Docs 2026-09-21** | `3fd5c56` — the date move (ship 2027-01-01, beta end 2028-01-01) and the 09-16 copy pass recorded in CLAUDE.md (owner-approved text), this file, START_HERE and AGENTS. Pushed on the owner's go |
@@ -171,20 +173,25 @@ repo** — see Guardrails.
    whitespace-tolerantly when checking. **Next legal re-sync: after the 4 Dec freeze**, when
    the owner sets every changed legal doc's effective date to the freeze date.
 
-9. **Open: the three-product site** (`DISPATCH-2026-10-05-three-products.md` §4b). Three products
-   ship 2027-01-01 — the viewer, **Vault Local bundled in the viewer's installer**, and
-   **PrismEducate standalone**, all free. Still to build here: a Vault Local page and a
-   PrismEducate page; download flows for **two** installers (viewer-with-Vault, and
-   PrismEducate); an **attributions page** for PrismEducate's CC BY collections, matching what
-   its app ships; `system-requirements.astro` covering three products; and W4.4 extended to all
-   three downloads. Constraints: **"free" and never "forever"**; the **approved privacy
-   sentence, verbatim and not widened** — "Your scans and records never leave your computer.
-   The only thing that ever goes out is a one-time licence check, which carries no health
-   data." — on the Vault page, noting the licence check belongs to the **viewer** (the Vault
-   itself makes no outbound call). **PrismEducate's page specifics wait** for that repo's
-   organ-by-organ report: five of its collections cannot ship publicly, and the owner ruled on
-   2026-10-05 that share-alike collections stay out of the public build, so the atlas is
-   smaller than the dispatch implied. Do not promise content that is absent.
+9. **The three-product site — mostly built 2026-10-05, two pieces open.**
+   `/vault` and `/educate` exist, `system-requirements` covers three products, nav links both,
+   and PrismEducate has its own download switch. Still open:
+   - **The attributions page is not written yet**, deliberately. It must mirror what
+     PrismEducate's app shows, and that repo's `licensing.py` still carried only four works
+     and no share-alike licence URLs when read on 2026-10-05, while four share-alike
+     collections plus the BodyParts3D models were just accepted — so its list is mid-change.
+     **Asked `PrismEducate14` for the generated output** (`work`, `licence`, `licence_url`,
+     `source_url`, `paper`, or its `NO_PAPER` marker). Build the page from that, state each
+     work's **licence** and not merely a credit (the shipped content now carries a share-alike
+     obligation), and do not hand-write a citation: an invented one is worse than an absent
+     one. The footer link and `/educate`'s link are **held back** until the page exists, so
+     nothing points at a 404.
+   - **PrismEducate's installer has no backend.** See W4.4 below. Someone must add a release
+     pointer and an endpoint before `PUBLIC_EDUCATE_DOWNLOADS_LIVE` can flip; no section of
+     the 2026-10-05 dispatch assigns it.
+   Constraints that still bind: **"free", never "forever"**; the approved privacy sentence
+   verbatim and unwidened; name organs rather than counts, so a change in what ships cannot
+   falsify the page.
 
 ## W4.4 — the launch flip, stated exactly
 
@@ -216,6 +223,18 @@ blocks W4.4.
 (Settings → Secrets and variables → Actions → Variables), then re-run the deploy
 workflow. That is all. No merge, no commit, no branch.
 
+**W4.4 covers the viewer's download only, and that is deliberate** (owner decision
+2026-10-05). PrismEducate has its own switch, `PUBLIC_EDUCATE_DOWNLOADS_LIVE`, because the
+cloud's download Lambda is hardwired to one installer — it reads `release_pointers` PK
+`latest` and returns that single `installer_s3_key`, with no product parameter
+(`AWS-HIPPA infra/lambdas/trial_installer_download/index.py`, read 2026-10-05). Vault Local
+needs nothing: it ships **inside** the viewer's installer. **Do not flip
+`PUBLIC_EDUCATE_DOWNLOADS_LIVE` until PrismEducate's installer has a release pointer and an
+endpoint behind `EDUCATE_INSTALLER_PATH`** (`/downloads/educate-installer`, which does not
+exist yet) — an early flip shows every visitor "Couldn't start the download", the very
+failure this gate exists to prevent. No cloud section of the 2026-10-05 dispatch adds it;
+Launch-Manager has been told.
+
 **Preconditions — both required:**
 
 1. **Launch-Manager has recorded W4.1 evidence** — the release-pointer row plus an
@@ -246,13 +265,28 @@ live gated site, 2026-09-09.
 
 Use any of these instead. All four were measured, not assumed:
 
-| Check | `false` (gated — current) | `true` (flipped) |
+| Check (all **on `/pricing`** unless it says otherwise) | `false` (gated — current) | `true` (flipped) |
 |---|---|---|
 | Rendered `<form id="…">` element | `mbp-waitlist-form` | `mbp-trial-form` |
-| `"Download free"` count | **0** | **1** |
+| `"Download free"` count **on `/pricing`** | **0** | **1** |
 | `"Join the waitlist"` count | **4** | **0** |
-| Waitlist-promise strings, all pages | **5** — `index` 2, `pricing` 2, `support` 1 | **0** |
+| Waitlist-promise strings, all pages | **6** — `index` 2, `pricing` 2, `support` 1, `educate` 1 | **1** — `educate`, until its own flag flips |
 | ~~bare `grep mbp-trial-form`~~ | ~~3~~ | ~~4~~ — **useless, do not use** |
+| ~~`"Download free"` site-wide~~ | ~~1~~ | ~~4~~ — **scope it to `/pricing`**, see below |
+
+**Re-measured 2026-10-05**, in three flag states, after the three-product pages landed. Two
+rows changed meaning and a third is a new trap:
+
+- **`"Download free"` must be counted on `/pricing`, not site-wide.** The homepage's
+  owner-directed "How it works" step 1 begins "**Download free.**" in **both** states, so
+  site-wide the count is 1 gated and 4 flipped — nonzero either way, exactly like the
+  `mbp-trial-form` trap below it. On `/pricing` it is still a clean 0/1.
+- **Promise strings are 6 gated, not 5**, because `/educate` promises an email of its own while
+  `EDUCATE_DOWNLOADS_LIVE` is false. After the viewer's flip **one remains** — `/educate`'s —
+  and it is correct: PrismEducate registrants are still waiting. So W6.5's "they all vanish
+  together" no longer holds across the whole site; it holds per product.
+- `/educate` renders `mbp-edu-waitlist-form` while its flag is false and `mbp-edu-form` when it
+  is true, and the download endpoint string appears in the page **only** in the latter state.
 
 `"Download free"` is the cleanest single check: a true 0/1 binary with no CSS or script
 noise behind it. For the structural check, match the rendered tag —

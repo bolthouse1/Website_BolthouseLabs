@@ -36,6 +36,20 @@ free?" FAQ was deleted by the owner's 2026-09-16 copy pass.) If they read wrong 
 a separate notice alongside them — as the gated pre-launch notices do — rather
 than editing the sentence.
 
+**The Vault page's privacy paragraph is a ceiling, not a starting point.** `/vault` carries
+the owner's approved wording, verified 2026-10-05: "Your scans and records never leave your
+computer. The only thing that ever goes out is a one-time licence check, which carries no
+health data." Reproduce it **verbatim** and never widen it — and note the licence check
+belongs to the **viewer**: Vault Local itself makes no outbound call at all. A bare "no phone
+home" is explicitly **not** approved, because the viewer's activation call would contradict it.
+
+**PrismEducate's page names organs, never counts them.** What its public build may ship is
+decided by licences and by the owner's share-alike rulings, so a number goes stale and a name
+does not. The source of truth is that repository's own generated report
+(`docs/evidence/*-public-build-contents.md`), never a hand-kept list here, and the
+`/attributions` page must mirror what its app's attributions screen reports — including its
+"no author citation has been recorded" marker. Never hand-write a citation.
+
 **`src/pages/legal/*.md` are mirrors, not source** (see "The `legal/*.md` pages are
 MIRRORS" below). A fix to canonical text is made upstream first, in the desktop repo,
 whose `release/v1.1` branch no session commits to without the owner's word; then the
@@ -121,8 +135,11 @@ migration, so verify any claim against `src/` before relying on it.
   Labs appears ONLY in the footer copyright line; nowhere else in the site copy.
 
 ## Product Model (Critical Context — updated 2026-09-21, owner-directed)
-MyBodyPrism is NOT a concierge/mail-in service. It is self-service, and **v1.1
-(launching 2027-01-01, moved from 2026-10-01 by owner decision 2026-09-21) ships the desktop app ONLY**:
+MyBodyPrism is NOT a concierge/mail-in service. It is self-service. **Three products ship on
+2027-01-01** (owner decision 2026-10-05), all free: the **Desktop Viewer**, **Vault Local**
+(PrismVault, bundled inside the viewer's installer — not a separate download, and not the
+viewer's own sealed cloud-sync Vault tab), and **PrismEducate** (a standalone educational
+atlas, its own installer). The launch date moved from 2026-10-01 by owner decision 2026-09-21.
 1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. **Free licence, one per computer, on each computer the user owns or controls — with no fixed end date** (owner decision 2026-09-26/27; it was a beta ending January 1, 2028). Canonical terms: the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1. The EULA/ToS mirrors here carry that text since the `9a395e2c` re-sync. **A switch to a paid subscription is reserved on 30 days' notice, and that reservation is stated only in the EULA** — never in page copy.
 
    **The licence is free, and it has no fixed end date — but never say "forever".** Do not
@@ -146,7 +163,9 @@ footer, global palette). `astro.config.mjs` sets `build.format: "file"`, so rout
 | Route | Source | Purpose |
 |---|---|---|
 | `/` | `index.astro` | Launch homepage — the teaser's narrative arc + download CTA |
-| `/pricing` | `pricing.astro` | **The real download flow.** Email → `POST {PUBLIC_API_BASE}/downloads/trial-installer` → redirect to a 5-minute presigned S3 URL |
+| `/pricing` | `pricing.astro` | **The real download flow** for the viewer (Vault Local is inside its installer). Email → `POST {PUBLIC_API_BASE}/downloads/trial-installer` → redirect to a 5-minute presigned S3 URL |
+| `/vault` | `vault.astro` | Vault Local. **Carries the owner's approved privacy sentence — see the rule below** |
+| `/educate` | `educate.astro` | PrismEducate. Its own download, behind its own switch |
 | `/support` | `support.astro` | Contact + FAQ |
 | `/system-requirements` | `system-requirements.astro` | Hardware/OS table |
 | `/account` | `account.astro` | Licence portal; reads `?token=` or `localStorage` |
@@ -165,6 +184,18 @@ publishes but the download flow is replaced by waitlist capture:
 | `/pricing` form | Waitlist → Formspree | Download → `POST {API_BASE}/downloads/trial-installer` |
 | Homepage CTAs | "Join the waitlist" | "Download free" |
 | Homepage "How it works" | Owner-directed copy **unchanged**, plus an additive "Not available to download yet" notice | Owner-directed copy, no notice |
+
+### PrismEducate's switch is separate: `PUBLIC_EDUCATE_DOWNLOADS_LIVE`
+Also in `src/site-config.ts`, also build-time, also defaults to `false` — and deliberately
+**not** the viewer's flag (owner decision 2026-10-05). The cloud's download Lambda is
+hardwired to one installer: it reads `release_pointers` PK `latest` and returns that single
+`installer_s3_key`, with no product parameter (`AWS-HIPPA
+infra/lambdas/trial_installer_download/index.py`, read 2026-10-05). Vault Local needs nothing,
+because it ships inside the viewer's installer; PrismEducate is a second installer with no
+pointer and no endpoint yet. While the flag is false `/educate` takes interest signups through
+the same Formspree form, tagged with a hidden `product` field. **Do not flip it until that
+endpoint exists** behind `EDUCATE_INSTALLER_PATH` — an early flip shows every visitor
+"Couldn't start the download."
 
 **To go live:** set repository variable `PUBLIC_DOWNLOADS_LIVE` to `true`
 (Settings → Secrets and variables → Actions → Variables) and re-run the deploy workflow.
@@ -278,8 +309,9 @@ No framework and no client bundle — plain `<script is:inline>` IIFEs (no globa
   analytics must check `window.__mbpConsent === "accepted"` before firing.
 
 ## Design Rules
-- Header nav is Pricing / Support / Requirements / Account. Footer carries the legal links
-  and the medical disclaimer.
+- Header nav is Download / Vault / PrismEducate / Support / Requirements / Account. "Download"
+  points at `/pricing`, which publishes no prices (renamed 2026-10-05, owner-approved; the
+  route is unchanged). Footer carries the legal links and the medical disclaimer.
 - Minimal text. Let visuals do the heavy lifting.
 - All media should have dark/black backgrounds to blend with the site.
 - Animations should be smooth and subtle — cinematic, not flashy.
