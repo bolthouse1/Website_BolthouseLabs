@@ -151,12 +151,31 @@ const apiBase = API_BASE;
     .tier ul li { margin-bottom: 0.3rem; }
     .tier .btn { text-align: center; }
     .tier .btn[aria-disabled="true"] { opacity: 0.55; cursor: default; pointer-events: none; }
-    #mbp-trial-form { display: flex; flex-direction: column; gap: 0.5rem; }
-    #mbp-trial-form input[type="email"] {
-      padding: 0.6rem 0.75rem;
-      border: 1px solid var(--c-border);
+    #mbp-trial-form,
+    #mbp-waitlist-form { display: flex; flex-direction: column; gap: 0.5rem; }
+    /* One rule for both states. The waitlist form had no input styling at all,
+       so it rendered at the browser's default size — noticeably smaller than
+       the button beside it, and small enough to be awkward to type into on a
+       phone. Owner-reported 2026-10-06. */
+    #mbp-trial-form input[type="email"],
+    #mbp-waitlist-form input[type="email"] {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--c-border-strong);
       border-radius: 0.5rem;
-      font-size: 1rem;
+      font-family: inherit;
+      font-size: 1.05rem;
+      line-height: 1.3;
+      background: var(--c-bg-2);
+      color: var(--c-fg);
+    }
+    #mbp-trial-form input[type="email"]::placeholder,
+    #mbp-waitlist-form input[type="email"]::placeholder { color: var(--c-dim); }
+    #mbp-trial-form input[type="email"]:focus,
+    #mbp-waitlist-form input[type="email"]:focus {
+      outline: 2px solid var(--c-brand);
+      outline-offset: 1px;
+      border-color: transparent;
     }
     .form-note { color: var(--c-muted); font-size: 0.8rem; margin: 0; }
     .form-error { color: #ff8a7a; font-size: 0.9rem; margin: 0; }
