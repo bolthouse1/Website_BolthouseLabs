@@ -341,7 +341,7 @@ No framework and no client bundle — plain `<script is:inline>` IIFEs (no globa
 - Smoke test URL: `https://bolthouse1.github.io/Website_BolthouseLabs/` (301s to the apex)
 - **Live URL**: `https://mybodyprism.com`
 - DNS for mybodyprism.com (Route 53, **prod-account zone `Z051879839JNW03XWQBFO`** since the 2026-08-26 NS move): apex `A` records → 185.199.108.153, .109.153, .110.153, .111.153; `www` `CNAME` → `bolthouse1.github.io` (both restored 2026-08-26, TTL 300). SES email records will be created in this zone by the prod deploy — leave whatever it creates intact. The old dev zone `Z0545962NVEE3GCX2GT4` no longer serves this domain.
-- Email capture: Formspree form ID `xykbbnql` (50 submissions/month free tier) — **live** as
+- Email capture: Formspree form ID `xykbbnql` (**Personal plan since 2026-10-06**, owner-reported; published allowance 200 submissions/month, up from the free tier's 50) — **live** as
   the `/pricing` waitlist while `PUBLIC_DOWNLOADS_LIVE` is false, retired at the flip. Its
   recipient was switched to `leads@mybodyprism.com` on 2026-09-02 (owner-reported; behind his
   login, not verifiable from this repo). The dashboard also holds every submission the teaser

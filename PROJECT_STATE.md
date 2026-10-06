@@ -117,10 +117,24 @@ repo** — see Guardrails.
 
 ## Open items — none blocking
 
-1. **Formspree quota.** Free tier is 50 submissions/month and it is the only
-   interest-capture path while downloads are gated. Check form `xykbbnql` on
-   formspree.io; upgrade only if the count is near the ceiling. Retires entirely
-   at the W4.1 flag flip.
+1. **Formspree: on the Personal plan since 2026-10-06** (owner-reported; his billing is not
+   observable from this repo, so recorded as reported). The free tier's **50** submissions a
+   month no longer applies. Formspree's published pricing puts **Personal at 200 a month**,
+   with Professional at 2,000 — read from `formspree.io/plans` on 2026-10-06, so it is
+   published pricing rather than a figure confirmed on his account. **The ceiling moved up,
+   it did not disappear.** His plan: upgrade to a larger plan once traffic justifies it.
+
+   **The month containing 2027-01-01 is the one to watch**, and the reason is easy to miss:
+   the viewer's waitlist retires at the W4.4 flip, when `/pricing` becomes a real download —
+   but **`/educate` keeps posting to this same form afterwards**, because PrismEducate's own
+   switch stays false until its installer has a backend (open items 9 and 10). So launch-day
+   interest in the atlas lands here, in the same month as the launch email. Form `xykbbnql`,
+   on formspree.io.
+
+   Three things about this form have **never been verifiable from this repo** and must not be
+   restated as confirmed: the submission count, the recipient (`leads@mybodyprism.com`,
+   owner-reported 2026-09-02), and whether a `product: PrismEducate` submission has arrived
+   since that field went live on 2026-10-05.
 2. ~~**Stale ADRs.**~~ **DONE 2026-09-12.** `docs/decisions/0001` marked superseded,
    `0003` marked partly superseded (what's now false is listed in it), `0002`
    corrected for the `CNAME` move, and **`0004` written** — the record of the
@@ -239,8 +253,8 @@ repo** — see Guardrails.
     atlas receive an email telling them their product is ready when it is not.
 
     The page copy is accurate as written and needs no change: the fix belongs in the comms
-    step. Note also that the Formspree free tier is 50 submissions a month and now serves
-    **two** products through one form (open item 1).
+    step. Note also that one form now serves **two** products, on a plan whose published
+    allowance is 200 submissions a month (open item 1).
 
 ## W4.4 — the launch flip, stated exactly
 
