@@ -226,6 +226,22 @@ repo** — see Guardrails.
    through all four rulings. That is why the page carries no counts and does not enumerate
    conditions per organ — it survived two rulings in one evening without an edit.
 
+10. **W6.5 must not email PrismEducate's registrants about the viewer** (raised here
+    2026-10-06; **no Launch-Manager session was live to receive it**, so it is recorded here
+    for whoever runs W6.5 or opens the next Launch-Manager seat).
+
+    `/educate` promises, in its own words: "We'll email you once when PrismEducate is ready to
+    download." Those signups go to the **same Formspree form** as the viewer's waitlist,
+    distinguished only by a hidden `product` field with the value `PrismEducate`. On
+    2027-01-01 the viewer's launch email goes out — and PrismEducate's download will still be
+    off unless its installer has gained a release pointer and an endpoint by then (Amendment B;
+    open item 9). **So the two lists must be sent separately**, or people who asked about the
+    atlas receive an email telling them their product is ready when it is not.
+
+    The page copy is accurate as written and needs no change: the fix belongs in the comms
+    step. Note also that the Formspree free tier is 50 submissions a month and now serves
+    **two** products through one form (open item 1).
+
 ## W4.4 — the launch flip, stated exactly
 
 This is the one remaining action on this site, and it is **not** a code change or a
