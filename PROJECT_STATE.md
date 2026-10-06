@@ -131,23 +131,46 @@ repo** — see Guardrails.
    interest in the atlas lands here, in the same month as the launch email. Form `xykbbnql`,
    on formspree.io.
 
-   Three things about this form have **never been verifiable from this repo** and must not be
-   restated as confirmed: the submission count, the recipient (`leads@mybodyprism.com`,
-   owner-reported 2026-09-02), and whether a `product: PrismEducate` submission has arrived
-   since that field went live on 2026-10-05.
+   **Read in the dashboard 2026-10-06** (owner signed in to the `chrome-devtools` profile;
+   these were previously unverifiable from here):
+
+   - **Submissions in the last 30 days: 0.** Storage 0 GB. **All-time inbox: 5**, one page —
+     Sep 2 2026 (the owner's own address), May 29, Apr 23, Apr 16, Apr 11. Spam folder: 2.
+   - **So the quota is not the risk.** Usage is zero against a 200-a-month allowance. The
+     Personal plan buys headroom, not relief.
+   - **No submissions since the Astro site went live, and that is expected**: the owner has
+     done **zero advertising** (his words, 2026-10-06). The waitlist has been on `/pricing`
+     since 2026-08-26 and the only entry after that date is his own Sep 2 test; the rest
+     predate the migration. Silence here measures promotion, not breakage.
+   - **The waitlist path is PROVEN end to end, 2026-10-06.** Submitted a real address through
+     the live gated `/pricing` form in a browser, on the owner's word: `POST
+     https://formspree.io/f/xykbbnql` returned **200**, the page showed "You're on the list —
+     we'll be in touch the moment it's ready.", and the row appeared in the dashboard at
+     12:41 as `darin.bolthouse+sitetest-20261006@gmail.com`. **That test row is evidence, not
+     a lead** — delete it whenever convenient. Because the path is proven, a future silence
+     can be read as low traffic rather than a suspected fault; re-test only after a change to
+     the form, the endpoint or the host.
+   - **Cosmetic, found during that test:** after a successful waitlist submit the button stays
+     disabled reading "ADDING YOU…" rather than settling to a finished state. The email field
+     is hidden and the success line is shown, so nothing is broken and nobody is misled —
+     worth tidying with the next `/pricing` change, not on its own.
+   - **No `product: PrismEducate` submission yet**, as expected: the field went live on
+     2026-10-05 and nothing has been submitted since. The submissions table shows only an
+     `email` column today, so that tag will appear as a new column when the first one lands.
+   - Form state: **Enabled**, Submission Archive **on**, Formshield **on**, CAPTCHA
+     **disabled**, HTTP API unavailable on this plan.
 2. ~~**Stale ADRs.**~~ **DONE 2026-09-12.** `docs/decisions/0001` marked superseded,
    `0003` marked partly superseded (what's now false is listed in it), `0002`
    corrected for the `CNAME` move, and **`0004` written** — the record of the
    2026-08-26 Astro migration that 0001's own boundary clause required and that had
    never existed. The rest of `docs/` is still pre-migration, which `README.md`,
    `AGENTS.md` and this file all say explicitly.
-3. ~~**Formspree recipient switch → `leads@mybodyprism.com`.**~~ **DONE 2026-09-02,
-   owner-reported.** Recorded as reported, not verified: it lives behind the owner's
-   Formspree login and is **not observable from this repo or from the desktop repo**,
-   so no session here can confirm it — do not restate it as a verified fact. Nothing
-   changed in code either way: the form `action` in `src/site-config.ts` is unchanged
-   and only Formspree's delivery target moved. The first real confirmation will be a
-   waitlist signup arriving at `leads@`.
+3. ~~**Formspree recipient switch → `leads@mybodyprism.com`.**~~ **DONE 2026-09-02 and now
+   VERIFIED, 2026-10-06.** No longer "recorded as reported": read in the dashboard from this
+   repo's session, after the owner signed in to the `chrome-devtools` browser profile. The
+   form's Workflow tab shows one action, "Email leads@mybodyprism.com — Send an email for
+   each form submission". Nothing changed in code either way: the form `action` in
+   `src/site-config.ts` is unchanged and only Formspree's delivery target moved.
 4. **Owner-approved, waiting on a number: `pricing.astro` quotes the download as "~2.5 GB".**
    It is 404 MB today and heading to ~1.5 GB with the walkthrough videos. The owner approved
    correcting it on 2026-09-12, **but only to the rebuild's measured installer size**.
