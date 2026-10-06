@@ -169,7 +169,7 @@ footer, global palette). `astro.config.mjs` sets `build.format: "file"`, so rout
 | `/support` | `support.astro` | Contact + FAQ |
 | `/system-requirements` | `system-requirements.astro` | Hardware/OS table |
 | `/account` | `account.astro` | Licence portal; reads `?token=` or `localStorage` |
-| `/legal/*` | `legal/*.md` (8 files) | EULA, ToS, privacy, disclaimer, HIPAA, cookies, refunds, open-source notices |
+| `/legal/*` | `legal/*.md` (9 files) | EULA, **Vault Local EULA**, ToS, privacy, disclaimer, HIPAA, cookies, refunds, open-source notices |
 | `/404`, `/500` | `404.astro`, `500.astro` | Error pages (Pages serves `404.html` automatically) |
 
 There is no thank-you page; the free flow sends no download email (the download is a
@@ -213,9 +213,14 @@ Interest capture deliberately uses Formspree rather than the team-controlled
 Formspree endpoint once the flag is `true`; it should not outlive the launch.
 
 ### The `legal/*.md` pages are MIRRORS — not the source of truth
-Canonical legal text lives in the **desktop repo** at
+Canonical legal text lives in **two** repos. The viewer's is in the **desktop repo** at
 `C:\Projects_MedViz\SomaViz_Desktop_Volume_Viewer\legal\` (canonical since 2026-07-08):
-`eula.md`, `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. Whoever owns this
+`eula.md`, `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. **Vault Local's own
+EULA is canonical in `C:\Projects_MedViz\PrismVault\legal\eula.md`** and is mirrored here as
+`/legal/vault-eula` (owner-approved 2026-10-05 as written, no counsel; ported from `385f4b9`
+on 2026-10-06). It is a **separate contract from the viewer's** — do not merge the two pages,
+and do not point Vault copy at the viewer's EULA. Its effective date is January 1, 2027, which
+is canonical's own and not the viewer's August 7, 2026. Whoever owns this
 site inherits the **re-sync duty**: when canonical text changes, update the mirror here.
 The mirrors are not byte-identical — each wraps the canonical body in Astro frontmatter,
 a `<div class="container narrow">` and a `<style>` block, so re-sync means porting the

@@ -17,6 +17,13 @@
 //   - recovery key shown once        src/prismvault/crypto.py:12
 //   - no outbound HTTP client in src/prismvault
 // If any of those change, this page changes with them.
+//
+// The lede reuses the INSTALLER's approved component wording — "your scans and
+// records, kept on this computer" (packaging/installer.iss, origin/release/v1.1,
+// read 2026-10-06) — so the installer and this page speak with one voice rather
+// than inventing a second phrasing. The component is Types: full with no fixed
+// flag, i.e. ticked by default and declinable, so no copy here may assume a
+// visitor has the Vault just because they have the viewer.
 import Layout from "../layouts/Default.astro";
 ---
 
@@ -29,8 +36,8 @@ import Layout from "../layouts/Default.astro";
     <h1>Vault Local</h1>
 
     <p class="lede">
-      A place on your own computer to keep your scans and records together —
-      encrypted, searchable, and yours. It is installed with the MyBodyPrism
+      Your scans and records, kept on this computer — encrypted, searchable,
+      and yours. Vault Local is offered when you install the MyBodyPrism
       viewer, and there is no account to create.
     </p>
 
@@ -65,15 +72,27 @@ import Layout from "../layouts/Default.astro";
         you. Keep it somewhere safe — it is how you get back in.
       </li>
       <li>
+        <strong>Your records live in your user profile</strong>, not inside the
+        program folder, so uninstalling the viewer does not take them with it.
+      </li>
+      <li>
+        <strong>You stop it from the tray.</strong> Vault Local sits in your
+        notification area while it runs; Exit there shuts it down.
+      </li>
+      <li>
         <strong>Free, with no fixed end date.</strong> See the
-        <a href="/legal/eula">EULA</a> for the licence terms.
+        <a href="/legal/vault-eula">Vault Local EULA</a> for its licence terms —
+        it has its own, separate from the viewer's.
       </li>
     </ul>
 
     <h2>Getting it</h2>
     <p>
-      Vault Local is part of the MyBodyPrism installer — install the viewer and
-      the Vault is there, with its own entry in your Start menu. See
+      Vault Local comes with the MyBodyPrism installer, as a component you
+      choose there. It is ticked by default and you can untick it — so if you
+      installed the viewer already and don't have the Vault, run the installer
+      again and leave it ticked. It gets its own entry in your Start menu, and
+      the viewer never starts it for you. See
       <a href="/pricing">the download page</a> and the
       <a href="/system-requirements">system requirements</a>.
     </p>
