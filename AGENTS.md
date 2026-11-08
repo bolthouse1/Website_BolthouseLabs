@@ -1,5 +1,7 @@
 # AGENTS.md — MyBodyPrism website (mybodyprism-com)
 
+Linear: repo label mybodyprism-com
+
 The portfolio's shared rulebook (C:\Projects_MedViz\CLAUDE.md, "The shared rulebook") binds this repository and is not repeated here. This file holds only what is specific to mybodyprism-com.
 
 This is the governing rules file for the site. The owner-authored brand, copy and
@@ -82,11 +84,10 @@ page renders blank with JS disabled.
 
 ## Current work
 
-Read [`PROJECT_STATE.md`](PROJECT_STATE.md) for the live snapshot and open
-questions. **The site is live and nothing is pending** — the migration, the
-free-viewer copy, the legal mirrors and the WebP imagery all shipped by 2026-09-02.
+Read [`PROJECT_STATE.md`](PROJECT_STATE.md) for the live snapshot. **Open work lives in
+the Linear queue** (adopted 2026-11-08): `pl next`, or `pl issue list --repo mybodyprism-com`.
 
-The one remaining action is **W4.4**, the `PUBLIC_DOWNLOADS_LIVE` flip, and it is
+The last action on the queue is **W4.4** (BOLT-17), the `PUBLIC_DOWNLOADS_LIVE` flip, and it is
 **not yours to perform**: it needs W4.1 evidence recorded by Launch-Manager *and*
 the owner's in-the-moment word, never a relay. If you are verifying its state, read
 the proof-of-flip table in `PROJECT_STATE.md` first — a bare `grep mbp-trial-form`
