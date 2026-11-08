@@ -31,10 +31,13 @@ export const API_BASE =
  * team-controlled trial_leads/SNS path: that path sits behind the same
  * api.mybodyprism.com host that is missing, so it cannot take a pre-launch
  * signup. This is the endpoint the teaser has used since launch of the teaser,
- * and its dashboard already holds the existing waitlist. Free tier: 50
- * submissions/month — worth watching if pre-launch interest is heavy.
+ * and its dashboard already holds the existing waitlist. Personal plan since
+ * 2026-10-06 (owner-reported): a published allowance of 200 submissions a
+ * month, worth watching in January 2027 (BOLT-847).
  *
- * Retire this once DOWNLOADS_LIVE is true; it should not outlive the launch.
+ * /pricing stops using this once DOWNLOADS_LIVE is true, but /educate posts
+ * PrismEducate's interest signups here until EDUCATE_DOWNLOADS_LIVE is true,
+ * so the endpoint stays until then (owner, 2026-11-08, DECISIONS.md D004).
  */
 export const WAITLIST_ENDPOINT = "https://formspree.io/f/xykbbnql";
 

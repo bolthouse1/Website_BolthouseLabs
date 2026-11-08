@@ -121,8 +121,10 @@ migration, so verify any claim against `src/` before relying on it.
 - **SSL**: Auto-provisioned by GitHub Pages.
 - **Email capture**: two paths, switched by `PUBLIC_DOWNLOADS_LIVE`. While it is false (today),
   `/pricing` takes **waitlist** signups via Formspree form `xykbbnql` — verified live 2026-09-12.
-  Once it flips, the download form posts to the licence API (`PUBLIC_API_BASE`) and Formspree
-  retires. **Feedback** is a separate `mailto:support@mybodyprism.com`, never the waitlist
+  Once it flips, the download form posts to the licence API (`PUBLIC_API_BASE`) and `/pricing`
+  stops using Formspree. The form itself stays, because `/educate` posts PrismEducate's interest
+  signups to it until `PUBLIC_EDUCATE_DOWNLOADS_LIVE` flips (owner, 2026-11-08, BOLT-847,
+  `DECISIONS.md` D004). **Feedback** is a separate `mailto:support@mybodyprism.com`, never the waitlist
   form.
 
 ## Brand Identity
@@ -217,8 +219,10 @@ lookup runs before `_record_lead`, and prod's table starts empty. So an early fl
 signups with no trace. Pre-launch capture must stay client-side (Formspree) until W4.1.
 
 Interest capture deliberately uses Formspree rather than the team-controlled
-`trial_leads`/SNS path, because that path sits behind the same missing API host. Retire the
-Formspree endpoint once the flag is `true`; it should not outlive the launch.
+`trial_leads`/SNS path, because that path sits behind the same missing API host. When the flag
+is `true`, only the viewer's use of the form retires: `/educate` keeps posting to it until
+PrismEducate's own switch flips, and the form and its plan stay until then (owner, 2026-11-08,
+BOLT-847, `DECISIONS.md` D004).
 
 ### The `legal/*.md` pages are MIRRORS — not the source of truth
 Canonical legal text lives in **two** repos. The viewer's is in the **desktop repo** at
@@ -360,7 +364,9 @@ No framework and no client bundle — plain `<script is:inline>` IIFEs (no globa
 - **Live URL**: `https://mybodyprism.com`
 - DNS for mybodyprism.com (Route 53, **prod-account zone `Z051879839JNW03XWQBFO`** since the 2026-08-26 NS move): apex `A` records → 185.199.108.153, .109.153, .110.153, .111.153; `www` `CNAME` → `bolthouse1.github.io` (both restored 2026-08-26, TTL 300). SES email records will be created in this zone by the prod deploy — leave whatever it creates intact. The old dev zone `Z0545962NVEE3GCX2GT4` no longer serves this domain.
 - Email capture: Formspree form ID `xykbbnql` (**Personal plan since 2026-10-06**, owner-reported; published allowance 200 submissions/month, up from the free tier's 50) — **live** as
-  the `/pricing` waitlist while `PUBLIC_DOWNLOADS_LIVE` is false, retired at the flip. Its
+  the `/pricing` waitlist while `PUBLIC_DOWNLOADS_LIVE` is false, and as `/educate`'s interest
+  signup while `PUBLIC_EDUCATE_DOWNLOADS_LIVE` is false. The viewer's use ends at the flip; the
+  form and its plan stay until PrismEducate's switch flips (`DECISIONS.md` D004). Its
   recipient was switched to `leads@mybodyprism.com` on 2026-09-02 (owner-reported; behind his
   login, not verifiable from this repo). The dashboard also holds every submission the teaser
   collected.

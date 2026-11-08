@@ -67,3 +67,20 @@ measurement there is. The viewer's own requirements doc still offers browser str
 v1.1 does not ship, so it is followed for RAM only; it gets its own request (BOLT-862).
 
 **Effect.** BOLT-839 stays open until the disk row takes the installer's measured size.
+
+## D004 — 2026-11-08: the Formspree form stays for /educate after the viewer's flip
+
+**Decision (owner, in this repository's session, BOLT-847).** Formspree form `xykbbnql`, and
+the Personal plan it is on, stay until PrismEducate's own switch
+(`PUBLIC_EDUCATE_DOWNLOADS_LIVE`) flips. At the BOLT-17 flip, only the viewer's use of the
+form ends.
+
+**Why.** `/educate` posts PrismEducate's interest signups to the same form, and PrismEducate
+now ships after the viewer (BOLT-262). The old rule, "Retire the Formspree endpoint once the
+flag is `true`; it should not outlive the launch", would have broken that signup on launch
+day.
+
+**Effect.** `AGENTS.md` (email capture, the launch switch, deployment notes) and the comment
+on `WAITLIST_ENDPOINT` in `src/site-config.ts` say so. Two tasks behind the owner's login stay
+on BOLT-847: delete the 2026-10-06 test row before the BOLT-18 export, and check January
+2027's count against the 200-a-month allowance.
