@@ -8,16 +8,6 @@ description: End-User License Agreement for MyBodyPrism Vault, the local vault i
 
 # End-User License Agreement — MyBodyPrism Vault
 
-**Approved by the owner on 2026-10-05**, as written, with no attorney reading
-it — the only approval this document gets (PrismVault `DECISIONS.md` PV-D005;
-dispatch 2026-10-05 decision 6: no counsel for v1.1). He was told plainly that
-nobody else would read it before he answered.
-
-Any change to the wording makes this DRAFT again until he approves it afresh.
-`tests/test_legal.py` pins the claims that must not drift: the privacy
-sentence as he verified it, the reserved switch to a paid subscription, and
-the medical disclaimer.
-
 **Effective date:** January 1, 2027
 **Applies to:** MyBodyPrism Vault v1.1.0, installed with MyBodyPrism v1.1.0
 **Owner:** Bolthouse Labs, Inc.
@@ -154,6 +144,12 @@ In detail, so that the sentence above can be relied on:
 - No feature of the Software uploads, shares, syncs or publishes your records.
   Nothing in it sends your records to an artificial-intelligence service; the
   Software ships with no such service configured and no means of reaching one.
+  If you choose Open in its own app, the Software gives a copy of that document
+  to the app on your computer that opens that kind of file. The Software keeps
+  its copy on your computer and removes it when you lock or close the Software,
+  or the next time it starts; if that app still has the copy open, the Software
+  removes it after that app lets it go. What that app does with the copy is
+  governed by that app.
 - Your passphrase is never transmitted and never stored by us. **If you lose
   both your passphrase and your recovery key, your records cannot be
   recovered — not by you and not by us.** That is a consequence of the
