@@ -26,12 +26,13 @@ owns or controls** (owner decision 2026-09-26/27). The word *beta* is gone from 
 app, this site and email, and a switch to a paid subscription is **reserved only in the
 EULA**. Never write "forever" (avoid-list, owner 2026-09-26).
 
-**Three products ship on Fri 2027-01-01** (owner decision 2026-10-05): the viewer, **Vault
-Local bundled in the viewer's installer**, and **PrismEducate standalone** — all free.
-Launch-Manager `DISPATCH-2026-10-05-three-products.md` §4 carries this repo's share; §4a (the
-free-viewer pass) shipped 2026-10-05, §4b (the three-product site) is open item 9. Calendar:
-freeze Fri 4 Dec; final build 14–18 Dec; W5.1 and W4.1 21–23 Dec; **W4.4 flip on 1 Jan 2027**,
-now covering all three downloads.
+**The viewer ships on Fri 2027-01-01 with MyBodyPrism Vault bundled in its installer**, both
+free (owner decision 2026-10-22, BOLT-262). **PrismEducate ships later, on its own**: the site
+lists it as coming later (owner, 2026-11-08, BOLT-837, `DECISIONS.md` D002), and its own
+download switch stays off until it has an endpoint (BOLT-846). The three-product site of
+Launch-Manager `DISPATCH-2026-10-05-three-products.md` §4b shipped 2026-10-06 (`900429c`).
+Calendar: freeze Fri 4 Dec; final build 14–18 Dec; W5.1 and W4.1 21–23 Dec; **W4.4 flip on
+1 Jan 2027**, covering the viewer's download (BOLT-17).
 
 Start from [`docs/handoffs/HANDOFF_2026-09-21.md`](docs/handoffs/HANDOFF_2026-09-21.md) for the
 last full handoff, and `docs/handoffs/2026-09-29-rules-review.md` for the rules move into
@@ -75,6 +76,7 @@ last full handoff, and `docs/handoffs/2026-09-29-rules-review.md` for the rules 
 
 | | |
 |---|---|
+| **2026-11-08** | BOLT-837 — PrismEducate ships later (owner, 2026-10-22, BOLT-262), so the site no longer says three products ship. The homepage's free-products eyebrow reads "All free", PrismEducate's line ends "Coming later, as its own download.", and the `/system-requirements` lede says it comes later. Wording owner-approved 2026-11-08 (`DECISIONS.md` D002). `AGENTS.md` and this file's launch paragraph match. Built in both flag states: 18 pages, `dist/CNAME` correct; only `index` and `system-requirements` changed, each by the approved text alone; `/pricing` gate unchanged |
 | **2026-11-08** | BOLT-834 — `/legal/vault-eula` re-synced to PrismVault canonical **`bf29744`** (`legal/eula.md`; unchanged at its HEAD `cc29a77`), body only and by hash. It brings in the owner's section 6 sentence on Open in its own app (PV-D099), so it stays owner-approved, not DRAFT. **Left out on the owner's word** (`DECISIONS.md` D001): canonical's two maintainers' paragraphs under the heading, the approval record and the DRAFT-and-tests note, which were live on the page until now. Proved by script: the mirror equalled `385f4b9` before; after, it equals `bf29744` minus exactly those two paragraphs, with front matter and wrapper unchanged. Built in both flag states: 18 pages, `dist/CNAME` correct; only `legal/vault-eula` changed |
 | **2026-11-08** | BOLT-773 — the bundled Vault is called **"MyBodyPrism Vault"** on every page, not "Vault Local" (owner decision 2026-11-04): `/vault` (12), `/system-requirements` (4), the homepage (2), a `site-config.ts` comment (1), and the `/legal/vault-eula` page title in its front matter (1), where the agreement's body was not touched. The approved privacy sentence is unchanged. `AGENTS.md` matches and carries the naming rule. Built in both flag states: 18 pages, `dist/CNAME` correct, 0 "Vault Local"; only `index`, `vault`, `system-requirements` and `legal/vault-eula` changed, each by the rename alone; `/pricing` gate unchanged |
 | **Pushed 2026-10-06** (`ffe3b01`) | `/legal/vault-eula` — Vault Local's own EULA mirrored from PrismVault canonical `385f4b9`, body-only and by hash, the same contract as the viewer's mirrors (its text carries no relative `.md` links, so nothing needed rewriting; the rewrite map is kept in the port script for a future one). Owner-approved as written on 2026-10-05 with no counsel, so **its wording is his own** — treat a change as making it DRAFT again. Fixes a real error: `/vault` had pointed at the **viewer's** EULA for the Vault's licence terms. Also on `/vault`, from Launch-Manager's 2026-10-06 relay, each item verified at the source: the lede now reuses the installer's approved component wording ("your scans and records, kept on this computer", `packaging/installer.iss` at `origin/release/v1.1` `7a7555b7`) so installer and site speak with one voice; the component is `Types: full` with **no `fixed` flag**, i.e. ticked by default and **declinable**, so the page now says it is chosen in the installer and tells someone who skipped it to run the installer again; and two facts read in PrismVault's source — records live under `LOCALAPPDATA`, never inside the install tree (`config.py:67–71`), and the tray icon's Exit stops it. Footer gained a Vault EULA link; `AGENTS.md` records the second canonical repo. Built gated: 18 pages, `dist/CNAME` correct, 0 "beta"/"2028"/"2125"/"forever", `/pricing` still one `mbp-waitlist-form` with 0 "Download free" |

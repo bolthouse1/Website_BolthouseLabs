@@ -140,11 +140,14 @@ migration, so verify any claim against `src/` before relying on it.
   Labs appears ONLY in the footer copyright line; nowhere else in the site copy.
 
 ## Product Model (Critical Context — updated 2026-09-21, owner-directed)
-MyBodyPrism is NOT a concierge/mail-in service. It is self-service. **Three products ship on
-2027-01-01** (owner decision 2026-10-05), all free: the **Desktop Viewer**, **MyBodyPrism Vault**
-(PrismVault, bundled inside the viewer's installer — not a separate download, and not the
-viewer's own sealed cloud-sync Vault tab), and **PrismEducate** (a standalone educational
-atlas, its own installer). The launch date moved from 2026-10-01 by owner decision 2026-09-21.
+MyBodyPrism is NOT a concierge/mail-in service. It is self-service. **The 2027-01-01 launch is
+the Desktop Viewer with MyBodyPrism Vault bundled** (owner decision 2026-10-22, BOLT-262; the
+decision of 2026-10-05 had made it three products), both free: the **Desktop Viewer** and
+**MyBodyPrism Vault** (PrismVault, bundled inside the viewer's installer — not a separate
+download, and not the viewer's own sealed cloud-sync Vault tab). **PrismEducate** (a standalone
+educational atlas, its own installer, also free) **ships later, on its own**; the site lists it
+as coming later and states no product count (owner, 2026-11-08, BOLT-837, `DECISIONS.md` D002).
+The launch date moved from 2026-10-01 by owner decision 2026-09-21.
 1. **Desktop app** — User installs locally, loads their own DICOM files (from their own CD, downloaded files, etc.). All imaging data stays on the user's machine — no uploads, no cloud. **Free licence, one per computer, on each computer the user owns or controls — with no fixed end date** (owner decision 2026-09-26/27; it was a beta ending January 1, 2028). Canonical terms: the desktop repo's `legal/eula.md` §3.1 and `legal/terms-of-service.md` §4.1. The EULA/ToS mirrors here carry that text since the `9a395e2c` re-sync. **A switch to a paid subscription is reserved on 30 days' notice, and that reservation is stated only in the EULA** — never in page copy.
 
    **The licence is free, and it has no fixed end date — but never say "forever".** Do not
@@ -266,12 +269,14 @@ inside your own body?" and the ICD captions (W9).
 9. **HIGHLIGHT YOUR DATA** — Custom markup tools. Picture6 (ICD lead traced).
 10. **HOW IT WORKS** — Two numbered steps. Their wording is owner-directed (2026-08-26, last revised by the owner 2026-09-16: step 1 now ends "it's free", step 2 explains DICOM once) and legally-adjacent — **do not "correct" it**.
 11. **TRUST STRIP** — Three badges: Runs entirely on your computer · No uploads, no cloud · Your data stays yours.
-11b. **THE THREE FREE PRODUCTS** — added 2026-10-06, owner-approved, because the header nav was
+11b. **THE FREE PRODUCTS** — added 2026-10-06, owner-approved, because the header nav was
     the only route to MyBodyPrism Vault and PrismEducate and the header is not sticky on mobile. Three
     names, a line each, linking `/pricing`, `/vault` and `/educate`. **Additive by design:**
     it sits after the arc so sections 1–11, the founder's story and the FDA intended-use wording
     are untouched. It does **not** restate the Vault's approved privacy sentence — that lives on
     `/vault` and is not to be paraphrased — and it describes the atlas without counts.
+    Since 2026-11-08 (owner, BOLT-837, `DECISIONS.md` D002) its eyebrow reads "All free", with
+    no product count, and PrismEducate's line ends "Coming later, as its own download."
 12. **FINAL CTA** — "See yourself like never before." Download + support buttons.
 
 Footer (in the layout, on every page): `© <year> Bolthouse Labs, Inc.` — the only Bolthouse
