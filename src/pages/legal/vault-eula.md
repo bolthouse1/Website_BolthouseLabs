@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/Default.astro
-title: Vault Local End-User License Agreement — MyBodyPrism
+title: MyBodyPrism Vault End-User License Agreement — MyBodyPrism
 description: End-User License Agreement for MyBodyPrism Vault, the local vault installed with the MyBodyPrism Desktop Viewer.
 ---
 

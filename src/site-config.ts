@@ -47,7 +47,7 @@ export const WAITLIST_ENDPOINT = "https://formspree.io/f/xykbbnql";
  * single installer: it reads release_pointers PK "latest" and returns that one
  * installer_s3_key, with no product parameter
  * (AWS-HIPPA infra/lambdas/trial_installer_download/index.py, read 2026-10-05).
- * Vault Local needs nothing extra — it is bundled inside the viewer's
+ * MyBodyPrism Vault needs nothing extra — it is bundled inside the viewer's
  * installer — but PrismEducate is a second installer with no release pointer
  * and no endpoint of its own yet, and the 2026-10-05 dispatch carries no cloud
  * section that would add one.

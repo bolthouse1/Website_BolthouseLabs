@@ -42,7 +42,7 @@ than editing the sentence.
 the owner's approved wording, verified 2026-10-05: "Your scans and records never leave your
 computer. The only thing that ever goes out is a one-time licence check, which carries no
 health data." Reproduce it **verbatim** and never widen it — and note the licence check
-belongs to the **viewer**: Vault Local itself makes no outbound call at all. A bare "no phone
+belongs to the **viewer**: MyBodyPrism Vault itself makes no outbound call at all. A bare "no phone
 home" is explicitly **not** approved, because the viewer's activation call would contradict it.
 
 **PrismEducate's page names organs, never counts them.** What its public build may ship is
@@ -128,6 +128,10 @@ migration, so verify any claim against `src/` before relying on it.
 ## Brand Identity
 - **Company**: Bolthouse Labs, Inc.
 - **Product**: MyBodyPrism — "See Yourself Like Never Before"
+- **The bundled Vault is "MyBodyPrism Vault"** on every page, in page titles and in the
+  legal mirrors' front matter (owner decision 2026-11-04, BOLT-773), as the installer, the
+  Start menu, the app's window and tray, its EULA and the viewer's user guide already call
+  it. "Vault Local" is only the business tier name and never appears in site copy.
 - **Color palette**: Dark backgrounds (#050508, #08080d), cyan accent (#00d4ff), warm accent (#ff6b4a for highlights), muted text (#8a8790, #4a4850)
 - **Tone**: Premium, clinical, cinematic. Not playful, not corporate. Think medical technology meets movie trailer.
 - **Logo / brand mark**: `logo-mark-t.webp` (the BodyPrism prism-mark) renders large in the
@@ -137,7 +141,7 @@ migration, so verify any claim against `src/` before relying on it.
 
 ## Product Model (Critical Context — updated 2026-09-21, owner-directed)
 MyBodyPrism is NOT a concierge/mail-in service. It is self-service. **Three products ship on
-2027-01-01** (owner decision 2026-10-05), all free: the **Desktop Viewer**, **Vault Local**
+2027-01-01** (owner decision 2026-10-05), all free: the **Desktop Viewer**, **MyBodyPrism Vault**
 (PrismVault, bundled inside the viewer's installer — not a separate download, and not the
 viewer's own sealed cloud-sync Vault tab), and **PrismEducate** (a standalone educational
 atlas, its own installer). The launch date moved from 2026-10-01 by owner decision 2026-09-21.
@@ -164,13 +168,13 @@ footer, global palette). `astro.config.mjs` sets `build.format: "file"`, so rout
 | Route | Source | Purpose |
 |---|---|---|
 | `/` | `index.astro` | Launch homepage — the teaser's narrative arc + download CTA |
-| `/pricing` | `pricing.astro` | **The real download flow** for the viewer (Vault Local is inside its installer). Email → `POST {PUBLIC_API_BASE}/downloads/trial-installer` → redirect to a 5-minute presigned S3 URL |
-| `/vault` | `vault.astro` | Vault Local. **Carries the owner's approved privacy sentence — see the rule below** |
+| `/pricing` | `pricing.astro` | **The real download flow** for the viewer (MyBodyPrism Vault is inside its installer). Email → `POST {PUBLIC_API_BASE}/downloads/trial-installer` → redirect to a 5-minute presigned S3 URL |
+| `/vault` | `vault.astro` | MyBodyPrism Vault. **Carries the owner's approved privacy sentence — see the rule below** |
 | `/educate` | `educate.astro` | PrismEducate. Its own download, behind its own switch |
 | `/support` | `support.astro` | Contact + FAQ |
 | `/system-requirements` | `system-requirements.astro` | Hardware/OS table |
 | `/account` | `account.astro` | Licence portal; reads `?token=` or `localStorage` |
-| `/legal/*` | `legal/*.md` (9 files) | EULA, **Vault Local EULA**, ToS, privacy, disclaimer, HIPAA, cookies, refunds, open-source notices |
+| `/legal/*` | `legal/*.md` (9 files) | EULA, **MyBodyPrism Vault EULA**, ToS, privacy, disclaimer, HIPAA, cookies, refunds, open-source notices |
 | `/404`, `/500` | `404.astro`, `500.astro` | Error pages (Pages serves `404.html` automatically) |
 
 There is no thank-you page; the free flow sends no download email (the download is a
@@ -191,7 +195,7 @@ Also in `src/site-config.ts`, also build-time, also defaults to `false` — and 
 **not** the viewer's flag (owner decision 2026-10-05). The cloud's download Lambda is
 hardwired to one installer: it reads `release_pointers` PK `latest` and returns that single
 `installer_s3_key`, with no product parameter (`AWS-HIPPA
-infra/lambdas/trial_installer_download/index.py`, read 2026-10-05). Vault Local needs nothing,
+infra/lambdas/trial_installer_download/index.py`, read 2026-10-05). MyBodyPrism Vault needs nothing,
 because it ships inside the viewer's installer; PrismEducate is a second installer with no
 pointer and no endpoint yet. While the flag is false `/educate` takes interest signups through
 the same Formspree form, tagged with a hidden `product` field. **Do not flip it until that
@@ -216,7 +220,7 @@ Formspree endpoint once the flag is `true`; it should not outlive the launch.
 ### The `legal/*.md` pages are MIRRORS — not the source of truth
 Canonical legal text lives in **two** repos. The viewer's is in the **desktop repo** at
 `C:\Projects_MedViz\SomaViz_Desktop_Volume_Viewer\legal\` (canonical since 2026-07-08):
-`eula.md`, `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. **Vault Local's own
+`eula.md`, `terms-of-service.md`, `privacy-policy.md`, `disclaimer.md`. **MyBodyPrism Vault's own
 EULA is canonical in `C:\Projects_MedViz\PrismVault\legal\eula.md`** and is mirrored here as
 `/legal/vault-eula` (owner-approved 2026-10-05 as written, no counsel; ported from `385f4b9`
 on 2026-10-06). It is a **separate contract from the viewer's** — do not merge the two pages,
@@ -255,7 +259,7 @@ inside your own body?" and the ICD captions (W9).
 10. **HOW IT WORKS** — Two numbered steps. Their wording is owner-directed (2026-08-26, last revised by the owner 2026-09-16: step 1 now ends "it's free", step 2 explains DICOM once) and legally-adjacent — **do not "correct" it**.
 11. **TRUST STRIP** — Three badges: Runs entirely on your computer · No uploads, no cloud · Your data stays yours.
 11b. **THE THREE FREE PRODUCTS** — added 2026-10-06, owner-approved, because the header nav was
-    the only route to Vault Local and PrismEducate and the header is not sticky on mobile. Three
+    the only route to MyBodyPrism Vault and PrismEducate and the header is not sticky on mobile. Three
     names, a line each, linking `/pricing`, `/vault` and `/educate`. **Additive by design:**
     it sits after the arc so sections 1–11, the founder's story and the FDA intended-use wording
     are untouched. It does **not** restate the Vault's approved privacy sentence — that lives on
