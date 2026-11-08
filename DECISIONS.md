@@ -43,3 +43,27 @@ stale when a product's date moves.
 
 **Effect.** The wording is owner-approved, not DRAFT. The header nav and `/educate` are
 unchanged.
+
+## D003 — 2026-11-08: the viewer's system requirements follow its recorded GPU test
+
+**Decision (owner, in this repository's session, BOLT-839).** `/system-requirements` states
+what the viewer measured, and says plainly what was only expected:
+
+- **GPU floor:** from the viewer's recorded test (`release/v1.1`
+  `docs/archive/2026-Q1-Q2/notes/2026-05-09-gpu-validation-results.md`). That is 2020-or-newer
+  integrated graphics (a Snapdragon X laptop was tested and found acceptable) or any dedicated
+  GPU. Intel Iris Xe and AMD Radeon integrated graphics are expected to work but were not
+  tested. Older Intel HD graphics were too slow (HD Graphics 4400 was tested).
+- **RAM:** from the viewer's `docs/system-requirements.md`: 8 GB, 16 GB for very large studies.
+- **Disk:** from the signed installer's measured size, the same measurement as BOLT-835, not
+  the viewer doc's 2 GB, which cannot hold a ~2.5 GB installer. Until then the row stays as it
+  was.
+- The RTX 2060 row and the "Intel HD, Iris not supported" sentence go. The page says nothing
+  about streaming.
+
+**Why.** The site's RTX 2060, 16 GB and 5 GB came in with `0e3cd9d` and cite no source, and
+people read this page to decide whether to download. The viewer's recorded test is the only
+measurement there is. The viewer's own requirements doc still offers browser streaming, which
+v1.1 does not ship, so it is followed for RAM only; it gets its own request (BOLT-862).
+
+**Effect.** BOLT-839 stays open until the disk row takes the installer's measured size.
