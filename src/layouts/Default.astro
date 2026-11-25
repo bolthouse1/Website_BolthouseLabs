@@ -146,6 +146,9 @@ const year = new Date().getFullYear();
         cursor: pointer;
         transition: opacity 0.2s, transform 0.2s, background 0.2s, color 0.2s;
       }
+      /* .btn sets display, which beats the browser's own [hidden] rule, so a
+         script setting btn.hidden = true left the button on screen (BOLT-848). */
+      .btn[hidden] { display: none; }
       .btn-primary {
         background: var(--c-brand);
         color: #050508;
