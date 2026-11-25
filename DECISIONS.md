@@ -84,3 +84,26 @@ day.
 on `WAITLIST_ENDPOINT` in `src/site-config.ts` say so. Two tasks behind the owner's login stay
 on BOLT-847: delete the 2026-10-06 test row before the BOLT-18 export, and check January
 2027's count against the 200-a-month allowance.
+
+## D005 — 2026-11-24: three more rows on /system-requirements
+
+**Decision (owner, in this repository's session, BOLT-839).** He gave three answers:
+
+- **Reference GPU:** "NVIDIA GeForce RTX 5080 Laptop GPU (development reference platform)".
+  It replaces the RTX 4080, which has not been the development machine since about
+  2026-08-22.
+- **Operating system:** "Windows 10 (22H2) or Windows 11, 64-bit". The viewer ran on Windows 10
+  Pro 22H2 in the 2026-05-09 GPU test, release testing ran on Windows 11, and the viewer's
+  `docs/system-requirements.md` says the same. The installer sets no Windows minimum of its
+  own, only `x64compatible` (`packaging/installer.iss` on `release/v1.1`). MyBodyPrism Vault's
+  row follows, because the page says its requirements are the viewer's. PrismEducate's row is
+  left alone, since its requirements are stated as not settled.
+- **AMD:** the note now opens "Dedicated AMD graphics cards are expected to work but
+  untested." It replaces "AMD GPUs may work but aren't tested.", which read at odds with the
+  minimum's "any dedicated GPU".
+
+**Why.** Each row should state what was run or measured, and say so plainly when it was not
+(D003; the rulebook's honest-numbers rule).
+
+**Effect.** Only the disk row is left on BOLT-839. It waits for the signed installer's
+measured size (BOLT-835, from BOLT-14's Dec 14–18 build).
