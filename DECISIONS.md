@@ -21,6 +21,10 @@ word of the agreement, so the site need not wait for that.
 difference until PrismVault drops them. That is correct, and it is not drift (`AGENTS.md`,
 the mirrors section). The text stays owner-approved and does not return to DRAFT.
 
+*Note added 2026-11-27 (BOLT-1044):* PrismVault dropped the two paragraphs the same day
+(`4abc5f5`, its BOLT-842). The mirror's body now equals canonical's byte for byte, so the
+difference this decision allowed no longer exists.
+
 ## D002 — 2026-11-08: PrismEducate is listed as coming later, and the site counts no products
 
 **Decision (owner, in this repository's session, BOLT-837).** PrismEducate stays in the

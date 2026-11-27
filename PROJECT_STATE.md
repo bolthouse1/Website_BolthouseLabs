@@ -65,7 +65,9 @@ last full handoff, and `docs/handoffs/2026-09-29-rules-review.md` for the rules 
   with no `legal/` commit after `9a395e2c`. **`vault-eula` carries PrismVault canonical
   `bf29744`'s agreement** (`legal/eula.md`, unchanged through its `main` and `origin/main` at
   `cc29a77`), re-synced 2026-11-08, without canonical's two maintainers' paragraphs under the
-  heading, on the owner's word (`DECISIONS.md` D001). It is a **separate contract** from the viewer's EULA, with its own effective
+  heading, on the owner's word (`DECISIONS.md` D001). PrismVault dropped those paragraphs
+  the same day (`4abc5f5`), and since then the mirror's body equals canonical's byte for byte
+  (checked 2026-11-27 against PrismVault `origin/main` `10c3e30`). It is a **separate contract** from the viewer's EULA, with its own effective
   date of January 1, 2027 — canonical's own, not the viewer's August 7, 2026.
 - **No "pending lawyer review" banner on any legal page** since `35accb4` (owner decision
   2026-09-13). Verified live on all seven pages that carried it.
@@ -76,6 +78,7 @@ last full handoff, and `docs/handoffs/2026-09-29-rules-review.md` for the rules 
 
 | | |
 |---|---|
+| **2026-11-27** | BOLT-1044 — records only. PrismVault dropped the Vault EULA's two maintainers' paragraphs on 2026-11-08 (`4abc5f5`, its BOLT-842), so `/legal/vault-eula`'s body now equals canonical byte for byte (checked at `4abc5f5` and PrismVault `origin/main` `10c3e30`). `AGENTS.md`, this file and `DECISIONS.md` D001 (a dated note) no longer describe an expected difference. Same day, freeze prep for BOLT-808: the four viewer mirrors are byte-identical in body to `release/v1.1` `a870f047` (no `legal/` commit since `9a395e2c`), so the 4 Dec re-sync should change only the effective dates |
 | **2026-11-24** | BOLT-970 — the 404 page offered "the pricing page"; it now says "the download page", as the menu (since 2026-10-05) and `/account` do. The link is still `/pricing`. Only `404` changed in text |
 | **2026-11-24** | BOLT-848 — after a successful waitlist signup the `/pricing` button now disappears, as its script always intended. The layout's `.btn { display: inline-block }` beat the browser's own `[hidden]` rule, so `btn.hidden = true` did nothing; `Default.astro` now carries `.btn[hidden] { display: none; }`. No button starts hidden in markup, so nothing else changes. Checked in a browser: hiding the button gives `display: none` with the fix and `block` without it. Built in both flag states: the only differences are that one CSS rule (which renames the shared stylesheet's hashed file, so every page's link to it changes) and BOLT-970's word; `/pricing` gate unchanged |
 | **2026-11-24** | BOLT-838 — the website manual test plan (`docs/testing/Website-MyBodyPrism-Manual-Test-Plan.docx`) refreshed for the site as it stands at `a7af534`. It had described a free beta with a July 2027 end date and predated `/vault`, `/educate` and the new requirements. Now: twelve steps (0–11) covering `/vault` (the approved privacy sentence verbatim), `/educate` (organs named, never counted), `/system-requirements` (D003, D005), the Vault EULA (D001), the "All free" homepage block (D002), and a launch-day step that points at W4.4's proof-of-flip table. Appendix A and B rewritten; every quoted string and baseline claim was checked by script against the live pages (0 misses; all 16 public pages 200). Rebuilt inside the original file, so its styles and footer are unchanged; validated, and rendered through Word (7 pages). The loose copy in the owner's `Desktop\Test Plans` is now the older one |

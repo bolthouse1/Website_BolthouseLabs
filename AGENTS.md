@@ -231,14 +231,13 @@ Canonical legal text lives in **two** repos. The viewer's is in the **desktop re
 EULA is canonical in `C:\Projects_MedViz\PrismVault\legal\eula.md`** and is mirrored here as
 `/legal/vault-eula` (owner-approved 2026-10-05 as written, no counsel; ported from `385f4b9`
 on 2026-10-06, re-synced from `bf29744` on 2026-11-08 with the owner-approved section 6
-sentence, PV-D099). **The mirror carries the agreement only.** Canonical opens, under its
-heading, with two maintainers' paragraphs: the owner's approval record ("Approved by the
-owner on 2026-10-05 …") and the DRAFT-and-tests note ("Any change to the wording makes this
-DRAFT again …"). They are records, not terms, and the mirror leaves both out by the owner's
-word of 2026-11-08 (BOLT-834; `DECISIONS.md` D001), even while canonical still has them
-(PrismVault's BOLT-842). So a body compare against canonical shows exactly those two
-paragraphs as the difference; that is correct, not drift. Port everything else, and once
-canonical drops them the bodies are equal again. It is a **separate contract from the viewer's** — do not merge the two pages,
+sentence, PV-D099). **The mirror carries the agreement only.** Canonical used to open, under
+its heading, with two maintainers' paragraphs (the owner's approval record and the
+DRAFT-and-tests note); the mirror left both out by the owner's word of 2026-11-08 (BOLT-834;
+`DECISIONS.md` D001), and PrismVault moved them into its own records the same day
+(`4abc5f5`, its BOLT-842, PV-D005). **Since then the mirror's body equals canonical's
+byte for byte** (checked 2026-11-27 at `4abc5f5` and PrismVault `origin/main` `10c3e30`), so
+any difference a body compare finds is drift. It is a **separate contract from the viewer's** — do not merge the two pages,
 and do not point Vault copy at the viewer's EULA. Its effective date is January 1, 2027, which
 is canonical's own and not the viewer's August 7, 2026. Whoever owns this
 site inherits the **re-sync duty**: when canonical text changes, update the mirror here.
